@@ -1,0 +1,214 @@
+20161104_514080904_李天宇
+L01
+func28.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int elements[1024];
+	const int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	if(stack.count<1024) 
+	{
+		stack.elements[stack.count]=in;
+		stack.count=stack.count+1;
+		return 0;
+	}
+	else return -1;
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	if(stack.count>0)
+	{
+		stack.count=stack.count-1;
+		out=stack.elements[stack.count];
+		return 0;
+	}
+	else return -1;
+}
+L02
+func28.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+
+char spechars[10]={' ' , '"' , '#' , '%' , '&' , '(' , ')' , '/' , ':' , '@'};
+int substitute(char* str, int len)
+{
+	char subchars[10][2]={{'2','0'},{'2','2'},{'2','3'},{'2','5'},{'2','6'},{'2','8'},{'2','9'},{'2','F'},{'3','A'},{'4','0'}};
+	for(int i=len;i>=0;i--)//�Ժ���ǰ���ң������µ�����ռȡ�ռ�
+	{                      //������ ���ǲ��Ǻܻ��ǣ�
+		for (int j=0;j<10;j++)
+		{
+			if(str[i]==spechars[j])
+			{
+				if((len+4)>1024) return -1;//������Ҫ����\0������+4
+				else
+				{
+					len=len+2;
+					for(int k=len;k>i;k--)//ͬ����ȡ�Ժ���ǰ�����ַ��������˰�����ֵ����
+				    {    
+					    str[k+2]=str[k];
+				    }
+					str[i]='%';
+				    str[i+1]=subchars[j][0];
+				    str[i+2]=subchars[j][1];
+					break;
+				}
+			}
+			
+		}
+	}
+	return 0;
+}
+L03
+func28.cpp
+/**********************************
+ * 字符串查找函数
+ * 输入 : str要进行查找操作的字符串
+ * 输入 : strLen查找字符串长度
+ * 输入 : pattern要匹配的字符串
+ * 输入 : patternLen匹配字符串长度
+ * 输入 : indexes匹配项索引数组
+ * 输出 : 成功匹配个数
+ **********************************/
+int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes)
+{
+	int ser=0, flag;//指针位置
+	for(int i=0;i<strLen-patternLen;i++)
+	{
+		flag=1;
+		for(int j=0;j<patternLen;j++)//字符串一一比对
+		{
+			if(pattern[j]!=str[i+j]) flag=0;
+		}
+		if(flag==1)
+		{
+			indexes[ser]=i;
+			ser=ser+1;
+		}
+	}
+	return ser;
+}
+
+L04
+func28.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{
+	float tem;//交换时用于保存数据
+	for(int i=0;i<len;i++)//外循环的第i个进行插入
+	{
+		for(int j=0;j<i;j++)//插入时与第j个比较
+		{
+			if(nums[i]<=nums[j])
+			{
+				tem=nums[i];
+				for(int k=i-1;k>=j;k--) nums[k+1]=nums[k];
+				nums[j]=tem;
+				break;
+			}
+		}
+	}
+}
+L06
+func28_动态规划.cpp
+/**********************************
+ * 计算子数组最大和函数
+ * 输入 : nums要进行计算操作的数组
+ * 输入 : len输入数组长度
+ * 输出 : 最大和
+ **********************************/
+
+float max_end(float* nums, int len, float *maxend)//带备忘的包含末位的最大子数列
+{
+	if(len==0) return 0;
+	maxend[len]= nums[len-1]+ max_end(nums,len-1,maxend);
+	if (maxend[len]<0) maxend[len]=0;
+	return maxend[len];
+}
+
+float maxSum(float* nums, int len)
+{
+	if(len==0) return 0;
+	float max=0.0;
+	float maxend[1024]={0};
+	for(int i=0;i<len+1;i++)
+	{
+		if(max<max_end(nums,i,maxend)) max=max_end(nums,i,maxend);
+	}
+    return max;
+}
+
+
+
+func28_穷举法.cpp
+/**********************************
+ * 计算子数组最大和函数
+ * 输入 : nums要进行计算操作的数组
+ * 输入 : len输入数组长度
+ * 输出 : 最大和
+ **********************************/
+
+
+//该函数实现对于整个nums的数组，找到它的branch_len元子列的最大值，例如branch_len=1时，即返回nums中的最大值
+float max_branch(float* nums, int list_len, int branch_len)
+{
+	float max_len=0, tem_sum;
+	for(int i=0;i<list_len-branch_len+1;i++) //采取累加的方法，对第i项与之后的branch_len-1项累加，所得和，其最大值就是返回值
+	{
+		tem_sum=0.0;
+		for(int j=0;j<branch_len;j++) tem_sum=tem_sum+nums[i+j];
+		if(max_len<tem_sum) max_len=tem_sum;
+	}
+	return max_len;
+}
+
+
+float maxSum(float* nums, int len)
+{
+	float *max_list;
+	max_list = new float[len];
+	delete []max_list;//定义max_list数组第i项以保存i元子列的最大值
+
+	max_list[0]=0.0;
+	for(int i=1;i<len+1;i++)
+	{
+		max_list[i]=max_branch(nums,len,i);
+	}
+
+	int max=0;
+	for(int k=0;k<len+1;k++)
+	{
+		if (max<max_list[k]) max=max_list[k]; //取最大值即可
+	}
+	return max;
+}
+
+
+

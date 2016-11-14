@@ -1,0 +1,82 @@
+20161028_515080910015_卢向峰
+L01
+func25.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func25(float target, float* nums, int len)
+{
+	int low=0;  //定义数据范围下限
+	int high=len-1;  //定义数据范围上限
+	int mid;
+
+	while(low<=high)  //利用while循环进行查找
+	{
+		mid=(low + high) / 2;  //求数据范围中点
+
+		if(nums[mid]<target)
+			high=high-1;  
+
+		if(nums[mid]>target)
+			low=low+1;
+		
+		if(nums[mid]==target)
+			
+			return mid;  //返回数据序号
+	}
+	return -1;  //数据不在其中返回值为-1
+
+}
+L02
+func25.cpp
+struct Point
+{
+	float x;
+	float y;
+};   //����Point�ṹ�壬������������x,y
+
+struct Point func25()
+{
+	Point P[4]={{0,0},{3,4},{1,1},{8,-1}};  //����������������
+	
+	Point P0={(P[1].x+P[2].x+P[3].x)/3,(P[1].y+P[2].y+P[3].y)/3}; //������������
+	return P0;  //�������Ľṹ��
+}
+
+
+L03
+func25.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func25(int year, int month, int day)
+{
+	int num,s=0;    //定义变量sum，s
+	int yue[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};  //定义定义数组代表每月的天数
+
+	for(int i=0;i<month;i++)
+	{
+		s=s+yue[i];    //用for循环计算天数
+	}
+	if( (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) )//判断年份是否为闰年
+	{
+		if(month>=3)
+		num=s+day+1; //是闰年且月份大于等于3的天数
+		else
+		num=s+day;//是闰年但月份为1,2月的天数
+	}
+	else
+		num=s+day;//平年的天数
+	
+	return num;//函数返回天数值
+
+}

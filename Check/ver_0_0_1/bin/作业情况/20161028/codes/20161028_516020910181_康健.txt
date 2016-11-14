@@ -1,0 +1,139 @@
+20161028_516020910181_康健
+L01
+func__.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+
+}
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+
+}
+main.cpp
+#include <iostream>
+extern int func__(float target, float* nums, int len);
+int main(int argc, char* argv[])
+{
+	float nums[50];
+	int count = 0;
+	std::cout << "Please input the number of numbers: ";
+	std::cin >> count;
+	std::cout << "Please input the numbers: ";
+	for (int i = 0; i < count; i++)
+	{
+		std::cin >> nums[i];
+	}
+	float target;
+	std::cout << "Please input a number you want to find: ";
+	std::cin >> target;
+	int index = func__(target, nums, count);
+	if (-1 == index)
+		std::cout << "There is no such number in the group!" << std::endl;
+	else
+		std::cout << "The index of the number is: " << index << std::endl;
+	
+	return 0;
+}
+L02
+func_.cpp
+struct Point
+{
+	float x;
+	float y;
+}p1,p2,p3;
+
+struct Point func__()
+{
+	p1.x = 3;
+	p1.y = 4;
+	p2.x = 1;
+	p2.y = 1;
+	p3.x = 8;
+	p3.y = -1;
+	Point a;
+	a.x = (p1.x + p2.x + p3.x) / 3;
+	a.y = (p1.y + p2.y + p3.y) / 3;
+	return a;
+
+}
+main.cpp
+#include <iostream>
+struct Point
+{
+	float x;
+	float y;
+};
+extern struct Point func__();
+int main(int argc, char* argv[])
+{
+	auto centroid = func__();
+	std::cout << "The centroid is (" << centroid.x << "," << centroid.y << ")" << std::endl;
+	return 0;
+}
+L03
+func__.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func__(int year, int month, int day)
+{
+	int a;
+	int sum = 0;
+		a = 0;
+   		int b[12] = { 31,29,31,30,31,30,31,31,30,31,30,31};
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+			b[1] = 29;
+for (int i = 0; i < month - 1; i++) {
+		sum += b[i];
+	}
+	sum += day;
+	return sum;
+}
+main.cpp
+#include <iostream>
+extern int func__(int year, int month, int day);
+int main(int argc, char* argv[])
+{
+	int year, month, day;
+	std::cout << "Please input year: ";
+	std::cin >> year;
+	std::cout << "Please input month: ";
+	std::cin >> month;
+	std::cout << "Please input day: ";
+	std::cin >> day;
+	int num = func__(year, month, day);
+	std::cout << year << "-" << month << "-" << day << " is the " << num;
+	switch (num)
+	{
+		case 1: std::cout << "st "; break;
+		case 2: std::cout << "nd "; break;
+		case 3: std::cout << "rd "; break;
+		default : std::cout << "th ";
+	}
+	std::cout << "day in the year!" << std::endl;
+}

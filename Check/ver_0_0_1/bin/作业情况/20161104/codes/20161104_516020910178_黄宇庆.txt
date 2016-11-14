@@ -1,0 +1,232 @@
+20161104_516020910178_黄宇庆
+L01
+func08.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int elements[1024];
+	int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	int i;
+	if(stack.count==stack.capacity)//判断是否已满
+		i=-1;
+	else
+	{
+		stack.elements[stack.count]=in;
+		stack.count++;
+		i=0;
+	}
+	return i;
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	int i;
+	if(stack.count==0)//判断是否已空
+		i=-1;
+	else
+	{
+		out=stack.elements[stack.count-1];
+		i=0;
+		stack.count--;
+	}
+	return i;
+}
+main.cpp
+#include <iostream>
+
+struct Stack
+{
+	int _elements[1024];
+	const int capacity = 1024;
+	int count = 0;
+};
+extern int push(struct Stack& stack, int in);
+extern int pop(struct Stack& stack, int& out);
+
+int main(int argc, char* argv[])
+{
+	struct Stack stack;
+	stack.count = 0;
+	std::cout << "At beginning, the stack has " << stack.count << " elements." << std::endl;
+	std::cout << "---- Begin to push elements into stack ----" << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		int in = i*i;
+		push(stack, in);
+		std::cout << "[" << i << "] : push " << in << " into the stack;" << std::endl;
+	}
+	std::cout << "---- End to push elements into stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl << std::endl;
+
+	std::cout << "---- Begin to pop elements from stack ----" << std::endl;
+	int out;
+	for (int i = 0; i < 10; i++)
+	{
+		int flag = pop(stack, out);
+		if (0 == flag)
+		{
+			std::cout << "[" << i << "] : pop " << out << " from the stack;" << std::endl;
+		}
+		else
+		{
+			
+		}
+	}
+	std::cout << "---- End to pop elements from stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl;
+
+	return 0;
+}
+L02
+func08.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+#include<string>
+int substitute(char* str, int len)
+{    //�洢�滻��Ԫ
+	char spechars[10]=
+	{' ','"','#','%','@','(', ')','/',':','@'};
+	char final[1024];//���崢���µ�����
+	int i,j,k=0,m;
+	for(i=0;i<len;i++)//��ÿһ���ַ����в��Һ��滻
+	{  int t=0;
+	   j=0;
+	   while(j<10&&t==0)
+	   {
+		if(str[i]==spechars[j])//�����Ƿ���Ҫ�滻
+		{
+			if(j=0)final[k]='%';final[k+1]='2';final[k+2]='0';
+			if(j=1)final[k]='%';final[k+1]='2';final[k+2]='2';
+			if(j=2)final[k]='%';final[k+1]='2';final[k+2]='3';
+			if(j=3)final[k]='%';final[k+1]='2';final[k+2]='5';
+			if(j=4)final[k]='%';final[k+1]='2';final[k+2]='6';
+			if(j=5)final[k]='%';final[k+1]='2';final[k+2]='8';
+			if(j=6)final[k]='%';final[k+1]='2';final[k+2]='9';
+			if(j=7)final[k]='%';final[k+1]='2';final[k+2]='F';
+			if(j=8)final[k]='%';final[k+1]='3';final[k+2]='A';
+			if(j=9)final[k]='%';final[k+1]='4';final[k+2]='0';
+			k+=3;
+			t=1;
+		}
+		else
+		j++;
+		}
+		
+		if(t==0)//δ���滻
+		{
+		final[k]=str[i];
+		k++;
+		}
+	}
+	if(k>1024)//�ж��Ƿ񳬳����鳤��
+		m=-1;
+	else
+	{
+		int q;
+		for(q=0;q<k;q++)//������洢��ԭ�������鵥Ԫ��
+			str[q]=final[q];
+		m=0;
+	}
+	
+	
+	
+	
+	return m;
+	
+}
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int substitute(char* str, int len);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	std::cout << "Please input an URL [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	int flag = (int)substitute(str, (int)strlen(str));
+	if (0 == flag)
+	{
+		std::cout << "The new URL is : " << str << std::endl;
+	}
+	else
+	{
+		std::cout << "The URL is too long to substitute!";
+	}
+	return 0;
+}
+L04
+func08.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{  int i,j,k;
+	for(j=0;j<len;j++)
+	{
+		for(i=j-1;i>=0;i--)//將後面的數一個個往前挪
+		{
+			if(nums[i+1]<nums[i])//判斷是否需要替換
+			 {  
+				 k=nums[i+1];
+			     nums[i+1]=nums[i];
+			     nums[i]=k;          //進行替換
+			 }  
+		}
+	   
+    }
+}
+
+
+main.cpp
+#include <iostream>
+
+extern void insertSort(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	
+		std::cin >> nums[i];
+	}
+
+	insertSort(nums, len);
+
+	std::cout << "After insertion sorting, the numbers are : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cout << nums[i] << " ";
+	}
+	std::cout << std::endl;
+
+	return 0;
+}

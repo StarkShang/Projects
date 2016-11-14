@@ -1,0 +1,110 @@
+20161104_516020910186_唐浩翔
+L01
+func16.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+    int elements[1024];
+	int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	if(stack.count+1<stack.capacity)
+	{
+		stack.elements[stack.count]=in;
+		stack.count=stack.count+1;
+		return 0;
+	}
+	else return -1;
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	if(stack.count>0)
+	{
+		out=stack.elements[stack.count-1];
+		stack.count=stack.count-1;
+		return 0;
+	}
+	else return -1;
+}
+L02
+func16.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+char sechars[10]={' ','"','#','%','&','(',')','/',':','@'};
+char f[3][10]={{'%','%','%','%','%','%','%','%','%','%'},
+{'2','2','2','2','2','2','2','2','3','4'},
+{'0','2','3','5','6','8','9','F','A','0'}};
+int substitute(char* str, int len)
+{
+	for(int i=0;i<len;i++)
+	{
+		for(int k=0;k<10;k++)
+		{
+			if (str[i]==sechars[k])//����������ַ�
+			{
+				len+=2;//���ȼ�2
+				char a=str[i];
+				str[i]=f[0][k];//��ֵ
+			    for (int m=len;m>i;m--)
+			    {
+				    str[m+2]=str[m];//������λ
+			    }
+			    str[i+1]=f[1][k];
+			    str[i+2]=f[2][k];//��ֵ
+				break;
+			}
+	 
+	     }   
+	}
+ 
+if (len<=1024)
+	return 0;//���㳤��С��1024
+else return -1;//���ȴ���1024 
+}
+L04
+func16.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{
+	int a,b;
+	float c;
+	for(a=1;a<len;a++)
+	{
+		for(b=a;b>0;b--)
+		{
+			if(nums[b] <nums[b-1])
+			{
+				c=nums[b];
+				nums[b]=nums[b-1];
+				nums[b-1]=c;
+			}
+			else break;
+		}
+	}
+}

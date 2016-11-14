@@ -1,0 +1,100 @@
+20161028_5140729048_陈凯文
+L01
+func29.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func29(float target, float* nums, int len)
+{
+	int t=-1;//定义变量作为返回值并且赋初值-1
+	int i=0;//定义变量
+	for(i=0;i<=len;i++)//开始循环
+	{
+	if (nums[i]==target)//如果找到目标值
+	{
+		t=i;//将序号赋值给t
+	}
+	}
+	return t;//返回t
+}
+L02
+func29.cpp
+struct Point
+{
+	float x;
+	float y;
+};
+
+struct Point func29()
+{
+	Point p4;
+	Point p1={3,4},p2={1,1},p3={8,-1};//��������point��������ʼ��
+	p4.x=(p1.x+p2.x+p3.x)/3;
+	p4.y=(p1.y+p2.y+p3.y)/3;//��������
+	return p4;
+}
+L03
+func29.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func29(int year, int month, int day)
+{
+	int leap=0;//定义变量表示闰年
+	int output=0;//定义变量表示输出
+	if((year%400==0)|((year%100!=0)&(year%4==0)))//判断是否是闰年
+	{
+	leap=1;//是闰年就赋值1
+	}
+	else leap=0;//不是就0
+	if(leap==1)//如果是闰年
+	{
+	 switch (month)//根据月份判断
+	 {
+	case 1:output=day;break;
+    case 2:output=day+31;break;
+	case 3:output=day+60;break;
+	case 4:output=day+91;break;
+	case 5:output=day+121;break;
+	case 6:output=day+152;break;
+	case 7:output=day+182;break;
+	case 8:output=day+213;break;
+    case 9:output=day+244;break;
+	case 10:output=day+274;break;
+	case 11:output=day+305;break;
+	case 12:output=day+335;break;//根据月份算日期
+	default:output=-1;break;//如果输入非法就返回1
+	 }
+	}
+	else
+	{
+	switch (month)//根据月份判断
+	 {
+	case 1:output=day;break;
+    case 2:output=day+31;break;
+	case 3:output=day+60-1;break;
+	case 4:output=day+91-1;break;
+	case 5:output=day+121-1;break;
+	case 6:output=day+152-1;break;
+	case 7:output=day+182-1;break;
+	case 8:output=day+213-1;break;
+    case 9:output=day+244-1;break;
+	case 10:output=day+274-1;break;
+	case 11:output=day+305-1;break;
+	case 12:output=day+335-1;break;//同上，3月之后的都-1
+	default:output=-1;break;//同上
+	 }
+	}
+	if(output>366)output=-1;//如果day的输入非法导致output溢出则返回-1
+return output;	//返回结束
+}
+

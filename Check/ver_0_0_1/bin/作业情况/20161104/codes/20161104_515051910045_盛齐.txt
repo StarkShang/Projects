@@ -1,0 +1,158 @@
+20161104_515051910045_盛齐
+L01
+func23.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int element[1024];
+	int capacity;
+	int count;
+};
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{   
+	stack.capacity=1024;    //初始化数组长度为1024
+    if(stack.count<stack.capacity)     //如果栈未满则进栈
+	{    stack.element[stack.count]=in;
+	     stack.count=stack.count+1;  //已入栈元素个数+1
+	     return(0);}
+    else return(-1);     
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{ 
+    stack.capacity=1024;
+	if(stack.count==0)   return(-1);  //判断栈是否为空
+    else  
+	{   out=stack.element[stack.count-1]; 
+	    stack.count=stack.count-1;
+		return(0);}
+}
+L02
+func23.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+char spechars[10]={' ','"','#','%','&','��',')','/',':','@'};//����spechars���洢ת���ַ�
+char spechars1[21]={'%','2','0','2','2','2','3','2','5','2','6','2','8','2','9','2','F','3','A','4','0'};//����spechars1������ASCII��
+int substitute(char* str, int len)
+{   
+	if(len>=1024)  return(-1);    //����ַ��������������too long
+	else                          //����ִ����������
+    {
+		int count=0;
+        for(int i=0;i<len;i++)      //ͨ��forѭ����ÿһ���ַ��������ж��Ƿ����ת���ַ�
+	    {   for(int j=0;j<10;j++)       
+	        {                   
+				if(str[i]==spechars[j])      //������ڣ���Զ�Ӧ��ת���ַ�����ת��
+	            { 
+					str[i]=spechars1[0];      
+				    for(int k=len-1;k>i;k--)  //��Ӧ��ת���ַ���Ϊ�����ַ������ʺ����Ӧ�ַ���Ӧ����2λ
+				    {
+						str[k+2]=str[k];
+				    }
+				    str[i+1]=spechars1[2*j+1];
+				    str[i+2]=spechars1[2*j+2];
+				    len=len+2;             //�ַ�������+2
+	             }
+	        } 
+	    }
+		return(0);
+	}
+	
+}
+L03
+func23.cpp
+/**********************************
+ * 字符串查找函数
+ * 输入 : str要进行查找操作的字符串
+ * 输入 : strLen查找字符串长度
+ * 输入 : pattern要匹配的字符串
+ * 输入 : patternLen匹配字符串长度
+ * 输入 : indexes匹配项索引数组
+ * 输出 : 成功匹配个数
+ **********************************/
+int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes)
+{   
+	int num=0,count;  
+	for(int i=0;i<(strLen-patternLen+1);i++)     
+	{   
+		count=0;    //每执行完一次循环将count归零
+		for(int j=0;j<patternLen;j++)  //通过循环判断是否有连续相等的字符串
+	    {   
+			if(str[i+j]==pattern[j])      
+			{count=count+1;}
+	    }   
+	    if(count==patternLen)    //如果具有连续相等的字符串，则输出所对应的索引值
+		{
+			indexes[num]=i;    
+			num=num+1;
+		}
+	}
+	return(num);   	
+}
+
+L04
+func23.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{    float temp;
+	 for(int i=1;i<len;i++)    
+	 {   int b=i;
+         for(int j=i-1;j>=0;j--)  //将nums[i]与之前的数进行比较
+		 {   
+			 if(nums[i]<nums[j])    //如果之前的数小于nums[i]则两数值交换，且i改为j
+			 { 
+				temp=nums[j];
+			    nums[j]=nums[i];
+				nums[i]=temp;
+				i=j;
+		      }
+		 }
+		 i=b;    //继续循环
+	 }
+}
+L06
+func23.cpp
+/**********************************
+ * 计算子数组最大和函数
+ * 输入 : nums要进行计算操作的数组
+ * 输入 : len输入数组长度
+ * 输出 : 最大和
+ **********************************/
+float maxSum(float* nums, int len)
+{   
+	float sum[1024]={0},temp=0,max;  //定义数组sum为每次涨幅所对应的总收益
+    for(int i=0;i<len;i++)      //求出每次涨幅的收益
+	{  
+		sum[i+1]=sum[i]+nums[i];    
+    }
+	for(int i=0;i<len;i++)    //求收益的最小值和对应的之后的最大值
+	{   for(int j=i+1;j<len+1;j++)
+	    {   max=sum[j]-sum[i];
+	        if(max>temp)      temp=max;
+	    }
+	}
+	return(temp);
+}
+

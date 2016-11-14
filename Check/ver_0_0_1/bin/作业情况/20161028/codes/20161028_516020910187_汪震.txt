@@ -1,0 +1,72 @@
+20161028_516020910187_汪震
+L01
+func17.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func__(float target, float* nums, int len)
+{
+
+	for (int i = 0; i < len; i++)
+	{
+		if (nums[i] == target)
+		{
+			return i;
+			break;
+		}
+		return -1;
+	}
+}
+L02
+func17.cpp
+struct Point
+{
+	float x;
+	float y;
+};
+
+struct Point func__()
+{
+	Point poi[] = { { 3,4 },{ 1,1 },{ 8,-1 } };
+float x = (poi[0].x + poi[1].x + poi[2].x) / 3;
+	float y= (poi[0].y + poi[1].y + poi[2].y) / 3;
+	Point a = { x,y };
+	return a;
+}
+L03
+func17.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func__(int year, int month, int day)
+{
+	if (year % 100 == 0 || year % 4 != 0)
+	{
+		int a[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+		int b = 0;
+		for (int i = 0; i<month-1;i++)
+		{
+			b += a[i];
+		}
+		return b + day;
+	}
+	else if (year % 100 != 0 || year % 4 == 0)
+	{
+		int a[12]= { 31,29,31,30,31,30,31,31,30,31,30,31 };
+		int b = 0;
+		for (int i = 0; i < month-1;i++)
+		{
+			b += a[i];
+		}
+		return b + day;
+	}
+}

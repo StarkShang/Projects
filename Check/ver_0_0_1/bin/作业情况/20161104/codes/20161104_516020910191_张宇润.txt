@@ -1,0 +1,109 @@
+20161104_516020910191_张宇润
+L01
+func21.cpp
+#include <iostream>
+struct Stack//定义stack
+{
+	int _elements[1024]; 
+	const int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in) 
+{
+	if (stack.count ==stack.capacity) 
+		return (-1);//已满返回-1
+	else
+	{
+		stack._elements[stack.count]=in;//赋值
+	    stack.count++;
+	}
+		return (0);//返回0
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out) 
+{
+	if (stack.count <=0)//判断是否已空
+		return (-1);
+	else
+	{
+		stack.count=stack.count-1;
+		out=stack._elements[stack.count];//赋值
+		return (0);
+	}
+}
+L02
+func21.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+#include<iostream>
+char spechars[10]={' ','��','#','%','&','(',')','/',':','@'};
+char f[3][10]={{'%','%','%','%','%','%','%','%','%','%'},{'2','2','2','2','2','2','2','2','3','4'},{'0','2','3','5','6','8','9','F','A','0'}};
+ 
+int substitute(char* str, int len)
+{
+	for(int i=0;i<len;i++)
+	{
+		for(int k=0;k<10;k++)
+		{
+			if (str[i]==spechars[k])//���������url�е��ַ�
+			{
+				len+=2;
+				char a=str[i];
+				str[i]=f[0][k];//��ֵ��һ��
+			    for (int m=len;m>i;m--)
+			    {
+				    str[m+2]=str[m];//������λ
+			    }
+			    str[i+1]=f[1][k];
+			    str[i+2]=f[2][k];//�ֱ�ֵ
+				break;
+			}
+	 
+	}   
+	}
+										
+				
+		
+ 
+if (len<=1024)
+	return 0;
+else return -1;//�ж��Ƿ񳬹�1024
+}
+L04
+func21.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{int t;
+	for (int j=0;j<len;j++)
+{
+	for(int i=0;i<j;i++)
+	if (nums[i]>nums[j])//若前项大于后项
+			{
+				t=nums[i];//定义t为前项
+			nums[i]=nums[j];
+			nums[j]=t;//交换
+	}
+}
+	
+}

@@ -1,0 +1,71 @@
+20161028_516020910188_项瑞
+L01
+func_.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func__(float target, float* nums, int len)//定义函数
+{//函数开始
+	float min =0,max=len-1;//定义初始变量
+	float med=(max+min)/2;//确定中值位置
+	int re=-1;//定义变量
+	while(min<=max)//设定循环条件
+	{
+		re=(min+max)/2;
+		if(nums[re]==target)
+		{return re=(re+1);}
+		if(nums[re]>target) 
+		{min=min+1;}
+		if(nums[re]<target)
+		{max=max+1;}//折半查找寻找目标数值
+		}
+		return re;//函数执行完毕返回目标数位置
+
+}//函数结束
+L02
+func_.cpp
+struct Point//����ṹ��
+{
+	float x;//������ֵ
+	float y;//������ֵ
+};
+
+struct Point func__()//���庯��
+{//������ʼ
+	Point p[3]={3,4,1,1,8,-1};//������������
+	float avex=0;//�������
+	float avey=0;//�������
+	for(int i=0;i<=2;i++)//�趨ѭ������
+		{
+	     avex=p[i].x+avex;//��������������
+	     avey=p[i].y+avey;//���������������
+	    }
+	avex=avex/3;//�������ĺ�����
+	avey=avey/3;//��������������
+	Point centroid={avex,avey};//��������
+	return centroid;//����ִ����Ϸ���
+
+}//��������
+L03
+func__.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func__(int year, int month, int day)//定义函数
+{//函数开始
+	int cal[2][13]={{0,31,28,31,30,31,30,31,31,30,31,30,31},{0,31,29,31,30,31,30,31,31,30,31,30,31}};//赋值初始数组
+	int k,b;//定义变量
+	b=(year%4==0&&year%100!=0)||(year%400==0);//确定是否为闰年
+	for(k=1;k<month;k++)//设定循环参数
+		day=day+cal[b][k];//计算对应天数
+	return day;//函数执行完毕对应天数
+}//函数结束

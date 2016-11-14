@@ -1,0 +1,107 @@
+20161028_516020910184_裘哲轩
+L01
+func14.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func__(float target, float* nums, int len)
+{
+	int low,high;//定义最大，最小数组序号
+	low=0;
+	high=len-1;//数组序号初始化
+	while((high-low)>=1)//当序号差不小于1时执行循环语句
+	{
+		if(nums[(high+low)/2]>target)//如果目标数小于数组中间数
+			low=(high+low)/2;//将中间序号赋值给新数组的最下标
+		else if(nums[(high+low)/2]<target)//如果目标数大于数组中间数
+			high=(high+low)/2;//将中间序号赋值给新数组的最上标
+		else//如果目标数等于数组中间数
+			break;//跳出循环
+	}
+	if(nums[(high+low)/2]==target)//如果循环后目标数等于新数组中间数
+		return ((high+low)/2+1);//返回该数对应的序号
+	else//如果循环后数组中找不到目标数
+		return -1;//返回-1
+}
+L02
+func14.cpp
+struct Point  //����һ���ṹ������Piont
+{
+	float x;//����һ�������ͱ���x
+	float y;//����һ�������ͱ���y
+};
+
+struct Point func__()//����һ��Piont�ṹ�����ͺ��� func__()
+{
+	Point a[4]={{3,4},{1,1},{8,-1}};   //����һ��Piont�ṹ����������a����ʼ������ʾ�����ε��������������
+		a[3].x=(a[0].x+a[1].x+a[2].x )/3,//����a[3]��x����Ϊ���������xƽ����
+		a[3].y=(a[0].y+a[1].y+a[2].y )/3;//����a[3]��y����Ϊ���������yƽ����
+		return a[3];//������������
+}
+
+L03
+func14.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func__(int year, int month, int day)//定义整型函数，参数为年月日
+{
+	int a[3]={year,month,day};//定义数组a并初始化
+	int d;//定义变量d表示天数
+	if ((a[0]%100!=0&&a[0]%4==0)||(a[0]%400==0))//如果年份为闰年，执行语句
+		{
+			d=0;//初始化天数为0
+			int c;//定义变量c
+			c=a[1];//将月份的值赋给C
+			switch(c)//switch语句计算不同月份的之前月份的天数，加上本月的天数day即为所求值
+			{
+				case 1:d=a[2];break;
+				case 2:d=a[2]+31;break;
+				case 3:d=a[2]+60;break;
+				case 4:d=a[2]+91;break;
+				case 5:d=a[2]+121;break;
+				case 6:d=a[2]+152;break;
+				case 7:d=a[2]+182;break;
+				case 8:d=a[2]+213;break;
+				case 9:d=a[2]+244;break;
+				case 10:d=a[2]+274;break;
+				case 11:d=a[2]+305;break;
+				case 12:d=a[2]+335;break;
+				default:break;
+			}
+	}
+	else//如果年份不为为闰年，执行语句
+		
+		{
+			d=0;//初始化天数为0
+			int b;//定义变量b
+			b=a[1];//将月份的值赋给b
+			switch(b)//switch语句计算不同月份的之前月份的天数，加上本月的天数day即为所求值
+			{
+				case 1:d=a[2];break;
+				case 2:d=a[2]+31;break;
+				case 3:d=a[2]+59;break;
+				case 4:d=a[2]+90;break;
+				case 5:d=a[2]+120;break;
+				case 6:d=a[2]+151;break;
+				case 7:d=a[2]+181;break;
+				case 8:d=a[2]+212;break;
+				case 9:d=a[2]+243;break;
+				case 10:d=a[2]+273;break;
+				case 11:d=a[2]+304;break;
+				case 12:d=a[2]+343;break;
+				default: break;
+			}
+		}
+	return d;//返回求得的天数
+	
+}

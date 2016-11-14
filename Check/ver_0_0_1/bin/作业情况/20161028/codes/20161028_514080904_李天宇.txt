@@ -1,0 +1,64 @@
+20161028_514080904_李天宇
+L01
+func28.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func28(float target, float* nums, int len)
+{
+	int min=0 , max=len-1; //min max用作计算二分查找的分界点
+	int border;//分界
+	if(nums[len-1]>target || nums[0]<target) return -1;//不在范围内则直接返回-1
+	do
+	{
+		border=0.5*(min+max);
+		if(nums[border]>target)  min=0.5*(min+max+1);//取右边界以满足遍历末项
+		if(nums[border]==target) return border;
+		if(nums[border]<target)  max=0.5*(min+max-1);//取左边界以满足遍历首项
+	}
+	while(max>=min);
+	return -1;
+}
+L02
+func28.cpp
+struct Point
+{
+	float x;
+	float y;
+};
+
+struct Point func28()
+{
+	Point point_coordinate[3]={{3,4},{1,1},{8,-1}};//�������������
+	Point p;//���ı�������
+	p.x=1.0/3.0*(point_coordinate[0].x+point_coordinate[1].x+point_coordinate[2].x);
+	p.y=1.0/3.0*(point_coordinate[0].y+point_coordinate[1].y+point_coordinate[2].y);
+	return p;
+}
+L03
+func28.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+
+//本程序并未判定日子是否合法
+int func28(int year, int month, int day)
+{
+	int average_year[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+	int i,num=day;//初始化第num天中的num为day
+	for(i=0;i<month-1;i++)
+	{
+		num=num+average_year[i];
+	}
+	if(((year%4==0 && year%100!=0) || year%400==0)&&(month>2)) num=num+1;//如果是闰年且月数大于2 则需要加一天进行修正
+	return num;
+}

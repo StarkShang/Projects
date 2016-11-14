@@ -1,0 +1,292 @@
+20161104_516020910182_刘子昂
+L01
+func12.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int _elements[1024];
+	int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	int n,result;
+	n=stack.count;
+	if(n<1023)
+	{
+	stack._elements[n]=in;
+	stack.count++;
+	result=0;
+	}
+	else
+	{
+		result=-1;
+	}
+	return result;
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	int n,m;
+	n=stack.count;
+	if(n>0)
+	{
+		out=stack._elements[n-1];
+	stack._elements[n-1]=stack._elements[n];
+	stack.count--;
+	m = 0;
+	}
+	else
+	{
+		m = -1;
+	}
+	return m;
+}
+main.cpp
+#include <iostream>
+
+struct Stack
+{
+	int _elements[1024];
+	int capacity;
+	int count;
+};
+extern int push(struct Stack& stack, int in);
+extern int pop(struct Stack& stack, int& out);
+
+int main(int argc, char* argv[])
+{
+	struct Stack stack;
+	stack.count = 0;
+	stack.capacity=1024;
+	std::cout << "At beginning, the stack has " << stack.count << " elements." << std::endl;
+	std::cout << "---- Begin to push elements into stack ----" << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		int in = i*i;
+		push(stack, in);
+		std::cout << "[" << i << "] : push " << in << " into the stack;" << std::endl;
+	}
+	std::cout << "---- End to push elements into stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl << std::endl;
+
+	std::cout << "---- Begin to pop elements from stack ----" << std::endl;
+	int out;
+	for (int i = 0; i < 10; i++)
+	{
+		int flag = pop(stack, out);
+		if (0 == flag)
+		{
+			std::cout << "[" << i << "] : pop " << out << " from the stack;" << std::endl;
+		}
+		else
+		{
+		
+		}
+	}
+	std::cout << "---- End to pop elements from stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl;
+
+	return 0;
+}
+L02
+func12.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+int substitute(char* str, int len)
+{
+	char spechars[10];
+	spechars[0]=' ';
+	spechars[1]='"';
+	spechars[2]='#';
+	spechars[3]='%';
+	spechars[4]='&';
+	spechars[5]='(';
+	spechars[6]=')';
+	spechars[7]='/';
+	spechars[8]=':';
+	spechars[9]='@';
+    char n1[10]={'2','2','2','2','2','2','2','2','3','4'};
+	char n2[10]={'0','2','3','5','6','8','9','F','A','0'};
+	for(int m=0;m<len;m++)
+	{
+		for(int n=0;n<10;n++)
+		{
+			if(str[m]==spechars[n])
+			{
+				len+=2;
+				for(int i=len;i>m+2;i--) str[i]=str[i-2];
+				str[m]='%';
+				str[m+1]=n1[n];
+				str[m+2]=n2[n];
+			}
+		}
+	}
+	int r;
+	if(len<1024) r=0;
+	else r=-1;
+	return r;
+}
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int substitute(char* str, int len);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	std::cout << "Please input an URL [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	int flag = (int)substitute(str, (int)strlen(str));
+	if (0 == flag)
+	{
+		std::cout << "The new URL is : " << str << std::endl;
+	}
+	else
+	{
+		std::cout << "The URL is too long to substitute!";
+	}
+	return 0;
+}
+L03
+func12.cpp
+/**********************************
+ * 字符串查找函数
+ * 输入 : str要进行查找操作的字符串
+ * 输入 : strLen查找字符串长度
+ * 输入 : pattern要匹配的字符串
+ * 输入 : patternLen匹配字符串长度
+ * 输入 : indexes匹配项索引数组
+ * 输出 : 成功匹配个数
+ **********************************/
+int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes)
+{
+	int num=0;
+	int d[1024];
+	for(int n=0;n<=strLen-patternLen;n++)
+	{
+		for(int i=0;i<=patternLen-1;i++)
+		{
+			if(str[n+i]==pattern[i]) d[i]=0;
+			else d[i]=1;
+		}
+		int sum=0;
+		for(int t=0;t<=patternLen-1;t++) sum+=d[t];
+		if(sum==0)
+		{
+			num++;			
+			indexes[num-1]=n;
+			
+		}
+	}
+	return num;
+}
+
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	char pattern[1024] = { 0 };
+	int  indexes[1024] = { 0 };
+	std::cout << "Please input the text [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	std::cout << "Please input the search pattern [less than 1024(include'\\0')] : ";
+	std::cin.getline(pattern, 1024);
+
+	int num = searchSubstring(str, (int)strlen(str), pattern, (int)strlen(pattern), indexes);
+	if (0 == num)
+	{
+		std::cout << "There is no matching!";
+	}
+	else if (1 == num)
+	{
+		std::cout << "There is " << num << " matching." << std::endl;
+	}
+	else
+	{
+		std::cout << "There are " << num << " matchings." << std::endl;
+	}
+	for (int i = 0; i < num; i++)
+	{
+		std::cout << "\t[" << i+1 << "] start form : " << indexes[i] << std::endl;
+	}
+	return 0;
+}
+L04
+func12.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{
+	for(int i=len-1 ;i>=0;i--)
+	{
+		for(int n=0;n<len;n++)
+		{
+			if(nums[len-1]<=nums[n])
+			{
+				double mi;
+				mi=nums[len-1];
+				for(int m=len-1;m>n;m--)
+				{
+					nums[m]=nums[m-1];
+				}
+				nums[n]=mi;
+				break;
+			}
+			
+		}
+	}
+}
+main.cpp
+#include <iostream>
+
+extern void insertSort(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cin >> nums[i];
+	}
+
+	insertSort(nums, len);
+
+	std::cout << "After insertion sorting, the numbers are : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cout << nums[i] << " ";
+	}
+	std::cout << std::endl;
+
+	return 0;
+}

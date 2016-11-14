@@ -1,0 +1,63 @@
+20161028_516020910172_黄莹
+L01
+func02.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func02(float target, float* nums, int len)
+{
+	int top=0,bot=len-1,mid=0;//定义变量
+	while(top<=bot)//进行循环查找
+	{
+		mid=(top+bot)/2;//取中值
+		if(target==nums[mid])//判断查找成功
+		{
+		return(mid);//返回目标值所在位置
+		}
+		else if(target>nums[mid])
+		{top=mid+1;}//缩小查找范围
+		else if(target<nums[mid])
+		{bot=mid-1;}//缩小查找范围
+	}
+	return(-1);//返回值
+}
+
+L02
+func02.cpp
+struct Point//����ṹ��
+{
+	float x;
+	float y;
+};
+Point p[3];//����ṹ������
+
+struct Point func02()
+{   Point a;//�������a������
+	Point p[3]={{3,4},{1,1},{8,-1}};//��ʼ���ṹ�������ֵ
+	a.x=(p[0].x+p[1].x+p[2].x)/3;//�������ĵĺ�����
+	a.y=(p[0].y+p[1].y+p[2].y)/3;//�������ĵ�������
+	return(a);//�������
+}
+L03
+func02.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func02(int year, int month, int day)
+{
+	int table[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};//定义数组
+	for(int i=1;i<month;i++)//开始循环累加日子
+		day=day+table[i];//累加该月前所有月份的日子
+	if((year%4==0)&&month>2)//判断是否为闰年
+	{day=day+1;}//加上多的一天
+	return(day);//返回天数
+}

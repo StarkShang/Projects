@@ -1,0 +1,67 @@
+20161028_515051910045_盛齐
+L01
+func23.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func23(float target, float* nums, int len)
+{   
+	int n=-1;
+	for(int i=0;i<len;i++)
+	{   
+		if(target==nums[i])  
+		{  
+			n=i;break;         
+		}   
+	}
+	if(n==-1)   return(-1);    //如果n的值未改变，说明数组中没有目标值，若改变，则说明有
+	else return(n);	
+}
+L02
+func23.cpp
+struct Point    //����ṹ��PointΪ�������
+{     float x;
+      float y;
+};
+
+struct Point func23()
+{      Point d1={3,14},d2={1,1},d3={8,-1},d;    //dΪ��������
+       d.x=(d1.x+d2.x+d3.x)/3;
+	   d.y=(d1.y+d2.y+d3.y)/3;
+	   return(d);
+}
+L03
+func23.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+
+int RunNian(int x)     //判断输入年是否为闰年
+{   
+	int y;
+	if((x%4==0&&x%100!=0)||x%400==0) y=29;
+    else       y=28;
+	return(y);
+}
+
+int func23(int year, int month, int day)
+{   
+    int month_all[12]={31,28,31,30,31,30,31,31,30,31,30,31},sum=0;
+	month_all[1]=RunNian(year);            //调用RunNian函数并给二月赋以相应的天数
+    for(int i=0;i<month-1;i++)
+	{
+		sum+=month_all[i];
+	 }
+	sum=sum+day;
+	return(sum);	
+}
+

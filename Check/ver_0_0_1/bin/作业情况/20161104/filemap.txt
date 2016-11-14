@@ -1,0 +1,325 @@
+┌上交作业
+├─┬20161104_5130519044_黄云泽
+│ ├─┬L01
+│ │ ├──func30.cpp
+│ │ ├──main.cpp
+│ │ └─┬习题1
+│ │   ├──习题1.sln
+│ │   ├──习题1.suo
+│ │   └─┬习题1
+│ │     ├──习题1.vcxproj
+│ │     ├──习题1.vcxproj.filters
+│ │     └──习题1.vcxproj.user
+│ ├─┬L02
+│ │ ├──func30.cpp
+│ │ ├──main.cpp
+│ │ └─┬习题2
+│ │   ├──习题2.sln
+│ │   ├──习题2.suo
+│ │   └─┬习题2
+│ │     ├──习题2.vcxproj
+│ │     ├──习题2.vcxproj.filters
+│ │     └──习题2.vcxproj.user
+│ ├─┬L03
+│ │ ├──func30.cpp
+│ │ ├──main.cpp
+│ │ └─┬习题3
+│ │   ├──习题3.sln
+│ │   ├──习题3.suo
+│ │   └─┬习题3
+│ │     ├──习题3.vcxproj
+│ │     ├──习题3.vcxproj.filters
+│ │     └──习题3.vcxproj.user
+│ └─┬L04
+│   ├──func30.cpp
+│   ├──main.cpp
+│   └─┬习题4
+│     ├──习题4.sln
+│     ├──习题4.suo
+│     └─┬习题4
+│       ├──习题4.vcxproj
+│       ├──习题4.vcxproj.filters
+│       └──习题4.vcxproj.user
+├─┬20161104_5140729048_陈凯文
+│ ├─┬L01
+│ │ ├──func29.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func29.cpp
+│ │ └──main.cpp
+│ ├─┬L03
+│ │ ├──func29.cpp
+│ │ └──main.cpp
+│ ├─┬L04
+│ │ ├──func29.cpp
+│ │ └──main.cpp
+│ └─┬L06
+│   ├──func__.cpp
+│   └──main.cpp
+├─┬20161104_514080904_李天宇
+│ ├─┬L01
+│ │ └──func28.cpp
+│ ├─┬L02
+│ │ └──func28.cpp
+│ ├─┬L03
+│ │ └──func28.cpp
+│ ├─┬L04
+│ │ └──func28.cpp
+│ └─┬L06
+│   ├──func28_动态规划.cpp
+│   └──func28_穷举法.cpp
+├─┬20161104_5140809062_黄楚
+│ ├─┬L01
+│ │ ├──func27.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func27.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func27.cpp
+│   └──main.cpp
+├─┬20161104_515051910045_盛齐
+│ ├─┬L01
+│ │ └──func23.cpp
+│ ├─┬L02
+│ │ └──func23.cpp
+│ ├─┬L03
+│ │ └──func23.cpp
+│ ├─┬L04
+│ │ └──func23.cpp
+│ └─┬L06
+│   └──func23.cpp
+├─┬20161104_515051910059_董勇
+│ ├─┬L01
+│ │ ├──func24.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func24.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func24.cpp
+│   └──main.cpp
+├─┬20161104_515080910015_卢向峰
+│ ├─┬L01
+│ │ └──func25.cpp
+│ ├─┬L02
+│ │ └──func25.cpp
+│ └─┬L04
+│   └──func25.cpp
+├─┬20161104_516020910171_鲍相羽
+│ ├─┬L01
+│ │ └──func01.cpp
+│ ├─┬L02
+│ │ └──func01.cpp
+│ ├─┬L03
+│ │ └──func01.cpp
+│ └─┬L04
+│   └──func01.cpp
+├─┬20161104_516020910172_黄莹
+│ ├─┬L01
+│ │ └──func02.cpp
+│ ├─┬L02
+│ │ └──func02.cpp
+│ ├─┬L03
+│ │ ├──func02.cpp
+│ │ └──main.cpp
+│ ├─┬L04
+│ │ └──func02.cpp
+│ └─┬L06
+│   ├──func__.cpp
+│   └──main.cpp
+├─┬20161104_516020910173_刘泰然
+│ ├─┬L01
+│ │ ├──func03.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func03.cpp
+│ │ └──main.cpp
+│ ├─┬L03
+│ │ ├──func03.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func03.cpp
+│   └──main.cpp
+├─┬20161104_516020910174_陈鑫火
+│ ├─┬L01
+│ │ └──func04.cpp
+│ ├─┬L02
+│ │ └──func04.cpp
+│ ├─┬L03
+│ │ └──func__.cpp
+│ ├─┬L04
+│ │ └──func04.cpp
+│ └─┬L06
+│   └──func__.cpp
+├─┬20161104_516020910175_方泽立
+│ ├─┬L01
+│ │ └──func05.cpp
+│ ├─┬L02
+│ │ └──func05.cpp
+│ ├─┬L03
+│ │ └──func05.cpp
+│ └─┬L04
+│   └──func05.cpp
+├─┬20161104_516020910176_韩沛成
+│ ├─┬L01
+│ │ └──func06.cpp
+│ ├─┬L02
+│ │ └──func06.cpp
+│ └─┬L04
+│   └──func06.cpp
+├─┬20161104_516020910177_韩潇
+│ ├─┬L01
+│ │ └──func07.cpp
+│ ├─┬L02
+│ │ └──func07.cpp
+│ └─┬L04
+│   └──func07.cpp
+├─┬20161104_516020910178_黄宇庆
+│ ├─┬L01
+│ │ ├──func08.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func08.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func08.cpp
+│   └──main.cpp
+├─┬20161104_516020910179_黄晨曦
+│ ├─┬L01
+│ │ └──func09.cpp
+│ ├─┬L02
+│ │ └──func09.cpp
+│ ├─┬L03
+│ │ ├──func__.cpp
+│ │ └──main.cpp
+│ ├─┬L04
+│ │ └──func09.cpp
+│ └─┬L06
+│   ├──func__.cpp
+│   └──main.cpp
+├─┬20161104_516020910180_景雨仰
+│ ├─┬L01
+│ │ └──func10.cpp
+│ ├─┬L02
+│ │ └──func10.cpp
+│ ├─┬L03
+│ │ └──func10.cpp
+│ ├─┬L04
+│ │ └──func10.cpp
+│ └─┬L06
+│   └──func10.cpp
+├─┬20161104_516020910181_康健
+│ ├─┬L01
+│ │ ├──func__.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func__.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func__.cpp
+│   └──main.cpp
+├─┬20161104_516020910182_刘子昂
+│ ├─┬L01
+│ │ ├──func12.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func12.cpp
+│ │ └──main.cpp
+│ ├─┬L03
+│ │ ├──func12.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func12.cpp
+│   └──main.cpp
+├─┬20161104_516020910183_邱蒙泽
+│ ├─┬L01
+│ │ └──func13.cpp
+│ ├─┬L02
+│ │ └──func13.cpp
+│ └─┬L04
+│   └──func13.cpp
+├─┬20161104_516020910184_裘哲轩
+│ ├─┬L01
+│ │ ├──func14.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func14.cpp
+│ │ └──main.cpp
+│ └─┬L04
+│   ├──func14.cpp
+│   └──main.cpp
+├─┬20161104_516020910185_舒轶
+│ ├─┬L01
+│ │ ├──func15.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ ├──func15.cpp
+│ │ └──main.cpp
+│ ├─┬L03
+│ │ ├──func15.cpp
+│ │ └──main.cpp
+│ ├─┬L04
+│ │ ├──func15.cpp
+│ │ └──main.cpp
+│ └─┬L06
+│   ├──func15.cpp
+│   └──main.cpp
+├─┬20161104_516020910186_唐浩翔
+│ ├─┬L01
+│ │ └──func16.cpp
+│ ├─┬L02
+│ │ └──func16.cpp
+│ └─┬L04
+│   └──func16.cpp
+├─┬20161104_516020910187_汪震
+│ ├─┬L01
+│ │ └──func17.cpp
+│ ├─┬L02
+│ │ └──func17.cpp
+│ └─┬L04
+│   └──func17.cpp
+├─┬20161104_516020910188_项瑞
+│ ├─┬L01
+│ │ └──func18.cpp
+│ ├─┬L02
+│ │ └──func18.cpp
+│ ├─┬L03
+│ │ └──func18.cpp
+│ ├─┬L04
+│ │ └──func18.cpp
+│ └─┬L06
+│   ├──func18.cpp
+│   └──main.cpp
+├─┬20161104_516020910189_徐子皓
+│ ├─┬L01
+│ │ └──func19.cpp
+│ ├─┬L02
+│ │ └──func19.cpp
+│ └─┬L04
+│   └──func19.cpp
+├─┬20161104_516020910190_颜康
+│ ├─┬L01
+│ │ ├──func20.cpp
+│ │ └──main.cpp
+│ ├─┬L02
+│ │ └──func20.cpp
+│ └─┬L04
+│   └──func20.cpp
+├─┬20161104_516020910191_张宇润
+│ ├─┬L01
+│ │ └──func21.cpp
+│ ├─┬L02
+│ │ └──func21.cpp
+│ └─┬L04
+│   └──func21.cpp
+└─┬20161104_516020910192_郑鉴浩
+  ├─┬L01
+  │ ├──func22.cpp
+  │ └──main.cpp
+  ├─┬L02
+  │ ├──func22.cpp
+  │ └──main.cpp
+  └─┬L04
+    ├──func22.cpp
+    └──main.cpp

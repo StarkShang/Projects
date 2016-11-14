@@ -1,0 +1,205 @@
+20161104_516020910192_郑鉴浩
+L01
+func22.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+#include <iostream>
+struct Stack//定义结构体
+{
+	int _elements[1024];//定义数组
+	const int capacity;//定义总长度
+	int count;//定义入栈元素个数
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)//定义入栈函数
+{
+	if (stack.count ==stack.capacity)//判断是否已满
+		return (-1);
+	else
+	{
+		stack._elements[stack.count]=in;//赋值
+	    stack.count++;
+	}
+		return (0);
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)//定义出栈函数
+{
+	if (stack.count <=0)//判断是否已空
+		return (-1);
+	else
+	{
+		stack.count=stack.count-1;
+		out=stack._elements[stack.count];//赋值
+		return (0);
+	}
+}
+main.cpp
+#include <iostream>
+
+struct Stack
+{
+	int _elements[1024];
+	int capacity ;
+	int count ;
+};
+extern int push(struct Stack& stack, int in);
+extern int pop(struct Stack& stack, int& out);
+
+int main(int argc, char* argv[])
+{
+	struct Stack stack;
+	stack.capacity=1024;
+	stack.count = 0;
+	std::cout << "At beginning, the stack has " << stack.count << " elements." << std::endl;
+	std::cout << "---- Begin to push elements into stack ----" << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		int in = i*i;
+		push(stack, in);
+		std::cout << "[" << i << "] : push " << in << " into the stack;" << std::endl;
+	}
+	std::cout << "---- End to push elements into stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl << std::endl;
+
+	std::cout << "---- Begin to pop elements from stack ----" << std::endl;
+	int out;
+	for (int i = 0; i < 10; i++)
+	{
+		int flag = pop(stack, out);
+		if (0 == flag)
+		{
+			std::cout << "[" << i << "] : pop " << out << " from the stack;" << std::endl;
+		}
+		else
+		{
+			
+		}
+	}
+	std::cout << "---- End to pop elements from stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl;
+
+	return 0;
+}
+L02
+func22.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+#include <iostream>
+int substitute(char* str, int len)
+{
+	char spechars[4][10]={{' ','"','#','%','&','(',')','/',':','@'},{'%','%','%','%','%','%','%','%','%','%'},{'2','2','2','2','2','2','2','2','3','4'},{'0','2','3','5','6','8','9','F','A','0'}};//����˼άȫ������
+	int i,j,k;
+	for (i=0;i<(int)strlen(str);i++)//����ѭ�������ת�����ַ�
+	{
+		for (j=0;j<10;j++)
+		{
+			if (str[i]==spechars[0][j])
+			{
+				str[i]=spechars[1][j];//��ʼʵ��ת���ַ�
+			    for (k=(int)strlen(str);k>i;k--)
+			    {
+				    str[k+2]=str[k];
+			    }
+			    str[i+1]=spechars[2][j];
+			    str[i+2]=spechars[3][j];
+				break;
+			}
+		}
+	}
+	if ((int)strlen(str)>1024)//�ж��Ƿ񳬳�����
+		return(-1);
+	else
+		return(0);
+}
+
+
+
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int substitute(char* str, int len);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	std::cout << "Please input an URL [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	int flag = (int)substitute(str, (int)strlen(str));
+	if (0 == flag)
+	{
+		std::cout << "The new URL is : " << str << std::endl;
+	}
+	else
+	{
+		std::cout << "The URL is too long to substitute!";
+	}
+	return 0;
+}
+L04
+func22.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)//定义排序函数
+{
+	int t;
+	for (int i=0;i<len;i++)//设置循环逐个检查数字
+	{
+		for (int j=0;j<i;j++)//设置循环寻找比该数字大的数字
+		{
+			if (nums[j]>nums[i])//判断是否比当前数字大
+			{
+				t=nums[j];//进行换位
+			nums[j]=nums[i];
+			nums[i]=t;
+			}
+		}
+	}
+}
+main.cpp
+#include <iostream>
+
+extern void insertSort(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cin >> nums[i];
+	}
+
+	insertSort(nums, len);
+
+	std::cout << "After insertion sorting, the numbers are : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cout << nums[i] << " ";
+	}
+	std::cout << std::endl;
+
+	return 0;
+}

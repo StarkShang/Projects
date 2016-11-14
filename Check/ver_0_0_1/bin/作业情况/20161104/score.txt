@@ -1,0 +1,212 @@
+20161104_5140729048_陈凯文
+L01
+All tests are passed!
+L02
+Time out!
+Program crash!
+
+
+20161104_514080904_李天宇
+L01
+All tests are passed!
+L02
+All tests are passed!
+
+
+20161104_5140809062_黄楚
+L01
+All tests are passed!
+L02
+All tests are passed!
+
+
+20161104_515051910045_盛齐
+L01
+Cannot build!
+L02
+Cannot build!
+
+
+20161104_515051910059_董勇
+L01
+Cannot build!
+L02
+Cannot build!
+
+
+20161104_515080910015_卢向峰
+L01
+All tests are passed!
+L02
+Cannot build!
+
+
+20161104_516020910171_鲍相羽
+L01
+All tests are passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %23%25%26%&
+Input : stark@sjtu.edu.cn
+Output: stark%40sjtu.edu.cn
+Got   : stark%40sjsjsjsjsjsjsj
+2 of 3 test cases are not passed!
+
+
+20161104_516020910172_黄莹
+L01
+Input : 0 -1 10
+Output: 10 -1 0 0
+Got   : 10 -1 0 32766
+Input : 1 2 3
+Output: 3 2 1 0
+Got   : 3 2 1 32766
+2 of 2 test cases are not passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %23%25%26%&
+Input : stark@sjtu.edu.cn
+Output: stark%40sjtu.edu.cn
+Got   : stark%40sjsjsjsjsjsjsj
+2 of 3 test cases are not passed!
+
+
+20161104_516020910173_刘泰然
+L01
+Cannot build!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %2523%25
+1 of 3 test case is not passed!
+
+
+20161104_516020910174_陈鑫火
+L01
+All tests are passed!
+L02
+All tests are passed!
+
+
+20161104_516020910175_方泽立
+L01
+All tests are passed!
+L02
+All tests are passed!
+
+
+20161104_516020910176_韩沛成
+L01
+All tests are passed!
+L02
+All tests are passed!
+
+
+20161104_516020910177_韩潇
+L01
+All tests are passed!
+L02
+Input : %
+Output: %25
+Got   : %40
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %40%40&%40%40%40
+2 of 3 test cases are not passed!
+
+
+20161104_516020910178_黄宇庆
+L01
+All tests are passed!
+L02
+Input : %
+Output: %25
+Got   : %40
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %40%40&%40%40%40
+2 of 3 test cases are not passed!
+
+
+20161104_516020910179_黄晨曦
+L01
+Input : 0 -1 10
+Output: 10 -1 0 0
+Got   : 32766 10 -1 0
+Input : 1 2 3
+Output: 3 2 1 0
+Got   : 32766 3 2 0
+2 of 2 test cases are not passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %23%25%26
+1 of 3 test case is not passed!
+
+
+20161104_516020910180_景雨仰
+L01
+All tests are passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %23%25&%28%29%26
+Input : stark@sjtu.edu.cn
+Output: stark%40sjtu.edu.cn
+Got   : stark%26sjtu.edu.cn
+2 of 3 test cases are not passed!
+
+
+20161104_516020910181_康健
+L01
+All tests are passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %2523%25%26%28%29%40
+1 of 3 test case is not passed!
+
+
+20161104_516020910182_刘子昂
+L01
+All tests are passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %2523%25%26%28%29%40
+1 of 3 test case is not passed!
+
+
+20161104_516020910183_邱蒙泽
+L01
+All tests are passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %23%25%26
+1 of 3 test case is not passed!
+
+
+20161104_516020910184_裘哲轩
+L01
+All tests are passed!
+L02
+Input : #%&()@
+Output: %23%25%26%28%29%40
+Got   : %23%25%26%28%8%25%40
+1 of 3 test case is not passed!
+
+
+20161104_516020910185_舒轶
+L01
+Cannot build!
+L02
+Time out!
+Program crash!
+Input : %
+Output: %25
+Got   : 
+
+

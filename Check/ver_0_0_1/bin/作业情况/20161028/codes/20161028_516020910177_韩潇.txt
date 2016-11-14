@@ -1,0 +1,123 @@
+20161028_516020910177_韩潇
+L01
+func07.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func07(float target, float* nums, int len)
+{
+	int n;
+	if(len%2==0)
+		n=len/2;
+	else 
+		n=(len+1)/2;     //首次半分
+   while (nums[n-1]!=target)  //若中值不是目标，开始继续半分
+   {     
+	 if(nums[n-1]>target)  //若中值大于目标，右边继续二分
+		{
+		 if((len+n)%2==0)
+		    n=(len+n)/2;
+	     else 
+		   n=(len+n+1)/2;
+	     }
+
+	 else                //若中值小于目标，左边继续二分
+		{
+		  if(len%2==0)
+		    n=n/2;
+		  else 
+		   n=(n+1)/2;
+	    }
+	 if((n==1||n==len)&&nums[n-1]!=target)//判断是否已经完全半分
+
+		 {    n=0;
+			  break;
+	      }
+	}
+   return (n-1);
+
+	
+}
+L02
+func07.cpp
+struct Point//����һ��Point�ṹ��
+{	
+	float x;
+	float y;
+};
+
+struct Point func07()
+{
+	Point  p1,p2,p3,centroid;
+	p1.x=3;p1.y=4;
+	p2.x=1;p2.y=1;
+	p3.x=8;p3.y=-1;//��ʼ������
+
+	centroid.x=(p1.x+p2.x+p3.x)/3;
+	centroid.y=(p1.y+p2.y+p3.y)/3;
+
+return centroid;//�����������������ĵ�Point�ṹ��
+	
+}
+
+L03
+func07.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+struct date  //定义结构体
+{  
+    int year;  
+  
+    int month;  
+  
+    int day;  
+};   
+  
+int func07(int year, int month, int day)
+{ 
+	date date1={year,month,day};
+	
+	int days(int year,int month,int day);  //函数声明  
+  
+    int day_sum;  
+  
+    day_sum=days(date1.year,date1.month,date1.day);//函数调用  
+  
+     
+  
+    return day_sum;  
+}  
+  
+//确认是第几天的函数  
+int days(int year,int month,int day)   
+{  
+    int sum=0,i;  
+  
+    int a[12]={31,28,31,30,31,30,31,31,30,31,30,31};//定义一个数组  
+  
+    for(i=0;(i+1)<month;i++)  
+    {  
+        sum=sum+a[i];  
+    }  
+  
+    sum=sum+day;  
+  
+    if((year%4==0&&year%100!=0||year%400==0)&&month>=3)  //判断是否是闰年,  
+    {  
+        sum+=1;  
+    }  
+  
+    return sum;  
+}  
+	
+

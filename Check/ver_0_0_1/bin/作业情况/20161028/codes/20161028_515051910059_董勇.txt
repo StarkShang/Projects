@@ -1,0 +1,71 @@
+20161028_515051910059_董勇
+L01
+func24.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func24(float target, float* nums, int len)
+{
+	float t;
+	int i,j;
+	for(j=0;j<len-1;j++)//这两个for循环是为了将输入的数据从大到小排列
+	for(i=0;i<len-j-1;i++)
+		if(nums[len-i-1]>nums[len-i-2])//从最后向前进行大小比较
+		{t=nums[len-i-1];nums[len-i-1]=nums[len-i-2];nums[len-i-2]=t;}//相邻两个进行比较，大的在前面
+	int count=0;
+	for(i=0;i<len;i++)//for循环判断是否所找数在数组中
+		if(nums[i]==target)
+		{count =count+1;}
+	if(count==0){return(-1);}
+	else 
+		{for(i=0;i<len;i++)
+		if(nums[i]==target)
+			return(i);}
+
+		
+	
+}
+L02
+func24.cpp
+struct Point //����ṹ��ΪPoint�ĵ������
+{float x;
+float y;
+};
+
+struct Point func24()
+{Point d1={3,4},d2={1,1},d3={8,-1},d;    //dΪ��������
+       d.x=(d1.x+d2.x+d3.x)/3;//�����ĺ�����
+	   d.y=(d1.y+d2.y+d3.y)/3;//������������
+	   return(d);
+}
+L03
+func24.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int SpecialYear(int n)
+{	int m;
+	if((n%4==0&&n%100!=0)||n%400==0)m=29;
+    else       
+	m=28;
+    return(m);
+}
+int func24(int year, int month, int day)
+{ 
+	int month_all[12]={31,28,31,30,31,30,31,31,30,31,30,31},sum=0;
+	month_all[1]=SpecialYear(year);//调用SpecialYear给二月赋值
+    for(int i=0;i<month-1;i++)
+	{sum+=month_all[i];}
+	sum=sum+day;
+	return(sum);	
+	
+}

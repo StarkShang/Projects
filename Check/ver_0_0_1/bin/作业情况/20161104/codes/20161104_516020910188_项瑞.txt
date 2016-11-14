@@ -1,0 +1,163 @@
+20161104_516020910188_项瑞
+L01
+func18.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int _elements[1024];
+	int capacity;
+	int count;
+
+};//定义结构体
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+ if( stack.count>=1024) return-1;//判断栈是否已满
+ else
+{
+	stack.count++;//加大栈包含数量
+	stack._elements[stack.count]=in;//将指定数入栈
+    return 0;//函数执行完毕返回
+}
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{if(stack.count==0) return -1;//判断栈是否已空
+else{
+	out=stack._elements[stack.count];//读出最后一个值
+	stack.count--;//删去最后一个值
+	return 0;//函数执行完毕返回
+}
+}
+L02
+func18.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+int substitute(char* str, int len)
+{
+	int r;
+	if(len<1024) r=0;
+	else r=-1;
+	return r;//�ж����鳤���Ƿ񳬳�Ҫ��
+	char spechars[10]={' ','"','#','%','&','(',')','/',':','@'};//����ȫ������
+    char n1[10]={'2','2','2','2','2','2','2','2','3','4'};
+	char n2[10]={'0','2','3','5','6','8','9','F','A','0'};//������Ӧ16����ASCII��
+	for(int m=0;m<len;m++)
+	{
+		for(int n=0;n<10;n++)
+		{
+			if(str[m]==spechars[n])
+			{
+				len+=2;//�ӳ����鳤��
+				for(int i=len;i>m+2;i--) str[i]=str[i-2];
+				str[m]='%';
+				str[m+1]=n1[n];
+				str[m+2]=n2[n];//���ַ��������滻
+			}
+		}
+	}
+	
+}
+
+
+
+L03
+func18.cpp
+/**********************************
+ * 字符串查找函数
+ * 输入 : str要进行查找操作的字符串
+ * 输入 : strLen查找字符串长度
+ * 输入 : pattern要匹配的字符串
+ * 输入 : patternLen匹配字符串长度
+ * 输入 : indexes匹配项索引数组
+ * 输出 : 成功匹配个数
+ **********************************/
+int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes)
+{  int n=0;
+
+	for(int i=0;i<=strLen-patternLen;i++)
+		{
+			int a=0;
+			for(int k=0;k<patternLen;k++)
+		{
+		
+			if(str[i+k]==pattern[k]) a=a+1;}
+			if(a==patternLen)//判断是否为所要查找的字符串 
+			{
+				indexes[n]=i;
+			    n=n+1;//输入匹配项索引
+			
+	}
+	}
+	return n;
+}
+
+L04
+func18.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{
+	for(int i=0;i<=len;i++)
+		{for(int k=0;k<=i;k++)
+		if(nums[i]>nums[k])//判断新输入数的位置
+		{for(int s=k;s<i;s++)
+		{float a=nums[i];
+		nums[s+1]=nums[s];
+		nums[k]=a;//将新输入的数与之前数列重新排序
+	}
+		}}}
+L06
+func18.cpp
+/**********************************
+ * 计算子数组最大和函数
+ * 输入 : nums要进行计算操作的数组
+ * 输入 : len输入数组长度
+ * 输出 : 最大和
+ **********************************/
+float maxSum(float* nums, int len)
+{
+	
+}
+
+main.cpp
+#include <iostream>
+
+extern float maxSum(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cin >> nums[i];
+	}
+
+	std::cout << "The maximum sum of the subarray : " << maxSum(nums, len) << std::endl;
+	
+	return 0;
+}

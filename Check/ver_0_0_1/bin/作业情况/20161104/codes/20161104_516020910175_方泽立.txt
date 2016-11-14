@@ -1,0 +1,147 @@
+20161104_516020910175_方泽立
+L01
+func05.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int elements[1024];
+	int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	if(stack.count==stack.capacity) return -1;//如果已满，返回-1
+	else//否则入栈，索引值加1
+	{
+		stack.count++;
+		stack.elements[stack.count]=in;
+		return 0;
+	}
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	if(stack.count==0) return -1;//如果已空，返回-1
+	else//否则出栈，索引值减1
+	{
+		out=stack.elements[stack.count];
+		stack.count--;
+		return 0;
+	}
+}
+L02
+func05.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+extern char spechars[10]={' ','\"','#','%','&','(',')','/',':','@'};//������ת���ַ�
+int substitute(char* str, int len)
+{
+	int i,j,k,t=0;//i,j,k����ѭ����t����
+	for(i=0;i<len+2*t;)
+	{
+		bool spe=false;//�����ж��Ƿ�����ת���ַ�
+		for(j=0;j<10;j++)
+		{
+		if(str[i]==spechars[j])//�������ת���ַ�
+		{
+			str[i]='%';//��λ�ĳ�%
+			for(k=0;k<=len+2*t-i-2;k++)//�������
+			{
+				str[len+2*t+1-k]=str[len+2*t-1-k];
+			}
+			t++;//����������
+			switch(j)//����ת����
+			{
+			case 0:str[i+1]='2';str[i+2]='0';break;
+			case 1:str[i+1]='2';str[i+2]='2';break;
+			case 2:str[i+1]='2';str[i+2]='3';break;
+			case 3:str[i+1]='2';str[i+2]='5';break;
+			case 4:str[i+1]='2';str[i+2]='6';break;
+			case 5:str[i+1]='2';str[i+2]='8';break;
+			case 6:str[i+1]='2';str[i+2]='9';break;
+			case 7:str[i+1]='2';str[i+2]='F';break;
+			case 8:str[i+1]='3';str[i+2]='A';break;
+			case 9:str[i+1]='4';str[i+2]='0';break;
+			}
+			spe=true;//��¼�Ƿ�ת��
+			break;
+		}
+		}
+		if(spe) i+=3;//�����ת�壬�����3λ
+		else i++;//�������1λ
+	}
+	len=len+2*t+1;//�������ճ���
+	str[len-1]='\0';//ĩλ����Ϊ\0
+	if(len<=1024) return 0;//�ж�ת��󳤶��Ƿ����Ҫ��
+	else return -1;
+}
+L03
+func05.cpp
+/**********************************
+ * 字符串查找函数
+ * 输入 : str要进行查找操作的字符串
+ * 输入 : strLen查找字符串长度
+ * 输入 : pattern要匹配的字符串
+ * 输入 : patternLen匹配字符串长度
+ * 输入 : indexes匹配项索引数组
+ * 输出 : 成功匹配个数
+ **********************************/
+int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes)
+{
+	int i,j,k=0;//i,j用于循环；k用于记录找到的子串数
+	bool x;//用于判断子串是否存在
+	for(i=0;i<strLen-patternLen+1;i++)//在字符串中找到子串首字符
+	{
+		x=false;
+		if(str[i]==pattern[0])
+		{
+			x=true;
+			for(j=1;j<patternLen;j++) if(str[i+j]!=pattern[j]) {x=false;break;}
+		}//判断首字母之后是否一致
+		if(x) indexes[k++]=i;//若完全一致，则记录索引值并使计数器加1
+	}
+	return k;//返回找到的子串个数
+}
+
+L04
+func05.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{
+	int i,j,temp,t;//i,j用于循环，temp用于数据交换，t用于计数
+	for(i=0;i<len;i++)//从左开始加入数据
+	{
+		t=0;
+		for(j=1;j<=i;j++)//判断加入的数该插入哪里
+		{
+			if(nums[i]<nums[i-j]) t++;
+			else break;
+		}
+		temp=nums[i];
+		for(j=0;j<t;j++) nums[i-j]=nums[i-j-1];
+		nums[i-t]=temp;//数据移动
+	}
+}

@@ -1,0 +1,175 @@
+20161104_515051910059_董勇
+L01
+func24.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack//定义stack结构体
+{
+	int element[1024];//定义存储数据的数组
+	int capacity;//定义数组容量
+	int count;//定义元素个数
+};
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)//定义入栈函数
+{   stack.capacity=1024; //给栈的长度赋值
+    if(stack.count<stack.capacity)    //在元素长度小于栈的容量的条件下进行下面的工作
+	{    stack.element[stack.count]=in;//入栈，添加元素在数组最后
+	     stack.count=stack.count+1; //元素个数加一
+	     return(0);}//返回值为0
+    else return(-1);     //否则返回值为-1
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)//定义出栈函数
+{ stack.capacity=1024;//给栈的长度赋值
+    if (stack.count>0) //在栈不空的条件下进行以下操作 
+	{   out=stack.element[stack.count-1]; //出栈，删除数组最后面的元素
+	    stack.count=stack.count-1;//元素个数减一
+		return(0);}//返回值为0
+	else return(-1);//否则返回值为-1
+}
+main.cpp
+#include <iostream>
+
+struct Stack
+{
+	int _elements[1024];
+	int capacity;
+	int count ;
+};
+extern int push(struct Stack& stack, int in);
+extern int pop(struct Stack& stack, int& out);
+
+int main(int argc, char* argv[])
+{
+	struct Stack stack;
+	stack.count = 0;
+	std::cout << "At beginning, the stack has " << stack.count << " elements." << std::endl;
+	std::cout << "---- Begin to push elements into stack ----" << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		int in = i*i;
+		push(stack, in);
+		std::cout << "[" << i << "] : push " << in << " into the stack;" << std::endl;
+	}
+	std::cout << "---- End to push elements into stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl << std::endl;
+
+	std::cout << "---- Begin to pop elements from stack ----" << std::endl;
+	int out;
+	for (int i = 0; i < 10; i++)
+	{
+		int flag = pop(stack, out);
+		if (0 == flag)
+		{
+			std::cout << "[" << i << "] : pop " << out << " from the stack;" << std::endl;
+		}
+		else
+		{
+			
+		}
+	}
+	std::cout << "---- End to pop elements from stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl;
+
+	return 0;
+}
+L02
+func24.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+char spechars[10]={' ','"','#','%','&','��',')','/',':','@'};//����spechars���洢ת���ַ�
+char spechars1[20]={'2','0','2','2','2','3','2','5','2','6','2','8','2','9','2','F','3','A','4','0'};//����spechars1������ASCII��
+int substitute(char* str, int len)//����ת���ַ�ת������
+{ int i,j,k,count=0;//��������еĸ�������
+	for(i=0;i<len;i++)//����forѭ��Ѱ���ַ����е�ת���ַ�
+		{for(j=0;j<10;j++)//����forѭ�����ַ����е��ַ�����������е�ת���ַ����бȶ�
+			if(str[i]==spechars[j])//����ҵ�ת���ַ�������ת���ַ��滻
+			{for(k=len+1;k>i+1;k--)//����forѭ������ת���ַ�������ַ�����һλ
+		     str[k]=str[k-1];
+			str[i]=spechars1[2*j];//��ת���ַ������滻
+			str[i+1]=spechars1[2*j+1];count=count+1;}}//��һ���滻�����ȼ�һ
+	if(count+len>=1024)return(-1);//���ת���ַ��滻��ĳ��ȴ���1024���򷵻�ֵΪ-1
+	else return(0);//��ת���ַ��滻��ĳ��Ȳ�����1024���򷵻�ֵΪ0
+
+}
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int substitute(char* str, int len);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	std::cout << "Please input an URL [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	int flag = (int)substitute(str, (int)strlen(str));
+	if (0 == flag)
+	{
+		std::cout << "The new URL is : " << str << std::endl;
+	}
+	else
+	{
+		std::cout << "The URL is too long to substitute!";
+	}
+	return 0;
+}
+L04
+func24.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len) //定义插入法排序函数
+{ int i,j,m;  //定义变量
+for(i=1;i<len;i++)//已知手上有i-1张排好的牌，对第i张进行插空
+{m=nums[i];//第i张手牌的值
+j=i-1;//从第i-1张手牌开始比较
+while(j>=0&&nums[j]>m)//进行while循环寻找第i张手牌的位置
+{nums[j+1]=nums[j];//如果第j张手牌仍然大于第i张手牌，说明它的位置应该向后移一步
+j--;}//继续向前比较牌的大小
+nums[j+1]=m;}//将找到的位置放入第i张牌
+}
+main.cpp
+#include <iostream>
+
+extern void insertSort(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cin >> nums[i];
+	}
+
+	insertSort(nums, len);
+
+	std::cout << "After insertion sorting, the numbers are : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cout << nums[i] << " ";
+	}
+	std::cout << std::endl;
+
+	return 0;
+}

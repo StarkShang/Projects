@@ -1,0 +1,117 @@
+20161028_516020910189_徐子皓
+L01
+func19.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func19(float target, float* nums, int len)
+{
+	int a,b,c,i,j,k,n,m;                       //定义变量
+	if (target > nums[0] || target < nums[len-1])
+		m = 0;
+	else
+	{
+		m = 0;
+		for (i = 0, k = len-1; i <= k-1;)
+		{
+			j = int((i + k) / 2);
+			a = nums[i], b = nums[j], c = nums[k];
+			if (target == a)
+			{
+				m = 1, n = i; break;
+			}
+			else  if (target == b)
+			{
+				m = 1, n = j; break;
+			}
+			else if (target == c)
+			{
+				m = 1, n = k; break;
+			}
+			else if (target > b)
+			{
+				 k = j;
+			}
+			else if (target < b)
+			{
+				 i = j;
+			}
+		}
+	}
+	
+	if (m == 1)                            //输入数组中存在该目标值，返回目标值的索引
+		return n+1;
+	else
+		return -1;                        //输入数组中不存在该目标值，则返回-1
+}
+L02
+func19.cpp
+struct Point
+{
+	float x;
+	float y;
+};
+
+struct Point func19()
+{
+	Point P1 = { 3,4 };                                                   //�����ε���������
+	Point P2 = { 1,1 };    
+	Point P3 = { 8,-1 };
+	Point P0 = { (P1.x + P2.x + P3.x) / 3,(P1.y + P2.y + P3.y) / 3 };     //��������
+	return P0;                                                            //�������ĵ�Point�ṹ��
+}
+L03
+func19.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func19(int year, int month, int day)
+{
+	int sum = 0;
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))                  //为闰年
+	{
+		switch (month)
+		{
+		case 1:sum = day; break;                   //计算天数
+		case 2:sum = 31 + day; break;
+		case 3:sum = 60 + day; break;
+		case 4:sum = 91 + day; break;
+		case 5:sum = 121 + day; break;
+		case 6:sum = 152 + day; break;
+		case 7:sum = 182 + day; break;
+		case 8:sum = 213 + day; break;
+		case 9:sum = 244 + day; break;
+		case 10:sum = 274 + day; break;
+		case 11:sum = 305 + day; break;
+		case 12:sum = 335 + day ; break;
+		}
+	}
+	else                 //不为闰年
+	{
+		switch (month)
+		{
+		case 1:sum = day; break;                //计算天数
+		case 2:sum = 31 + day; break;
+		case 3:sum = 59 + day; break;
+		case 4:sum = 90 + day; break;
+		case 5:sum = 120 + day; break;
+		case 6:sum = 151 + day; break;
+		case 7:sum = 181 + day; break;
+		case 8:sum = 212 + day; break;
+		case 9:sum = 243 + day; break;
+		case 10:sum = 273 + day; break;
+		case 11:sum = 304 + day; break;
+		case 12:sum = 334 + day; break; 
+		}
+	}
+	return sum;                //返回值为天数
+}

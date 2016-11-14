@@ -1,0 +1,146 @@
+20161104_516020910177_韩潇
+L01
+func07.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int elements[1024];
+	int capacity;
+	int count;
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	int i;
+	if(stack.count==stack.capacity)//判断是否已满
+		i=-1;
+	else
+	{
+		stack.elements[stack.count]=in;
+		stack.count++;
+		i=0;
+	}
+	return i;
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	int i;
+	if(stack.count==0)//判断是否已空
+		i=-1;
+	else
+	{
+		out=stack.elements[stack.count-1];
+		i=0;
+		stack.count--;
+	}
+	return i;
+}
+L02
+func07.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+#include<string>
+int substitute(char* str, int len)
+{    //�洢�滻��Ԫ
+	char spechars[10]=
+	{' ','"','#','%','@','(', ')','/',':','@'};
+	char final[1024];//���崢���µ�����
+	int i,j,k=0,m;
+	for(i=0;i<len;i++)//��ÿһ���ַ����в��Һ��滻
+	{    int t=0;
+		j=0;
+		while(j<10&&t==0)
+		{
+			if(str[i]==spechars[j])//�����Ƿ���Ҫ�滻
+			{
+				if( j=0) 
+				     {final[k]='%';final[k+1]='2';final[k+2]='0';}
+				if(j=1) 
+					{final[k]='%';final[k+1]='2';final[k+2]='2';}
+				if( j=2)
+				    {final[k]='%';final[k+1]='2';final[k+2]='3';}
+				if( j=3)
+					{final[k]='%';final[k+1]='2';final[k+2]='5';}
+				if( j=4)
+					{final[k]='%';final[k+1]='2';final[k+2]='6';}
+				if( j=5)
+					{final[k]='%';final[k+1]='2';final[k+2]='8';}
+				if( j=6)
+					{final[k]='%';final[k+1]='2';final[k+2]='9';}
+				if( j=7)
+					{final[k]='%';final[k+1]='2';final[k+2]='F';}
+				if( j=8)
+					{final[k]='%';final[k+1]='3';final[k+2]='A';}
+				if( j=9)
+					{final[k]='%';final[k+1]='4';final[k+2]='0';}
+			 
+				k+=3;
+				t=1;
+			}
+		
+			else
+				j++;
+		}
+		
+		if(t==0)//δ���滻
+		{
+			final[k]=str[i];
+			k++;
+		}
+	}
+	if(k>1024)//�ж��Ƿ񳬳����鳤��
+		m=-1;
+	else
+	{
+		int q;
+		for(q=0;q<k;q++)//������洢��ԭ�������鵥Ԫ��
+			str[q]=final[q];
+		m=0;
+	}
+	return m;
+	
+}
+L04
+func07.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{  int i,j,k;
+	for(j=0;j<len;j++)
+	{
+		for(i=j-1;i>=0;i--)//从后面无序的往前面有序的里面插
+		{
+			if(nums[i+1]<nums[i])//判断是否需要替换
+			 {  
+				 k=nums[i+1];
+			     nums[i+1]=nums[i];
+			     nums[i]=k;          //进行替换
+			 }  
+		}
+	   
+    }
+}
+
+

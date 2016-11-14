@@ -1,0 +1,103 @@
+20161028_516020910174_陈鑫火
+L01
+func04.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func04(float target, float* nums, int len)
+{
+	int b = -1, a, c, d;
+	c = 0;
+	a = len - 1;                                 //随机选取一个数字开始
+	d = a;
+	while (a != c) 
+	{
+		if (nums[d] > target)                    //比较目标数与所选数的大小
+		{
+			c = d;
+			d = (d + a) / 2;                     
+		}
+		else if (nums[d] < target) 
+		{
+			a = d;
+			d = (d + c) / 2;
+		}                                       //二分法寻找
+		else
+		{
+			b = d;
+			a = c;
+		}
+	}
+	return b;
+
+}
+L02
+func04.cpp
+struct Point
+{
+	float x;
+	float y;
+};
+struct Point func04()
+{
+	Point P1 = { 3,4 };                                                   //������������
+	Point P2 = { 1,1 };
+	Point P3 = { 8,-1 };
+	Point P0 = { (P1.x + P2.x + P3.x) / 3,(P1.y + P2.y + P3.y) / 3 };     //��������
+	return P0;                                                            //�������ĵ�����ֵ
+}
+L03
+func04.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func04(int year, int month, int day)
+{
+	int s = 0;
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))                  //判断是否为闰年
+	{
+		switch (month)
+		{
+		case 1:s = day; break;                   //计算天数
+		case 2:s = 31 + day; break;
+		case 3:s = 60 + day; break;
+		case 4:s = 91 + day; break;
+		case 5:s = 121 + day; break;
+		case 6:s = 152 + day; break;
+		case 7:s = 182 + day; break;
+		case 8:s = 213 + day; break;
+		case 9:s = 244 + day; break;
+		case 10:s = 274 + day; break;
+		case 11:s = 305 + day; break;
+		case 12:s = 335 + day; break;
+		}
+	}
+	else                 //如果不为闰年
+	{
+		switch (month)
+		{
+		case 1:s = day; break;                //计算天数
+		case 2:s = 31 + day; break;
+		case 3:s = 59 + day; break;
+		case 4:s = 90 + day; break;
+		case 5:s = 120 + day; break;
+		case 6:s = 151 + day; break;
+		case 7:s = 181 + day; break;
+		case 8:s = 212 + day; break;
+		case 9:s = 243 + day; break;
+		case 10:s = 273 + day; break;
+		case 11:s = 304 + day; break;
+		case 12:s = 334 + day; break;
+		}
+	}
+	return s;                //返回值为天数
+}

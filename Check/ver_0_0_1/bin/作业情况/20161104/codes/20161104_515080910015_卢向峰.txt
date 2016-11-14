@@ -1,0 +1,115 @@
+20161104_515080910015_卢向峰
+L01
+func25.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack  //定义结构体stack
+{
+	int elements[1024]; //数组成员
+	const int capacity;//数组长度
+	int count;  //已入栈数组长度
+
+};
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in)
+{
+	if(stack.count<stack.capacity)//判断栈是否已满
+	{
+		stack.elements[stack.count]=in;//将in值赋给数组
+		stack.count=stack.count+1;//已入栈长度加1
+	
+		return 0;
+	}
+	else
+		return -1;//栈满时返回值-1
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	if(stack.count>0)//判断栈中是否有元素
+	{
+		stack.count=stack.count-1;//已入栈长度减1
+		out=stack.elements[stack.count];//将出栈值赋给out
+	
+		return 0;
+	}
+	else
+		return -1;//栈中无元素时返回值-1
+	
+}
+L02
+func25.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+char spechars[10]={' ','��','#','%','&','(',')','/',':','@'};//��������洢ת���ַ�
+char spechars0[20]={'2','0','2','2','2','3','2','5','2','6','2','8','2','9','2','F','3','A','4','0'};//��������洢ASCII��
+int substitute(char* str, int len)
+{
+	int count=0;
+	for(int i=len-1;i>=0;i--) //��forѭ����char����Ӻ���ǰ���в���
+	{
+		for(int j=0;j<10;j++)//��forѭ����spechars������в���
+		{
+			if(str[i]==spechars[j])//����char�������Ƿ���URLת���ַ�
+			{
+				for(int k=len+2;k>i+2;k--)//��forѭ����i+3��ʼ��char����Ԫ�������ƶ�
+				{
+					str[k]=str[k-2];
+				}
+				len=len+2;//�ƶ����char���鳤��
+				str[i]='%';
+				str[i+1]=spechars0[2*j];
+				str[i+2]=spechars0[2*j+1];//��i~i+2��Ԫ���滻�ɡ�%+ASCII�롱
+				
+			count=count+2; 
+			}
+		}
+     
+	}
+	if (count+len+1<=1024)//�ж����鳤���Ƿ񳬹�1024
+		return 0;
+	else
+		return -1;
+
+
+}
+L04
+func25.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)
+{
+	float t;
+	for(int j=1;j<len;j++)//利用for循环进行逐一排序
+	{
+		t=nums[j];//将需要进行开始排序的元素赋值给变量t
+		int i=j-1;
+		while(i>=0 && nums[i]>t)//while循环对数组成员后移
+		{
+			nums[i+1]=nums[i];
+			i--;
+		}
+		nums[i+1]=t;//对数组进行插入需排序的值
+	}
+	
+}

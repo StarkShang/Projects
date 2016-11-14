@@ -1,0 +1,152 @@
+20161028_5140809062_黄楚
+L01
+func.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func27(float target, float* nums, int len)
+{
+	int i,mid,high=len-1,low=0;   //定义各变量，其中HIGH为位数高数的编号，LOW为位数低的数的编号，MID为中间值
+	 mid=(low+high)/2;//赋值MID
+	 while((high-low)>0 && nums[mid]!=target)//当HIGH还大于LOW，且正确的值还未找到时开始循环
+	{
+	 if(nums[mid]>target)//如果MID的值比目标要大，那么说明目标值在后半段
+	 {
+		low=mid+1;
+	 }
+	 if(nums[mid]<target)//如果MID的值比目标要小，那么说明目标值在前半段
+	{	
+		 high=mid-1;
+	 }
+	  mid=(low+high)/2;//MID取中间值
+
+	}
+	 	 if (nums[mid]==target)//如果找到了目标值
+		 {
+			 for( i=0;i<=mid;i++)//为使多个数相同时，输出的位数为数列中最小的
+			 {
+				 if (nums[i]==target)
+				break;
+			 }
+			 return i;//返回I值
+		 }
+
+
+return -1;//若没找到，则返回-1
+}
+main.cpp
+#include <iostream>
+extern int func27(float target, float* nums, int len);
+int main(int argc, char* argv[])
+{
+	float nums[50];
+	int count = 0;
+	std::cout << "Please input the number of numbers: ";
+	std::cin >> count;
+	std::cout << "Please input the numbers: ";
+	for (int i = 0; i < count; i++)
+	{
+		std::cin >> nums[i];
+	}
+	float target;
+	std::cout << "Please input a number you want to find: ";
+	std::cin >> target;
+	int index = func27(target, nums, count);
+	if (-1 == index)
+		std::cout << "There is no such number in the group!" << std::endl;
+	else
+		std::cout << "The index of the number is: " << index << std::endl;
+	
+	return 0;
+}
+L02
+func_.cpp
+struct Point//����ṹ��
+{
+	float x;
+	float y;
+};
+
+struct Point func27()
+{
+	struct Point t[]={{3,4},{1,1},{8,-1}};//��ʼ�������ε�������
+	struct Point cen;//�����ʵ�
+	cen.x=(t[0].x+t[1].x+t[2].x)/3;//�ɹ�ʽ���X
+	cen.y=(t[0].y+t[1].y+t[2].y)/3;//�ɹ�ʽ���y
+	return cen;
+}
+main.cpp
+#include <iostream>
+struct Point
+{
+	float x;
+	float y;
+};
+extern struct Point func__();
+int main(int argc, char* argv[])
+{
+	auto centroid = func__();
+	std::cout << "The centroid is (" << centroid.x << "," << centroid.y << ")" << std::endl;
+	return 0;
+}
+L03
+func__.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func27(int year, int month, int day)
+{
+	int extra=2,num,big; //定义个变量，其中EXTRA等于二月的天数与30的差，BIG等于大月的数目，NUM等于总天数
+	if (((year%4==0) && (year%100!=0))||(year%400==0))//判断是否闰年
+	extra=1;
+	if (month==1)//1月份
+		num=day;
+	else if(month==2)//2月份
+		num=31+day;
+
+
+	else if (month<=7&&month>2)//3到7月
+		{
+			big=month/2;
+			num=(month-1)*30+big-extra+day;//假定每月标准为30天，多则加，少则剪，最后加天数
+		}
+	else if(month>7)//8到12月
+		{
+			big=(month+1)/2;
+			num=(month-1)*30+big-extra+day;//假定每月标准为30天，多则加，少则剪，最后加天数
+		}
+	
+	return num;
+}
+main.cpp
+#include <iostream>
+extern int func__(int year, int month, int day);
+int main(int argc, char* argv[])
+{
+	int year, month, day;
+	std::cout << "Please input year: ";
+	std::cin >> year;
+	std::cout << "Please input month: ";
+	std::cin >> month;
+	std::cout << "Please input day: ";
+	std::cin >> day;
+	int num = func__(year, month, day);
+	std::cout << year << "-" << month << "-" << day << " is the " << num;
+	switch (num)
+	{
+		case 1: std::cout << "st "; break;
+		case 2: std::cout << "nd "; break;
+		case 3: std::cout << "rd "; break;
+		default : std::cout << "th ";
+	}
+	std::cout << "day in the year!" << std::endl;
+}

@@ -1,0 +1,265 @@
+20161104_516020910185_舒轶
+L01
+func15.cpp
+/*****************************
+ * 栈数据结构的定义
+ *****************************/
+struct Stack
+{
+	int elements;
+	const int capacity;
+	int count;
+}
+
+/*****************************
+ * 入栈操作
+ * 输入 : stack要处理的栈结构
+ * 输入 : in要入栈的数
+ * 输出 : 状态码
+ *****************************/
+int push(struct Stack& stack, int in) 
+{
+	if (Stack.count < Stack.capacity)
+	{
+		Stack.elements[Stack.count] = in;
+		Stack.count++;
+		return 0;
+	}
+	else return (-1);
+}
+
+/*****************************
+ * 出栈操作
+ * 输入 : stack要处理的栈结构
+ * 输出 : out出栈结果
+ * 输出 : 状态码
+ *****************************/
+int pop(struct Stack& stack, int& out)
+{
+	if (Stack.count > 0)
+	{
+		Stack.count--;
+		out = Stack.elements[Stack.count];
+		return 0;
+	}
+	else return(-1);
+} 
+main.cpp
+#include <iostream>
+
+struct Stack
+{
+	int _elements[1024];
+	const int capacity = 1024;
+	int count = 0;
+};
+extern int push(struct Stack& stack, int in);
+extern int pop(struct Stack& stack, int& out);
+
+int main(int argc, char* argv[])
+{
+	struct Stack stack;
+	stack.count = 0;
+	std::cout << "At beginning, the stack has " << stack.count << " elements." << std::endl;
+	std::cout << "---- Begin to push elements into stack ----" << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		int in = i*i;
+		push(stack, in);
+		std::cout << "[" << i << "] : push " << in << " into the stack;" << std::endl;
+	}
+	std::cout << "---- End to push elements into stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl << std::endl;
+
+	std::cout << "---- Begin to pop elements from stack ----" << std::endl;
+	int out;
+	for (int i = 0; i < 10; i++)
+	{
+		int flag = pop(stack, out);
+		if (0 == flag)
+		{
+			std::cout << "[" << i << "] : pop " << out << " from the stack;" << std::endl;
+		}
+		else
+		{
+			
+		}
+	}
+	std::cout << "---- End to pop elements from stack ----" << std::endl;
+	std::cout << "Now, the stack has " << stack.count << " elements." << std::endl;
+
+	return 0;
+}
+L02
+func15.cpp
+/**********************************
+ * �ַ����滻����
+ * ���� : strҪ�����滻�������ַ���
+ * ���� : len�����ַ�������
+ * ��� : ״̬��
+ **********************************/
+char spechars[10] = { ' ','"','#','%','&','(',')','/',':','@'};
+char a[10][4] = { "%20", "%22", "%23", "%25", "%26", "%28", "%29", "%2F", "%3A", "%40"};
+#include <iostream>
+using namespace std;
+int substitute(char* str, int len)
+{
+	cin>>str;
+	len = strlen(str);
+	for (int i=0;i<len;i++)
+		for (int j = 0; j < 11; j++)
+		{
+			if (str[i] == spechars[j])
+			{
+				if (len + 2 > 1023)return (-1);
+				else for (int k=i;k <= len; k++)
+					str[k + 2] = str[k];
+				str[i] = a[j][0];
+				str[i + 1] = a[j][1];
+				str[i + 2] = a[j][2];
+				len += 2;
+			}
+		}
+	if (strlen(str) > 1023)
+		return (-1);
+	else return 0;
+}
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int substitute(char* str, int len);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	std::cout << "Please input an URL [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	int flag = (int)substitute(str, (int)strlen(str));
+	if (0 == flag)
+	{
+		std::cout << "The new URL is : " << str << std::endl;
+	}
+	else
+	{
+		std::cout << "The URL is too long to substitute!";
+	}
+	return 0;
+}
+L03
+func15.cpp
+/**********************************
+ * 字符串查找函数
+ * 输入 : str要进行查找操作的字符串
+ * 输入 : strLen查找字符串长度
+ * 输入 : pattern要匹配的字符串
+ * 输入 : patternLen匹配字符串长度
+ * 输入 : indexes匹配项索引数组
+ * 输出 : 成功匹配个数
+ **********************************/
+int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes)
+{
+	
+}
+
+main.cpp
+#include <iostream>
+#include <string>
+
+extern int searchSubstring(char* str, int strLen, char* pattern, int patternLen, int* indexes);
+int main(int argc, char* argv[])
+{
+	char str[1024] = { 0 };
+	char pattern[1024] = { 0 };
+	int  indexes[1024] = { 0 };
+	std::cout << "Please input the text [less than 1024(include'\\0')] : ";
+	std::cin.getline(str, 1024);
+	std::cout << "Please input the search pattern [less than 1024(include'\\0')] : ";
+	std::cin.getline(pattern, 1024);
+
+	int num = searchSubstring(str, (int)strlen(str), pattern, (int)strlen(pattern), indexes);
+	if (0 == num)
+	{
+		std::cout << "There is no matching!";
+	}
+	else if (1 == num)
+	{
+		std::cout << "There is " << num << " matching." << std::endl;
+	}
+	else
+	{
+		std::cout << "There are " << num << " matchings." << std::endl;
+	}
+	for (int i = 0; i < num; i++)
+	{
+		std::cout << "\t[" << i+1 << "] start form : " << indexes[i] << std::endl;
+	}
+	return 0;
+}
+L04
+func15.cpp
+/**********************************
+ * 插入排序函数
+ * 输入 : nums要进行排序操作的数组
+ * 输入 : len输入数组长度
+ **********************************/
+void insertSort(float* nums, int len)//定义排序函数{	int t;	for (int i = 0; i<len; i++)//设置循环逐个检查数字	{		for (int j = 0; j<i; j++)//设置循环寻找比该数字大的数字		{			if (nums[j]>nums[i])//判断是否比当前数字大			{				t = nums[j];//进行换位				nums[j] = nums[i];				nums[i] = t;			}		}	}}
+main.cpp
+#include <iostream>
+
+extern void insertSort(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cin >> nums[i];
+	}
+
+	insertSort(nums, len);
+
+	std::cout << "After insertion sorting, the numbers are : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cout << nums[i] << " ";
+	}
+	std::cout << std::endl;
+
+	return 0;
+}
+L06
+func15.cpp
+/**********************************
+ * 计算子数组最大和函数
+ * 输入 : nums要进行计算操作的数组
+ * 输入 : len输入数组长度
+ * 输出 : 最大和
+ **********************************/
+float maxSum(float* nums, int len)
+{
+	
+}
+
+main.cpp
+#include <iostream>
+
+extern float maxSum(float* nums, int len);
+int main(int argc, char* argv[])
+{
+	int len = 0;
+	float nums[1024] = { 0 };
+	std::cout << "Please input the size of numbers [less than 1024] : ";
+	std::cin >> len;
+	std::cout << "Please input numbers [less than 1024] : ";
+	for (int i = 0; i < len; i++)
+	{
+		std::cin >> nums[i];
+	}
+
+	std::cout << "The maximum sum of the subarray : " << maxSum(nums, len) << std::endl;
+	
+	return 0;
+}

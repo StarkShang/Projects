@@ -1,0 +1,15 @@
+┌debug
+├─┬record
+│ ├──namelist.nl
+│ ├──scores.csv
+│ └─┬students
+│   ├──516020910171
+│   ├── ...
+│   └──516020910192
+├─┬temp
+│ └─┬──516020910171
+│   ├── ...
+│   └──516020910192
+└─┬tools
+  ├──compile.bat
+  └──main.cpp

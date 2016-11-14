@@ -1,0 +1,75 @@
+20161028_516020910175_方泽立
+L01
+func05.cpp
+/*
+ * 计算目标值的索引
+ * 输入 : target 目标值
+ * 输入 : nums 输入数据数组
+ * 输入 : len 输入数组长度
+ * 输出 : 若输入数组中存在该目标值，则返回目标值的索引
+ *		  若输入数组中不存在该目标值，则返回-1
+ */
+int func05(float target, float* nums, int len)
+{
+	int i=(len-1)/2,j=len-1,k=0,index=-1;//设置初始值
+	for(;j>k;i=(j+k)/2)//[k,j]区间长度为0时停止，i为区间中点
+	{
+		if(nums[i]==target)//如果找到target，检查前一位是否也是 
+		{
+			for(j=0;j<=i;j++)
+			{
+				if(nums[i-j]==target) index=i-j;
+			}
+			break;
+		}
+		else if(nums[i]<target) j=i;//[k,j]区间逼近
+		else k=i+1;//[k,j]区间逼近
+	}
+	return index;//返回
+}
+L02
+func05.cpp
+struct Point//����ṹ��
+{
+	float x;
+	float y;
+};
+
+struct Point func05()
+{
+	Point P[3]={{3,4},{1,1},{8,-1}},Px;//�������������ֵ
+	Px.x=(P[1].x+P[2].x+P[0].x)/3;
+	Px.y=(P[1].y+P[2].y+P[0].y)/3;//�����ĵ�����
+	return Px;//����
+}
+L03
+func05.cpp
+/********************************
+ * 计算给定日期是该年的第几天
+ * 输入 : year 年份
+ * 输入 : month 月份
+ * 输入 : day 天
+ * 输出 : 给定日期是该年的第几天
+ ********************************/
+int func05(int year, int month, int day)
+{
+	int n=0,i;//n为第几天的结果
+	for(i=1;i<month;i++)//之前每个月求天数和
+	{
+		switch(i)//每个月的天数
+		{
+		    case 1: n+=31;break;
+		    case 2: n+=28;break;
+		    case 3: n+=31;break;
+		    case 5: n+=31;break;
+		    case 7: n+=31;break;
+			case 8: n+=31;break;
+			case 10: n+=31;break;
+			case 12: n+=31;break;
+			default : n+=30;
+		}
+	}
+	n+=day;//加上当月的日数
+	if((n>59)&&(year%400==0||year%100!=0&&year%4==0)) n++;//若为闰年2月28日之后，则补上1天
+	return n;//返回
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "input": [ "stark@sjtu.edu.cn" ],
+    "output": [ "stark%40sjtu.edu.cn" ]
+  },
+  {
+    "input": [ "#%&()@" ],
+    "output": [ "%23%25%26%28%29%40" ]
+  },
+  {
+    "input": [ "%" ],
+    "output": [ "%25" ]
+  }
+]
