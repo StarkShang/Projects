@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
+using ver_0_0_2.Commands;
 
 namespace ver_0_0_2
 {
@@ -8,12 +10,17 @@ namespace ver_0_0_2
         static void Main(string[] args)
         {
             const string prompt = "Stark.Shang> ";
-            StringBuilder cmd = new StringBuilder();
-            while (cmd.ToString() != "exit")
-            {
+            string instruction = null;
+            string cmd = null;
+            string par = null;
+            while (cmd != "exit") {
                 Console.Write(prompt);
-                cmd.Clear().Append(Console.ReadLine());
-                CommandDispatcher.Run(cmd.ToString());
+                instruction = Console.ReadLine();
+                int cursor = instruction.IndexOf(' ');
+                cmd = instruction.Substring(0, cursor);
+                par = instruction.Substring(cursor).Trim();
+                
+                if (cmd != null) CommandHelper.Run(cmd, par);
             }
         }
     }
