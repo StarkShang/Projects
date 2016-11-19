@@ -1,0 +1,11 @@
+{
+  "cell": {
+    "root": "..\\cells"
+  },
+  "tool": {
+    "root": "..\\tools"
+  },
+  "test": {
+    "root": "..\\tests"
+  }
+}
