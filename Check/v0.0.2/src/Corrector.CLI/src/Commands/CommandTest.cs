@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Corrector.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,12 +10,22 @@ namespace Corrector.CLI.Commands
     {
         public Dictionary<string, List<string>> Parse(string parameters)
         {
-            throw new NotImplementedException();
+            return CommandHelper.Parse(parameters, option => {
+                switch (option) {
+                    default:
+                        return 0;
+                }
+            });
         }
 
         public void Run(string parameters)
         {
-            throw new NotImplementedException();
+            var options = Parse(parameters);
+            foreach (var item in options) {
+                switch (item.Key) {
+                    default: RedPen.Test(options["param"][0]); break;
+                }
+            }
         }
     }
 }
