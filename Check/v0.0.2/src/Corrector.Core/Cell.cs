@@ -17,16 +17,16 @@ namespace Corrector.Core
                              Id => Root.CreateSubdirectory(Id));
         }
 
-        public static void Show() {
-            var names = new List<string>();
-            Traverse(dir => {
-                lock(names) names.Add(dir.Name);
-            });
-            names.Sort();
-            Console.WriteLine($"共有{names.Count}个容器。");
-            foreach (var item in names)
-                Console.WriteLine(item);
-            //Traverse(dir => Console.WriteLine(dir.Name));
+        public static void Show(string label = "") {
+            //var names = new List<string>();
+            //Traverse(dir => {
+            //    lock(names) names.Add(dir.Name);
+            //});
+            //names.Sort();
+            //Console.WriteLine($"共有{names.Count}个容器。");
+            //foreach (var item in names)
+            //    Console.WriteLine(item);
+            Traverse(dir => Console.WriteLine(dir.Name), label: label);
         }
 
         public static void Remove(string path) {
@@ -60,15 +60,30 @@ namespace Corrector.Core
                                 if (!Directory.Exists(p)) Directory.CreateDirectory(p);
                                 File.Copy(q.First().FullName, Path.Combine(p, "func.hpp"), true);
                             }
-                            
                         }
                     });
                 });
         }
 
-        public static void Traverse(Action<DirectoryInfo> action, int depth = int.MaxValue) {
-            DirectoryHelper.Traverse(Root, action, depth);
-            //Parallel.ForEach(Root.GetDirectories(), dir => action(dir));
+        public static void Tidy(string pattern, string label = "") {
+            Traverse(dir => {
+                foreach (var file in dir.GetFiles()) {
+                    var contents  = File.ReadAllText(file.FullName);
+                    var match = Regex.Match(contents, @"\b" + pattern + @"\d+\b");
+                    if (match.Success) {
+                        contents = contents.Replace(match.Value, pattern);
+                        File.WriteAllText(file.FullName, contents);
+                    }
+                }
+            }, label: label);
+        }
+
+        //public static void Traverse(Action<DirectoryInfo> action, int depth = int.MaxValue) {
+        //    DirectoryHelper.Traverse(Root, action, depth);
+        //    //Parallel.ForEach(Root.GetDirectories(), dir => action(dir));
+        //}
+        public static void Traverse(Action<DirectoryInfo> action, string label = "", int depth = int.MaxValue) {
+            DirectoryHelper.Traverse(Root, action, label, depth);
         }
 
         static Cell() {
