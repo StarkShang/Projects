@@ -27,7 +27,7 @@ double max(double a,double b,double c)//定义函数求最大值
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func07(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {   int i;
 	for(i=0;i<size;i++)    // 循环求所需数据
 	{

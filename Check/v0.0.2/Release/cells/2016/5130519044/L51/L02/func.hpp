@@ -6,7 +6,7 @@
  * 输出 : 因子个数n
  ***************************************/
 #include<cmath>
-void func30(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	int i; //i为待验证是否为因子
 	for(i=2;i<=x;i+=2) //只验证偶数是否为因子

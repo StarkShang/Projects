@@ -4,6 +4,7 @@
 #include "func.hpp"
 
 bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(std::string,std::string,std::string)) {
+	std::stringstream rss;
 	/***********************
 	 ** Part 1 : 解析输入数据
 	 ***********************/

@@ -19,7 +19,7 @@ struct STUDENT
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func06(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	double sum1 = 0, sum2 = 0, sum3 = 0;
 	for (int i = 0; i < 3; i++)

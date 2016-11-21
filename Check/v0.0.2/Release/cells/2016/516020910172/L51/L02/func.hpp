@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func02(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	n=0;//初始化变量
 	for(int i=1;i<=x;i++)//循环寻找因子

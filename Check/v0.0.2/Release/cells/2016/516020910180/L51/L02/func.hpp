@@ -47,7 +47,7 @@ int* order(int* fac,int t)
 }
 
 
-void func10(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	int* fac=pp;
 	int j;

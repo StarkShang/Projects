@@ -20,7 +20,7 @@ struct STUDENT
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
 float max(float ,float,float );//声明函数max
-void func__(STUDENT* stu, int size, double* average, double* high)//定义func函数
+void func(STUDENT* stu, int size, double* average, double* high)//定义func函数
 {   
 	for(int i=0;i<size;i++)
 	{   

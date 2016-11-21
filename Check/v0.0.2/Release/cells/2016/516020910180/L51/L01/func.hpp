@@ -44,7 +44,7 @@ double hi(STUDENT* stu,int i,int size)
 	return high;
 }
 
-void func10(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	int i;
 	for(i=0;i<3;i++)

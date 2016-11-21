@@ -19,7 +19,7 @@ struct STUDENT
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func23(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	STUDENT* a=stu;
 	for(int i=0;i<3;i++,average++,high++)    //分别对每科的成绩进行分析

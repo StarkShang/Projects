@@ -19,7 +19,7 @@ struct STUDENT
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func19(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	double Max(double a, double b);                                     //声明函数
 	double sum1 = 0, sum2 = 0, sum3 = 0, max1 = 0, max2 = 0, max3 = 0;  //定义并初始化变量
