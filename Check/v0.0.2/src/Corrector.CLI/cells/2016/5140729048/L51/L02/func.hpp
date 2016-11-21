@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func29(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	int i=2;
 	int j=0;//定义变量

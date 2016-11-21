@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func23(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {    
 	int count=0;
 	for(int i=1;i<x;i++)

@@ -20,7 +20,7 @@ struct STUDENT//定义结构体数组
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func02(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	for(int j=0;j<=2;j++)//对三门课进行循环
 	{

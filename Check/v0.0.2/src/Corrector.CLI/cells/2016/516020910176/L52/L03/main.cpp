@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include "func__.hpp"
+#include "func.hpp"
 
 void showLinkedNodes(LinkedNode* head)
 {

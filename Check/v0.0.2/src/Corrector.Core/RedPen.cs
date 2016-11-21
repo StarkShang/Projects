@@ -12,27 +12,22 @@ using System.Text;
 namespace Corrector.Core
 {
     public static class RedPen {
-        struct TestCase
-        {
+        struct TestCase {
             public string InputData;
             public string OutputData;
         }
-        public static void Test(string label)
-        {
+        public static void Test(string label) {
             List<string> whoNotSubmit = new List<string>();
-            Cell.Traverse(depth: 1, action: dir =>
-            {
+            Cell.Traverse(depth: 1, action: dir => {
                 var cellPath = Path.Combine(dir.FullName, label);
-                if (!Directory.Exists(cellPath))
-                {
+                if (!Directory.Exists(cellPath)) {
                     lock (whoNotSubmit) whoNotSubmit.Add(dir.Name);
                     return;
                 }
 
                 // 已经提交作业
                 StringBuilder recorder = new StringBuilder();
-                foreach (var container in new DirectoryInfo(cellPath).GetDirectories())
-                {
+                foreach (var container in new DirectoryInfo(cellPath).GetDirectories()) {
                     var contPath = container.FullName;
                     var toolPath = ConfigInfo.RootMaps["tools"];
                     var testPath = Path.Combine(ConfigInfo.RootMaps["tools"], label, container.Name);
@@ -50,8 +45,7 @@ namespace Corrector.Core
                     process.WaitForExit();
 
                     var binPath = Path.Combine(contPath, @"main.exe");
-                    if (!File.Exists(binPath))
-                    {
+                    if (!File.Exists(binPath)) {
                         recorder.AppendLine($"{label}\\{container.Name} : Compile failed!");
                         continue;
                     }
@@ -63,13 +57,10 @@ namespace Corrector.Core
                     process.StartInfo.RedirectStandardOutput = true;
                     process.StartInfo.RedirectStandardError = true;
                     process.StartInfo.CreateNoWindow = true;
-                    process.OutputDataReceived += (object sender, DataReceivedEventArgs e) =>
-                    {
+                    process.OutputDataReceived += (object sender, DataReceivedEventArgs e) => {
                         var match = Regex.Match(e.Data, @"\[[i,o,e]\]");
-                        if (match.Success)
-                        {
-                            switch (match.Value)
-                            {
+                        if (match.Success) {
+                            switch (match.Value) {
                                 case "i":
                                     var testcase = cases.Dequeue();
                                     var param = string.Join(" ", new string[] { "-i", testcase.InputData, "-o", testcase.OutputData });
@@ -86,37 +77,37 @@ namespace Corrector.Core
                             }
                         }
                     };
-                    process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) =>
-                    {
-
+                    process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) => {
                     };
                     process.Start();
                     process.WaitForExit();
-                    if (!isOver)
-                    {
+                    if (!isOver) {
                         recorder.AppendLine($"{label}\\{container.Name} : Run failed!");
                     }
                 }
 
-                var recordPath = Path.Combine(cellPath, "record");
-                if (File.Exists(recordPath)) File.Delete(recordPath);
-                var query = from record in whoNotSubmit
-                            orderby record ascending
-                            select record + "\r\n";
-                foreach (var item in query) {
-                    File.AppendAllText(recordPath, recorder.ToString());
-                }
-                File.AppendAllText(recordPath, recorder.ToString());
+                File.WriteAllText(Path.Combine(cellPath, "record"), recorder.ToString());
             });
 
+            // 目标地址
+            var target = Path.Combine(Cell.Root.FullName, $"{label}.record");
+            // 记录没交作业的
+            StringBuilder builder = new StringBuilder();
+            whoNotSubmit.Sort();
+            builder.AppendLine("Who did not submit : ");
+            foreach (var item in whoNotSubmit) {
+                builder.AppendLine("\t" + item);
+            }
+            builder.AppendLine();
+            // 记录批改作业记录
             foreach (var cell in Cell.Root.GetDirectories()) {
                 var source = Path.Combine(cell.FullName, label, "record");
-                var target = Path.Combine(Cell.Root.FullName, "record");
-                if (File.Exists(source)) {
-                    var content = File.ReadAllText(source);
-                    File.AppendAllText(target, content);
-                }
+                builder.AppendLine(cell.Name);
+                if (File.Exists(source)) builder.Append(File.ReadAllText(source));
+                else builder.AppendLine("Have no record");
             }
+            // 写文件
+            File.WriteAllText(target, builder.ToString());
         }
     }
 }

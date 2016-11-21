@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func28(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	n=0;
 	if(x%2==0)//否则不可能有偶数因子

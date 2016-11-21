@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func__(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	for(int i=2;i<=x;i=i+2)//循环小于输入的数的每一个偶数
 		if(x%i==0)//判断是否为输入数的因数

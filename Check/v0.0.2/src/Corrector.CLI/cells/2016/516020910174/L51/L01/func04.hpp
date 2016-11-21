@@ -22,7 +22,7 @@ double MAX(double x,double y)
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func04(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	double sum1 = 0, sum2 = 0, sum3 = 0;
 	high[0] = 0;

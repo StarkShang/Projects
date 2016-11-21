@@ -1,0 +1,35 @@
+﻿生成启动时间为 2016/11/18 15:24:18。
+     1>项目“F:\c++\MFC画布\MFC画布\MFC画布.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\MFC画布.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         E:\c++\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\MFC画布.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "MFC画布.cpp" "MFC画布Dlg.cpp"
+         MFC画布Dlg.cpp
+         正在生成代码...
+         正在跳过...(未检测到相关更改)
+         MFC画布.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         E:\c++\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\c++\MFC画布\Debug\MFC画布.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\MFC画布.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\c++\MFC画布\Debug\MFC画布.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\c++\MFC画布\Debug\MFC画布.lib" /MACHINE:X86 "Debug\MFC画布.res"
+         "Debug\MFC画布.exe.embed.manifest.res"
+         "Debug\MFC画布.obj"
+         "Debug\MFC画布Dlg.obj"
+         Debug\stdafx.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\MFC画布.exe.embed.manifest" /manifest "Debug\MFC画布.exe.intermediate.manifest" E:\c++\VC\Include\Manifest\dpiaware.manifest
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         MFC画布.vcxproj -> F:\c++\MFC画布\Debug\MFC画布.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\MFC画布.unsuccessfulbuild”。
+         正在对“Debug\MFC画布.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“F:\c++\MFC画布\MFC画布\MFC画布.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.56

@@ -20,7 +20,7 @@ struct STUDENT
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func29(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	int i=0;
 	for(i=0;i<size;i++)//逐个赋值

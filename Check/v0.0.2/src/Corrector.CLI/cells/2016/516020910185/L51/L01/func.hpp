@@ -9,7 +9,7 @@ struct STUDENT
 	int id;
 	char name[1024];
 	double course[3];
-}
+};
 
 
 /***************************************
@@ -19,7 +19,7 @@ struct STUDENT
 * 输出 : 各门课平均成绩数组指针average
 * 输出 : 各门课最高成绩数组指针high
 ***************************************/
-void func15(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	double d, max;//定义中间变量
 	for (int j = 0; j < 3; j++)//循环计算三个课程的平均分

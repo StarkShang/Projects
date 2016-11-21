@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func27(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	int m=0;//M为PPP的指针，PPP是储存X因子的数组
 	int ppp[1024];

@@ -19,7 +19,7 @@ struct STUDENT
  * 输出 : 各门课平均成绩数组指针average
  * 输出 : 各门课最高成绩数组指针high
  ***************************************/
-void func05(STUDENT* stu, int size, double* average, double* high)
+void func(STUDENT* stu, int size, double* average, double* high)
 {
 	int i,j;//i为课程循环变量，j为学生循环变量
 	for(i=0;i<3;i++)//3门课循环3次

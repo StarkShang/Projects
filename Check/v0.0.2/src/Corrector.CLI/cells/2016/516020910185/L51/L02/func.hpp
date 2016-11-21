@@ -5,7 +5,7 @@
  * 输出 : 偶数因子数组pp
  * 输出 : 因子个数n
  ***************************************/
-void func15(int x, int* pp, int& n)
+void func(int x, int* pp, int& n)
 {
 	for (int i = 0; i < x / 2; i++)//开始循环
 		int n = 0;//因子个数

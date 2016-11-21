@@ -10,10 +10,11 @@ namespace Corrector.CLI.Commands
         public Dictionary<string, List<string>> Parse(string parameters) {
             return CommandHelper.Parse(parameters, option => {
                 switch (option) {
-                    case "-i": return 0;
-                    case "-s": return 1;
                     case "-d": return 1;
+                    case "-i": return 0;
                     case "-r": return 1;
+                    case "-s": return 1;
+                    case "-t": return 2;
                     default:
                         return 0;
                 }
@@ -24,10 +25,11 @@ namespace Corrector.CLI.Commands
             var options = Parse(parameters);
             foreach (var item in options) {
                 switch (item.Key) {
-                    case "-i": Cell.InitCells(); break;
-                    case "-s": Cell.Show(options["-s"][0]); break;
                     case "-d": Cell.Dispatch(options["-d"][0]); break;
+                    case "-i": Cell.InitCells(); break;
                     case "-r": Cell.Remove(options["-r"][0]); break;
+                    case "-s": Cell.Show(options["-s"][0]); break;
+                    case "-t": Cell.Tidy(options["-t"][0], options["-t"][1]); break;
                     default: break;
                 }
             }

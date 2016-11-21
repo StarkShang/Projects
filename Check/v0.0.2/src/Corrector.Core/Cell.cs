@@ -69,7 +69,7 @@ namespace Corrector.Core
             Traverse(dir => {
                 foreach (var file in dir.GetFiles()) {
                     var contents  = File.ReadAllText(file.FullName);
-                    var match = Regex.Match(contents, @"\b" + pattern + @"\d+\b");
+                    var match = Regex.Match(contents, @"\b" + pattern + @"\w+\b");
                     if (match.Success) {
                         contents = contents.Replace(match.Value, pattern);
                         File.WriteAllText(file.FullName, contents);
