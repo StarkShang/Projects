@@ -17,7 +17,7 @@ bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(st
 	** Part 2 : ²âÊÔº¯Êı
 	***********************/
 	int num;
-	func(array, numOfArray, &num);
+	FindEvens(array, numOfArray, &num);
 	bool isPassed = abs(num - numOfEven) < 1e-5;
 	rss << num;
 	/***********************

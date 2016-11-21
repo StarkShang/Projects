@@ -21,10 +21,10 @@ int main(int argc, char const *argv[]) {
 
 	for (int i = 1; i <= numOfCases; i++) {
 		switch (i) {
-			case 1: std::cout << "[i] Please input the " << i << "st test case : "; break;
-			case 2: std::cout << "[i] Please input the " << i << "nd test case : "; break;
-			case 3: std::cout << "[i] Please input the " << i << "rd test case : "; break;
-			default: std::cout << "[i] Please input the " << i << "th test case : "; break;
+			case 1: std::cout << "[i] Please input the " << i << "st test case : " << std::endl; break;
+			case 2: std::cout << "[i] Please input the " << i << "nd test case : " << std::endl; break;
+			case 3: std::cout << "[i] Please input the " << i << "rd test case : " << std::endl; break;
+			default: std::cout << "[i] Please input the " << i << "th test case : " << std::endl; break;
 		}
 
 		std::string cmd; std::stringstream iss, oss;

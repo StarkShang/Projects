@@ -58,19 +58,20 @@ namespace Corrector.Core
                     process.StartInfo.RedirectStandardError = true;
                     process.StartInfo.CreateNoWindow = true;
                     process.OutputDataReceived += (object sender, DataReceivedEventArgs e) => {
+                        if (e.Data == null) return;
                         var match = Regex.Match(e.Data, @"\[[i,o,e]\]");
                         if (match.Success) {
                             switch (match.Value) {
-                                case "i":
+                                case "[i]":
                                     var testcase = cases.Dequeue();
                                     var param = string.Join(" ", new string[] { "-i", testcase.InputData, "-o", testcase.OutputData });
                                     process.StandardInput.WriteLine(param);
                                     break;
-                                case "o":
+                                case "[o]":
                                     isOver = true;
                                     recorder.AppendLine($"{label}\\{container.Name} : {e.Data.Replace(@"[o] ", "")}");
                                     break;
-                                case "e":
+                                case "[e]":
                                     recorder.AppendLine($"{label}\\{container.Name} : {e.Data.Replace(@"[e] ", "")}");
                                     break;
                                 default: break;
@@ -80,6 +81,8 @@ namespace Corrector.Core
                     process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) => {
                     };
                     process.Start();
+                    process.BeginOutputReadLine();
+                    process.BeginErrorReadLine();
                     process.WaitForExit();
                     if (!isOver) {
                         recorder.AppendLine($"{label}\\{container.Name} : Run failed!");

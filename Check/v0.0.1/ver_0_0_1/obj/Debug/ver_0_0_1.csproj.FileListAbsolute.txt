@@ -1,1 +1,2 @@
 C:\Workspace\Coding\Projects\Check\ver_0_0_1\bin\Debug\ver_0_0_1.exe.config
+C:\Workspace\Coding\Projects\Check\v0.0.1\ver_0_0_1\bin\Debug\ver_0_0_1.exe.config

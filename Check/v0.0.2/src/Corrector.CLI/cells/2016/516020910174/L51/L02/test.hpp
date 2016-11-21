@@ -17,7 +17,7 @@ bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(st
 	***********************/
 	int pp[1024], num;
 	func(x, pp, num);
-	bool isPassed true;
+	bool isPassed = true;
 	if (num != n) {
 		isPassed = false;
 	} else {
