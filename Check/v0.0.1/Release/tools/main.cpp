@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <queue>
+#include <vector>
 #include "test.hpp"
 
 const std::string icmd = "-i";
@@ -8,6 +11,7 @@ int main(int argc, char const *argv[]) {
 	if (argc < 2) return -1;
 
 	int numOfCases = 0;
+	int numOfNotPassed = 0;
 	sscanf_s(argv[1], "%d", &numOfCases);
 
 	for (int i = 1; i <= numOfCases; i++) {
@@ -32,10 +36,25 @@ int main(int argc, char const *argv[]) {
 			oparams.erase(0, oparams.find_first_not_of(" "));
 			oparams.erase(oparams.find_last_not_of(" ") + 1);
 		}
-		bool isPass = test(iparams, oparams);
+
+		std::stringstream iss, oss;
+		std::queue<std::string> ivect, ovect;
+		iss << iparams;
+		oss << oparams;
+		while (!iss.eof())
+		{
+			std::string 
+			ivect.push()
+		}
+		bool isPass = test(iss.iparams, oparams);
+		numOfNotPassed += !isPass;
 	}
 	
-
+	switch (numOfNotPassed) {
+	case 0: std::cout << "[o] All test cases are passed." << std::endl; break;
+		case 1: std::cout << "[o] " << numOfNotPassed << " of " << numOfCases << " test case is not passed." << std::endl; break;
+		default: std::cout << "[o] " << numOfNotPassed << " of " << numOfCases << " test cases are not passed." << std::endl; break;
+	}
 
 	return 0;
 }
