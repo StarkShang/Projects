@@ -28,9 +28,13 @@ namespace Corrector.Core
                 // 已经提交作业
                 StringBuilder recorder = new StringBuilder();
                 foreach (var container in new DirectoryInfo(cellPath).GetDirectories()) {
+                    // 判断是否是L__文件夹
+                    var match = Regex.Match(container.Name, @"L\d+");
+                    if (!match.Success) continue;
+                    // 设定关键路径
                     var contPath = container.FullName;
                     var toolPath = ConfigInfo.RootMaps["tools"];
-                    var testPath = Path.Combine(ConfigInfo.RootMaps["tools"], label, container.Name);
+                    var testPath = Path.Combine(ConfigInfo.RootMaps["tools"], label, match.Value);
                     File.Copy(Path.Combine(toolPath, @"main.cpp"), Path.Combine(contPath, @"main.cpp"), true);
                     File.Copy(Path.Combine(toolPath, @"builder.bat"), Path.Combine(contPath, @"builder.bat"), true);
                     File.Copy(Path.Combine(toolPath, @"project.xml"), Path.Combine(contPath, @"project.xml"), true);
@@ -59,9 +63,9 @@ namespace Corrector.Core
                     process.StartInfo.CreateNoWindow = true;
                     process.OutputDataReceived += (object sender, DataReceivedEventArgs e) => {
                         if (e.Data == null) return;
-                        var match = Regex.Match(e.Data, @"\[[i,o,e]\]");
-                        if (match.Success) {
-                            switch (match.Value) {
+                        var m = Regex.Match(e.Data, @"\[[i,o,e]\]");
+                        if (m.Success) {
+                            switch (m.Value) {
                                 case "[i]":
                                     var testcase = cases.Dequeue();
                                     var param = string.Join(" ", new string[] { "-i", testcase.InputData, "-o", testcase.OutputData });

@@ -1,17 +1,17 @@
 L51\L01 : All test cases are passed.
 L51\L02 : 	The input of the test case is(are) : 1
 L51\L02 : 	The output of the test case is(are) : 0
-L51\L02 : 	The output of the function is(are) : 11315282944
+L51\L02 : 	The output of the function is(are) : 10
 L51\L02 : 	The input of the test case is(are) : 2
 L51\L02 : 	The output of the test case is(are) : 1 2
-L51\L02 : 	The output of the function is(are) : 32432-1473259719
+L51\L02 : 	The output of the function is(are) : 3200
 L51\L02 : 	The input of the test case is(are) : 12
 L51\L02 : 	The output of the test case is(are) : 4 2 4 6 12
-L51\L02 : 	The output of the function is(are) : 162461220120975766832767301380-147325969613217000
+L51\L02 : 	The output of the function is(are) : 1624612000000000000
 L51\L02 : 3 of 3 test cases are not passed.
 L51\L03 : 	The input of the test case is(are) : 
 L51\L03 : 	The output of the test case is(are) : 0
-L51\L03 : 	The output of the function is(are) : 1
+L51\L03 : 	The output of the function is(are) : 2
 L51\L03 : 	The input of the test case is(are) : 1 3 5 7 9
 L51\L03 : 	The output of the test case is(are) : 0
 L51\L03 : 	The output of the function is(are) : 1
