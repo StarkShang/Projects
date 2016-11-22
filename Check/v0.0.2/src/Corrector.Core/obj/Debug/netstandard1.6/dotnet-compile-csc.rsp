@@ -61,6 +61,7 @@
 -r:"C:\Users\stark\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll"
 "E:\Coding\Projects\Check\v0.0.2\src\Corrector.Core\Cell.cs"
 "E:\Coding\Projects\Check\v0.0.2\src\Corrector.Core\RedPen.cs"
+"E:\Coding\Projects\Check\v0.0.2\src\Corrector.Core\Global\Compiler.cs"
 "E:\Coding\Projects\Check\v0.0.2\src\Corrector.Core\Global\ConfigInfo.cs"
 "E:\Coding\Projects\Check\v0.0.2\src\Corrector.Core\Global\DirectoryHelper.cs"
 "E:\Coding\Projects\Check\v0.0.2\src\Corrector.Core\Properties\AssemblyInfo.cs"

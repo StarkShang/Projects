@@ -1,0 +1,14 @@
+[
+	{
+		"InputData" : "-1 1 2 3 4 5",
+		"OutputData" : "0 0 -1"
+	},
+	{
+		"InputData" : "5 1 2 3 4 5",
+		"OutputData" : "1 1 5"
+	},
+	{
+		"InputData" : "3 1 2 3 4 5",
+		"OutputData" : "1 3 3"
+	}
+]

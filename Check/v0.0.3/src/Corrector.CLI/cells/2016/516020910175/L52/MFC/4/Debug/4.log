@@ -1,0 +1,31 @@
+﻿生成启动时间为 2016/11/22 20:36:29。
+     1>项目“E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\4\4.vcxproj”在节点 2 上(build 个目标)。
+     1>PrepareForBuild:
+         正在创建目录“E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\Debug\”。
+       InitializeBuildStatus:
+         正在创建“Debug\4.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Softwares\Microsoft\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\4.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         D:\Softwares\Microsoft\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\4.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt 4.cpp 4Dlg.cpp
+         4Dlg.cpp
+         4.cpp
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IDebug\ /nologo /fo"Debug\4.res" 4.rc 
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\4.exe.embed.manifest.res" Debug\4_manifest.rc 
+       Link:
+         D:\Softwares\Microsoft\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\Debug\4.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\4.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\Debug\4.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\Debug\4.lib" /MACHINE:X86 Debug\4.res
+         Debug\4.exe.embed.manifest.res
+         Debug\4.obj
+         Debug\4Dlg.obj
+         Debug\stdafx.obj
+     1>4Dlg.obj : error LNK2001: 无法解析的外部符号 "public: void __thiscall CMy4Dlg::OnXButtonUp(unsigned int,unsigned int,class CPoint)" (?OnXButtonUp@CMy4Dlg@@QAEXIIVCPoint@@@Z)
+     1>4Dlg.obj : error LNK2001: 无法解析的外部符号 "public: void __thiscall CMy4Dlg::OnXButtonDown(unsigned int,unsigned int,class CPoint)" (?OnXButtonDown@CMy4Dlg@@QAEXIIVCPoint@@@Z)
+     1>E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\Debug\4.exe : fatal error LNK1120: 2 个无法解析的外部命令
+     1>已完成生成项目“E:\Coding\Projects\Check\v0.0.2\src\Corrector.CLI\cells\2016\516020910175\L52\MFC\4\4.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:02.93
