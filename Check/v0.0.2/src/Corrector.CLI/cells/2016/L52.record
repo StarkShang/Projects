@@ -1,0 +1,175 @@
+Who did not submit : 
+	2016
+	515080910017
+	516020910185
+
+5130519044
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+5140729048
+L52\L01 : Compile failed!
+L52\L02 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+L52\L05 : Compile failed!
+514080904
+L52\L01 : Compile failed!
+L52\L02 : All test cases are passed.
+L52\L03 : Run failed!
+5140809062
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+515051910045
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+515051910059
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+515080910015
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+515080910017
+Have no record
+516020910171
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 0 1 3 1 2 3 4 5
+L52\L03 : 	The output of the test case is(are) : 0 1 3 4 5
+L52\L03 : 	The output of the function is(are) : 1 2 0 3 5 
+L52\L03 : 	The input of the test case is(are) : 8 5 1 1 2 3 4 5
+L52\L03 : 	The output of the test case is(are) : 2 3 4 8 5
+L52\L03 : 	The output of the function is(are) : 1 2 4 5 
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 1 
+L52\L03 : 3 of 3 test cases are not passed.
+516020910172
+L52\L01 : Compile failed!
+L52\L02 : Compile failed!
+L52\L03 : Run time out!
+L52\L05 : Compile failed!
+516020910173
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910174
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910175
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910176
+L52\L01 : Compile failed!
+L52\L03 : Compile failed!
+516020910177
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 8 5 1 1 2 3 4 5
+L52\L03 : 	The output of the test case is(are) : 2 3 4 8 5
+L52\L03 : 	The output of the function is(are) : 2 3 8 4 5 
+L52\L03 : Run failed!
+516020910178
+L52\L01 : Compile failed!
+516020910179
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910180
+L52\L01 : Compile failed!
+L52\L02 : 	The input of the test case is(are) : 4*(8-2)
+L52\L02 : 	The output of the test case is(are) : 24
+L52\L02 : 	The output of the function is(are) : 4
+L52\L02 : 1 of 3 test case is not passed.
+L52\L03 心累，完成了一半 : Run failed!
+L52\L03老师版 : 	The input of the test case is(are) : 6 1 5
+L52\L03老师版 : 	The output of the test case is(are) : 6
+L52\L03老师版 : 	The output of the function is(are) : 6 1 
+L52\L03老师版 : 1 of 3 test case is not passed.
+L52\L05 : Compile failed!
+516020910181
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910182
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 0 1 3 1 2 3 4 5
+L52\L03 : 	The output of the test case is(are) : 0 1 3 4 5
+L52\L03 : 	The output of the function is(are) : 0 3 4 5 
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 2 of 3 test cases are not passed.
+516020910183
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910184
+L52\L01 : Compile failed!
+L52\L02 : 	The input of the test case is(are) : 4*(8-2)
+L52\L02 : 	The output of the test case is(are) : 24
+L52\L02 : 	The output of the function is(are) : 4
+L52\L02 : 1 of 3 test case is not passed.
+L52\L03 : Run time out!
+516020910185
+Have no record
+516020910186
+L52\L01 : Compile failed!
+L52\L03 : Compile failed!
+516020910187
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910188
+L52\L01 : Compile failed!
+L52\L03 : Run time out!
+516020910189
+L52\L01 : Compile failed!
+L52\L02 : All test cases are passed.
+L52\L03 : Run time out!
+516020910190
+L52\L01 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910191
+L52\L01 : Compile failed!
+L52\L02 : Compile failed!
+L52\L03 : 	The input of the test case is(are) : 6 1 5
+L52\L03 : 	The output of the test case is(are) : 6
+L52\L03 : 	The output of the function is(are) : 6 1 
+L52\L03 : 1 of 3 test case is not passed.
+516020910192
+L52\L01 : Compile failed!
+L52\L03 : Compile failed!

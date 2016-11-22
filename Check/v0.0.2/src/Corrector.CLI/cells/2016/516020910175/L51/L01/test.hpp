@@ -39,7 +39,8 @@ bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(st
 		}
 	}
 	for (int i = 0; i < numOfCourse; ++i) {
-		rss << average[i] << highest[i];
+		rss << average[i] << " "
+			<< highest[i] << " ";
 	}
 	delete[]stu;
 	/***********************

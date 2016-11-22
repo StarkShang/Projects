@@ -31,7 +31,7 @@ bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(st
 	
 	rss << num;
 	for (int i = 0; i < num; ++i) {
-		rss << pp[i];
+		rss << pp[i] << " ";
 	}
 	/***********************
 	** Part 3 : 解析输入数据

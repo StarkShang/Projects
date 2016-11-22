@@ -43,7 +43,7 @@ namespace Corrector.Core
 
                     Process process = new Process();
                     process.StartInfo.FileName = Path.Combine(contPath, @"builder.bat");
-                    process.StartInfo.Arguments = contPath;
+                    process.StartInfo.Arguments = $"\"{contPath}\"";
                     process.StartInfo.CreateNoWindow = true;
                     process.Start();
                     process.WaitForExit();
@@ -87,7 +87,12 @@ namespace Corrector.Core
                     process.Start();
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
-                    process.WaitForExit();
+                    process.WaitForExit(5000);
+                    if (!process.HasExited) {
+                        process.Kill();
+                        recorder.AppendLine($"{label}\\{container.Name} : Run time out!");
+                        isOver = true;
+                    }
                     if (!isOver) {
                         recorder.AppendLine($"{label}\\{container.Name} : Run failed!");
                     }

@@ -1,78 +1,57 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#include "func.hpp"
+#include <string>
+#include <sstream>
+#include "test.hpp"
 
-void showLinkedNodes(LinkedNode* head)
-{
-	if (head == nullptr)
-	{
-		std::cout << "The linked list is empty!" <<std::endl;
-		return;
-	}
+const std::string icmd = "-i";
+const std::string ocmd = "-o";
 
-	std::cout << "The linked list now is : " << std::endl;
-	std::cout << head->data;
-	while (head->next != nullptr)
-	{
-		head = head->next;
-		std::cout << " -> " << head->data;
-	}
-	std::cout << std::endl;
+void errorDisplay(std::string testIn, std::string testOut, std::string realOut) {
+	std::cout << "\t[e] The input of the test case is(are) : " << testIn << std::endl;
+	std::cout << "\t[e] The output of the test case is(are) : " << testOut << std::endl;
+	std::cout << "\t[e] The output of the function is(are) : " << realOut << std::endl;
 }
 
-int main(int argc, char* argv)
-{
-	int nums[1024];
-	char str[1024];
-	int counter = 0;
-	std::cout << "Please input the number of numbers (less than 1024) : ";
-	std::cin >> counter;
-	std::cout << "Please input some numbers to initialize a linked list (less than 1024 numbers) : ";
-	for (int i = 0; i < counter; i++) std::cin >> nums[i];
-	LinkedNode* head = create(nums, counter);
-	strcpy(str, "Create succeed!");
+int main(int argc, char const *argv[]) {
+	if (argc < 2) return -1;
 
-	while (true)
-	{
-		char cmd;
-		system("cls");
-		std::cout << str << std::endl;
-		showLinkedNodes(head);
-		std::cout << std::endl << "What do you want to do ?" << std::endl;
-		std::cout << "[1] insert a node" << std::endl;
-		std::cout << "[2] delete a node" << std::endl;
-		std::cout << "[q] quit" << std::endl;
-		std::cout << std::endl << "Input your choice : ";
-		std::cin >> cmd;
+	int numOfCases = 0;
+	int numOfNotPassed = 0;
+	sscanf_s(argv[1], "%d", &numOfCases);
 
-		int data, index;
-		LinkedNode* node;
-		switch (cmd)
-		{
-			case '1':
-				std::cout << "Please input the data you want to insert : ";
-				std::cin >> data;
-				std::cout << "Please input where you want to insert : ";
-				std::cin >> index;
-				node = new LinkedNode();
-				node->data = data;
-				if (insert(node, &head, index)) strcpy(str, "Insert succeed!");
-				else  strcpy(str, "Insert failed!");
-				break;
-			case '2':
-				std::cout << "Please input the index of node you want to remove : ";
-				std::cin >> index;
-				if (remove(&head, index)) strcpy(str, "Remove succeed!");
-				else  strcpy(str, "Remove failed!");
-				break;
-			case 'q': 
-				destory(head);
-				std::cout << "Exiting program..." << std::endl;
-				system("pause");
-				return  0;
-			default : break;
+	for (int i = 1; i <= numOfCases; i++) {
+		switch (i) {
+			case 1: std::cout << "[i] Please input the " << i << "st test case : " << std::endl; break;
+			case 2: std::cout << "[i] Please input the " << i << "nd test case : " << std::endl; break;
+			case 3: std::cout << "[i] Please input the " << i << "rd test case : " << std::endl; break;
+			default: std::cout << "[i] Please input the " << i << "th test case : " << std::endl; break;
 		}
+
+		std::string cmd; std::stringstream iss, oss;
+		std::getline(std::cin, cmd);
+		std::string::size_type iindex = cmd.find(icmd);
+		std::string::size_type oindex = cmd.find(ocmd);
+		if (std::string::npos != iindex) {
+			auto params = cmd.substr(iindex + icmd.size(), ((std::string::npos != oindex && oindex > iindex) ? oindex : cmd.size()) - iindex - icmd.size());
+			params.erase(0, params.find_first_not_of(" "));
+			params.erase(params.find_last_not_of(" ") + 1);
+			iss << params;
+		}
+		if (std::string::npos != oindex) {
+			auto params = cmd.substr(oindex + ocmd.size(), ((std::string::npos != iindex && iindex > oindex) ? iindex : cmd.size()) - oindex - ocmd.size());
+			params.erase(0, params.find_first_not_of(" "));
+			params.erase(params.find_last_not_of(" ") + 1);
+			oss << params;
+		}
+		bool isPass = test(iss, oss, errorDisplay);
+		numOfNotPassed += !isPass;
 	}
+	
+	switch (numOfNotPassed) {
+		case 0 : std::cout << "[o] All test cases are passed." << std::endl; break;
+		case 1 : std::cout << "[o] " << numOfNotPassed << " of " << numOfCases << " test case is not passed." << std::endl; break;
+		default: std::cout << "[o] " << numOfNotPassed << " of " << numOfCases << " test cases are not passed." << std::endl; break;
+	}
+
 	return 0;
 }
