@@ -1,32 +1,14 @@
-﻿using Corrector.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Corrector.CLI.Commands;
+using Corrector.Core;
 
-namespace Corrector.CLI.Commands
+namespace Corrector.CLI.src.Commands
 {
     public class CommandTest : ICommand
     {
-        public Dictionary<string, List<string>> Parse(string parameters)
-        {
-            return CommandHelper.Parse(parameters, option => {
-                switch (option) {
-                    case "-m": return 1;
-                    default: return 0;
-                }
-            });
-        }
-
-        public void Run(string parameters)
-        {
-            var options = Parse(parameters);
-            foreach (var item in options) {
-                switch (item.Key) {
-                    case "-m": RedPen.TestMFC(options["-m"][0]); break;
-                    default: RedPen.Test(options["param"][0]); break;
-                }
-            }
+        public CommandTest() {
+            ClassType = typeof(Manager);
+            CommandDic.Add("-m", new CommandParam() { Cmd = "CorrectMFC", Param = new string[1], IsCalled = false });
+            CommandDic.Add("-g", new CommandParam() { Cmd = "Correct", Param = new string[1], IsCalled = false });
         }
     }
 }

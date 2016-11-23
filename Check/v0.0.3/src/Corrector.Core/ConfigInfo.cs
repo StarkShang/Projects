@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace Corrector.Core.Global
+namespace Corrector.Core
 {
     public static class ConfigInfo
     {

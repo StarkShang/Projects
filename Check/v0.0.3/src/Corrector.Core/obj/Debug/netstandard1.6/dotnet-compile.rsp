@@ -62,9 +62,11 @@
 --reference:C:\Users\stark\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\stark\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Cell.cs
+E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Cleaner.cs
+E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Compiler.cs
+E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\ConfigInfo.cs
+E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\DirectoryInfoExtension.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Logger.cs
+E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Manager.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\RedPen.cs
-E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Global\Compiler.cs
-E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Global\ConfigInfo.cs
-E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Global\DirectoryHelper.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.Core\Properties\AssemblyInfo.cs

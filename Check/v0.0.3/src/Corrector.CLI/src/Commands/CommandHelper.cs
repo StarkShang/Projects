@@ -11,8 +11,7 @@ namespace Corrector.CLI.Commands
 {
     static class CommandHelper
     {
-        static public void Run(string command, string parameters)
-        {
+        static public void Run(string command, string parameters) {
             var classname = "Corrector.CLI.Commands.Command" + command;
             try {
                 var asm = Assembly.GetEntryAssembly();
@@ -23,28 +22,25 @@ namespace Corrector.CLI.Commands
             }  
         }
 
-        static public Dictionary<string, List<string>> Parse(string parameters, Func<string, int> func)
-        {
+        static public void Parse(string parameters, Dictionary<string, CommandParam> table) {
             LinkedList<string> tokens = new LinkedList<string>(parameters.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-            var table = new Dictionary<string, List<string>>();
             // 遍历数组
             // 找到命令选项以及选项参数
             var iterator = tokens.First;
             while (iterator != null) {
                 if (iterator.Value.StartsWith("-")) {
                     var key = iterator.Value;
-                    if (!table.ContainsKey(key)) table[key] = new List<string>();
                     var prev = iterator; iterator = iterator.Next; tokens.Remove(prev);
-                    for (var num = func(key); num-- > 0;
-                         prev = iterator, iterator = iterator.Next, tokens.Remove(prev)) {
+                    if (!table.ContainsKey(key)) continue;
+                    for (var num = table[key].Param.Length; num --> 0;
+                        prev = iterator, iterator = iterator.Next, tokens.Remove(prev)) {
                         if (iterator == null) {
-                            Console.WriteLine("Not enough parameters!");
-                            return null;
+                            Console.WriteLine("Not enough parameters!"); return;
                         } else {
-                            table[key].Add(iterator.Value);
+                            table[key].Param[num] = iterator.Value;
                         }
                     }
-
+                    table[key].IsCalled = true;
                 } else {
                     iterator = iterator.Next;
                 }
@@ -52,12 +48,12 @@ namespace Corrector.CLI.Commands
             // 剩下的作为命令本身的参数
             // 在table中存在Key:param对应的List里面
             iterator = tokens.First;
+            var list = new List<string>();
             while (iterator != null) {
-                if (!table.ContainsKey("param")) table["param"] = new List<string>();
-                table["param"].Add(iterator.Value);
+                list.Add(iterator.Value);
                 iterator = iterator.Next;
             }
-            return table;
+            table["default"].Param = list.ToArray();
         }
     }
 }
