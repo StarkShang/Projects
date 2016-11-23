@@ -17,6 +17,7 @@ namespace Corrector.CLI.Commands
     {
         protected Dictionary<string, CommandParam> CommandDic = new Dictionary<string, CommandParam>();
         protected Type ClassType = null;
+
         public void Run(string parameters) {
             CommandHelper.Parse(parameters, CommandDic);
             foreach (var item in CommandDic) {

@@ -48,7 +48,7 @@ namespace Corrector.Core
                 ExecFile = null,
                 Info = $"Cannot find the directory!"
             };
-            var projList = workDirectory.FindFiles(suffixes: "sln");
+            var projList = await workDirectory.FindFiles(suffixes: ".sln");
             switch (projList.Count) {
                 case 0: return new CompileResult() {
                     ExecFile = null,
@@ -80,15 +80,13 @@ namespace Corrector.Core
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
             process.Start();
-            await Task.Run(() => {
-                process.WaitForExit(2000);
+            await Task.Run(async () => {
+                process.WaitForExit();
                 if (!process.HasExited) {
                     process.Kill();
                     rst.ExecFile = null; rst.Info = $"Compile failed -- Cannont find executable file!";
-                }
-                else
-                {
-                    var fileList = projectPath.Directory.FindFiles(suffixes: "exe");
+                } else {
+                    var fileList = await projectPath.Directory.FindFiles(suffixes: ".exe");
                     switch (fileList.Count)
                     {
                         case 0: rst.ExecFile = null; rst.Info = $"Compile failed -- Cannont find executable file!"; break;

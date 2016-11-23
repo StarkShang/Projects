@@ -56,7 +56,7 @@ namespace Corrector.Core
             process.Start();
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
-            process.WaitForExit(5000);
+            process.WaitForExit(10000);
             if (!process.HasExited)
             {
                 process.Kill();

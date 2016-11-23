@@ -32,12 +32,12 @@ namespace Corrector.CLI.Commands
                     var key = iterator.Value;
                     var prev = iterator; iterator = iterator.Next; tokens.Remove(prev);
                     if (!table.ContainsKey(key)) continue;
-                    for (var num = table[key].Param.Length; num --> 0;
+                    for (var num = 0; num < table[key].Param.Length;
                         prev = iterator, iterator = iterator.Next, tokens.Remove(prev)) {
                         if (iterator == null) {
                             Console.WriteLine("Not enough parameters!"); return;
                         } else {
-                            table[key].Param[num] = iterator.Value;
+                            table[key].Param[num++] = iterator.Value;
                         }
                     }
                     table[key].IsCalled = true;
@@ -53,7 +53,7 @@ namespace Corrector.CLI.Commands
                 list.Add(iterator.Value);
                 iterator = iterator.Next;
             }
-            table["default"].Param = list.ToArray();
+            if (table.ContainsKey("default")) table["default"].Param = list.ToArray();
         }
     }
 }

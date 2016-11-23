@@ -1,8 +1,0 @@
-L52\L01 : Compile failed!
-L52\L03 : 	The input of the test case is(are) : 0 1 3 1 2 3 4 5
-L52\L03 : 	The output of the test case is(are) : 0 1 3 4 5
-L52\L03 : 	The output of the function is(are) : 0 3 4 5 
-L52\L03 : 	The input of the test case is(are) : 6 1 5
-L52\L03 : 	The output of the test case is(are) : 6
-L52\L03 : 	The output of the function is(are) : 6 1 
-L52\L03 : 2 of 3 test cases are not passed.

@@ -93,6 +93,7 @@ E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\Properties\AssemblyInfo.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\DirectoryHelper.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\Program.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\Commands\CommandCell.cs
+E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\Commands\CommandClean.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\Commands\CommandHelper.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\Commands\CommandTest.cs
 E:\Coding\Projects\Check\v0.0.3\src\Corrector.CLI\src\Commands\ICommand.cs

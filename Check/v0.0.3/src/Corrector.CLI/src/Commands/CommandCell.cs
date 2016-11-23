@@ -12,6 +12,7 @@ namespace Corrector.CLI.Commands
         public CommandCell() {
             ClassType = typeof(Manager);
             CommandDic.Add("-s", new CommandParam() { Cmd = "Show", Param = new string[1], IsCalled = false });
+            CommandDic.Add("-r", new CommandParam() { Cmd = "RollCall", Param = new string[1], IsCalled = false });
             CommandDic.Add("default", new CommandParam() { IsCalled = false });
         }
     }

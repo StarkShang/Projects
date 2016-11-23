@@ -1,0 +1,9 @@
+﻿  main.cpp
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(14): error C2065: “i”: 未声明的标识符
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(16): error C2065: “i”: 未声明的标识符
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(17): error C2065: “cout”: 未声明的标识符
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(18): error C2065: “cout”: 未声明的标识符
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(18): error C2065: “endl”: 未声明的标识符
+e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(19): error C2562: “func”:“void”函数返回值
+  e:\coding\projects\check\v0.0.3\src\corrector.cli\cells\2016\516020910185\l51\l02\func.hpp(8): note: 参见“func”的声明

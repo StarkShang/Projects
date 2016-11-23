@@ -1,7 +1,7 @@
 ﻿using Corrector.CLI.Commands;
 using Corrector.Core;
 
-namespace Corrector.CLI.src.Commands
+namespace Corrector.CLI.Commands
 {
     public class CommandTest : ICommand
     {
@@ -9,6 +9,7 @@ namespace Corrector.CLI.src.Commands
             ClassType = typeof(Manager);
             CommandDic.Add("-m", new CommandParam() { Cmd = "CorrectMFC", Param = new string[1], IsCalled = false });
             CommandDic.Add("-g", new CommandParam() { Cmd = "Correct", Param = new string[1], IsCalled = false });
+            CommandDic.Add("default", new CommandParam() { IsCalled = false });
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Corrector.Core
             var workDirectory = new DirectoryInfo($"{Root.FullName}\\{label}");
             var logger = new Logger(Root.Name);
             if (!workDirectory.Exists) {
+                workDirectory.Create();
                 logger.Log(@"Cannot find the directory!");
                 goto RECORD;
             }
@@ -60,6 +61,8 @@ namespace Corrector.Core
                 Info = "Success!"
             };
         }
+
+        
 
         public Cell(string id)
         {

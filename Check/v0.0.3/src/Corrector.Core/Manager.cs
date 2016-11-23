@@ -17,10 +17,10 @@ namespace Corrector.Core
                              Id => Root.CreateSubdirectory(Id));
         }
         private static void test() { }
-        public static void RemoveDirectory(string label) {
+        public static async void RemoveDirectory(string label) {
             var container = new List<DirectoryInfo>();
-            Root.Traverse(label: label,
-                action: async directory =>  await Task.Run(() => { lock (container) container.Add(directory); }));
+            await Root.Traverse(label: label,
+                action: async directory => await Task.Run(() => { lock (container) container.Add(directory); }));
             foreach (var dir in container) dir.Delete(true);
         }
 
@@ -53,24 +53,27 @@ namespace Corrector.Core
                 });
         }
 
+        public static async void RollCall(string label) {
+            var directories = await Root.FindDirectories(label: label);
+            var query = from dir in directories
+                        orderby dir.Name ascending
+                        select dir.Parent.Name;
+            foreach (var item in query)  Console.WriteLine(item);
+            Console.WriteLine($"Total : {directories.Count}");
+        }
 
-
-        public static void Correct(string label)
-        {
+        public static async void Correct(string label) {
             var cells = from cell in Root.GetDirectories()
                         where ConfigInfo.NameList.ContainsKey(cell.Name)
                         select new Cell(cell.Name);
 
             Parallel.ForEach(source: cells, body: cell => cell.Correct(label));
             // 合并批改记录
-            var logList = new List<string>();
-            Root.Traverse(label: label, action: async dir => {
-                await Task.Run(() => { lock (logList) logList.Add(dir.FullName); });
-            });
+            var logList = await Root.FindFiles(fileName: "record");
             logList.Sort();
             var logFilePath = $"{Root.FullName}\\{label}.log";
             if (File.Exists(logFilePath)) File.Delete(logFilePath);
-            foreach (var item in logList) File.AppendAllText(logFilePath, File.ReadAllText(item));
+            foreach (var item in logList) File.AppendAllText(logFilePath, File.ReadAllText(item.FullName));
         }
 
         public static void CorrectMFC(string label)
@@ -105,10 +108,9 @@ namespace Corrector.Core
             Parallel.Invoke(compileEvent, executeEvent);
         }
 
-        public static void Show(string label)
-        {
+        public static async void Show(string label) {
             var list = new List<string>();
-            Root.Traverse(label: label, action: async directory => {
+            await Root.Traverse(label: label, action: async directory => {
                 await Task.Run(() => { lock (list) list.Add(directory.Parent.Name); });
             });
             list.Sort();
