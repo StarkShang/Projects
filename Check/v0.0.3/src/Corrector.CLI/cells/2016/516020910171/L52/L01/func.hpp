@@ -1,3 +1,4 @@
+#include <string.h>
 char* addTwoNumbers(char* num1, char* num2, char* buffer, int bufferLen)
 {
 	for(int n=0;n<=1024;n++)
