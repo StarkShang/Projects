@@ -5,19 +5,20 @@ namespace Corrector.Core
 {
     public class Logger
     {
-        private string label;
+        public string Root { get; set; }
+        public string Label { get; set; }
         private StringBuilder builder = new StringBuilder();
 
         public void Log(string content) {
-            builder.AppendLine($"{label} : {content}");
+            builder.AppendLine($"{Root}\\{Label} : {content}");
         }
 
         public void WriteFile(string filePath) {
             File.WriteAllText(path: filePath, contents: builder.ToString());
         }
 
-        public Logger(string label) {
-            this.label = label;
+        public Logger(string root) {
+            Root = root;
         }
     }
 }

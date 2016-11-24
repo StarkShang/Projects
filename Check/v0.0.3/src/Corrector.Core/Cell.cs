@@ -20,7 +20,7 @@ namespace Corrector.Core
         /// 测试非 MFC 项目
         /// </summary>
         /// <param name="label">测试 Cell 标签</param>
-        public async void Correct(string label) {
+        public async Task Correct(string label) {
             var workDirectory = new DirectoryInfo($"{Root.FullName}\\{label}");
             var logger = new Logger(Root.Name);
             if (!workDirectory.Exists) {
@@ -29,6 +29,7 @@ namespace Corrector.Core
                 goto RECORD;
             }
             foreach (var dir in workDirectory.GetDirectories()) {
+                logger.Label = dir.Name;
                 if (dir.FullName.EndsWith(@"MFC")) continue;
                 // 1. 编译
                 var compileResult = await compiler.Build(dir);

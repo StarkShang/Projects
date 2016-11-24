@@ -28,7 +28,7 @@ namespace Corrector.Core
         public void Correct(FileInfo executableFile, Logger logger)
         {
             if (executableFile == null) logger.Log("Cannot file executable file");
-            var testPath = Path.Combine(ConfigInfo.RootMaps["tools"], executableFile.Directory.Parent.Name, executableFile.Directory.Name);
+            var testPath = Path.Combine(ConfigInfo.RootMaps["tools"], executableFile.Directory.Parent.Name, Regex.Match(executableFile.Directory.Name, @"L\d{2}").Value);
             var cases = JsonConvert.DeserializeObject<Queue<TestCase>>(File.ReadAllText(Path.Combine(testPath, @"case.json")));
             bool isOver = false;
             var process = new Process();
@@ -56,9 +56,8 @@ namespace Corrector.Core
             process.Start();
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
-            process.WaitForExit(10000);
-            if (!process.HasExited)
-            {
+            process.WaitForExit(50000);
+            if (!process.HasExited) {
                 process.Kill();
                 logger.Log(@"Run time out!");
                 isOver = true;

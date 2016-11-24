@@ -1,0 +1,15 @@
+516020910180\L01 : 	The input of the test case is(are) : 1 0 0 0
+516020910180\L01 : 	The output of the test case is(are) : 0 0 0 0 0 0
+516020910180\L01 : 	The output of the function is(are) : 0 3.45516e+06 0 1.75483e+64 0 2.17956e-317 
+516020910180\L01 : 1 of 3 test case is not passed.
+516020910180\L02 : All test cases are passed.
+516020910180\L03 : 	The input of the test case is(are) : 
+516020910180\L03 : 	The output of the test case is(are) : 0
+516020910180\L03 : 	The output of the function is(are) : 2
+516020910180\L03 : 	The input of the test case is(are) : 1 3 5 7 9
+516020910180\L03 : 	The output of the test case is(are) : 0
+516020910180\L03 : 	The output of the function is(are) : 1
+516020910180\L03 : 	The input of the test case is(are) : 2 4 6 8 10
+516020910180\L03 : 	The output of the test case is(are) : 5
+516020910180\L03 : 	The output of the function is(are) : 6
+516020910180\L03 : 3 of 3 test cases are not passed.

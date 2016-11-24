@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Corrector.Core
@@ -23,7 +24,7 @@ namespace Corrector.Core
                 Info = $"Cannot find the directory!"
             };
             var toolPath = ConfigInfo.RootMaps["tools"];
-            var testPath = Path.Combine(toolPath, workDirectory.Parent.Name, workDirectory.Name);
+            var testPath = Path.Combine(toolPath, workDirectory.Parent.Name, Regex.Match(workDirectory.Name, @"L\d{2}").Value);
             File.Copy(Path.Combine(toolPath, @"main.cpp"), Path.Combine(workDirectory.FullName, @"main.cpp"), true);
             File.Copy(Path.Combine(toolPath, @"builder.bat"), Path.Combine(workDirectory.FullName, @"builder.bat"), true);
             File.Copy(Path.Combine(toolPath, @"project.vcxproj"), Path.Combine(workDirectory.FullName, @"project.vcxproj"), true);

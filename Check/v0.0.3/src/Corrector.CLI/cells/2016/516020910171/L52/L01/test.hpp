@@ -15,7 +15,7 @@ bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(st
 	** Part 2 : ²âÊÔº¯Êı
 	***********************/
 	char buffer[1024];
-	std::string sum(addTwoNumbers(num1.c_str(), num2.c_str(), buffer, 1024));
+	std::string sum(addTwoNumbers((char*)num1.c_str(), (char*)num2.c_str(), buffer, 1024));
 	bool isPassed = sum==out;
 	rss << sum;
 	/***********************

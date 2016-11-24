@@ -66,14 +66,21 @@ namespace Corrector.Core
             var cells = from cell in Root.GetDirectories()
                         where ConfigInfo.NameList.ContainsKey(cell.Name)
                         select new Cell(cell.Name);
-
-            Parallel.ForEach(source: cells, body: cell => cell.Correct(label));
+            foreach (var cell in cells) {
+                await cell.Correct(label);
+            }
             // 合并批改记录
-            var logList = await Root.FindFiles(fileName: "record");
+            var directories = await Root.FindDirectories(label);
+            await Task.Delay(1000);
+            var logList = new List<string>();
+            foreach (var dir in directories) {
+                var files = await dir.FindFiles(fileName: "record");
+                foreach (var f in files) logList.Add(f.FullName);
+            }
             logList.Sort();
             var logFilePath = $"{Root.FullName}\\{label}.log";
             if (File.Exists(logFilePath)) File.Delete(logFilePath);
-            foreach (var item in logList) File.AppendAllText(logFilePath, File.ReadAllText(item.FullName));
+            foreach (var item in logList) File.AppendAllText(logFilePath, File.ReadAllText(item) + "\r\n");
         }
 
         public static void CorrectMFC(string label)
