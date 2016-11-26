@@ -1,0 +1,6 @@
+{
+  "cell": "cell",
+  "tool": "tool",
+  "compiler": "E:\\Coding\\Projects\\Check\\v0.0.5\\src\\Corrector.Core\\compiler\\compiler\\builder.exe",
+  "linker": "E:\\Coding\\Projects\\Check\\v0.0.5\\src\\Corrector.Core\\compiler\\linker\\link.exe"
+}

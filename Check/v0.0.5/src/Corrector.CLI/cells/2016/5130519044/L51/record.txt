@@ -1,0 +1,27 @@
+5130519044\L01 : 	The input of the test case is(are) : 2 80 90 80 80 90 90
+5130519044\L01 : 	The output of the test case is(are) : 85 90 80 80 90 90
+5130519044\L01 : 	The output of the function is(are) : 40 90 40 80 45 90 
+5130519044\L01 : 	The input of the test case is(are) : 3 70 75 80 80 85 90 90 95 100
+5130519044\L01 : 	The output of the test case is(are) : 75 80 85 90 95 100
+5130519044\L01 : 	The output of the function is(are) : 48.3333 80 55 90 61.6667 100 
+5130519044\L01 : 2 of 3 test cases are not passed.
+5130519044\L02 : 	The input of the test case is(are) : 1
+5130519044\L02 : 	The output of the test case is(are) : 0
+5130519044\L02 : 	The output of the function is(are) : 10 
+5130519044\L02 : 	The input of the test case is(are) : 2
+5130519044\L02 : 	The output of the test case is(are) : 1 2
+5130519044\L02 : 	The output of the function is(are) : 30 0 2 
+5130519044\L02 : 	The input of the test case is(are) : 12
+5130519044\L02 : 	The output of the test case is(are) : 4 2 4 6 12
+5130519044\L02 : 	The output of the function is(are) : 160 0 2 0 0 0 0 0 0 0 0 0 2 4 6 12 
+5130519044\L02 : 3 of 3 test cases are not passed.
+5130519044\L03 : 	The input of the test case is(are) : 
+5130519044\L03 : 	The output of the test case is(are) : 0
+5130519044\L03 : 	The output of the function is(are) : 2
+5130519044\L03 : 	The input of the test case is(are) : 1 3 5 7 9
+5130519044\L03 : 	The output of the test case is(are) : 0
+5130519044\L03 : 	The output of the function is(are) : 1
+5130519044\L03 : 	The input of the test case is(are) : 2 4 6 8 10
+5130519044\L03 : 	The output of the test case is(are) : 5
+5130519044\L03 : 	The output of the function is(are) : 6
+5130519044\L03 : 3 of 3 test cases are not passed.

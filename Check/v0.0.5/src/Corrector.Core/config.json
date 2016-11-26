@@ -1,0 +1,15 @@
+{
+  "cell": "cell",
+  "tool": "tool",
+  "builder": {
+    "root": "E:\\Coding\\Projects\\Check\\v0.0.5\\src\\Corrector.Core\\builder\\compiler",
+    "compiler": {
+      "exec": "builder.exe",
+      "incs": [ "ucrt", "vc" ]
+    },
+    "linker": {
+      "exec": "linker.exe",
+      "libs": [ "ucrt", "um", "vc" ]
+    }
+  }
+}

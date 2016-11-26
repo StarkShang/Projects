@@ -1,0 +1,15 @@
+516020910184\L01 : All test cases are passed.
+516020910184\L02 : 	The input of the test case is(are) : 4*(8-2)
+516020910184\L02 : 	The output of the test case is(are) : 24
+516020910184\L02 : 	The output of the function is(are) : 4
+516020910184\L02 : 1 of 3 test case is not passed.
+516020910184\L03 : 	The input of the test case is(are) : 0 1 3 1 2 3 4 5
+516020910184\L03 : 	The output of the test case is(are) : 0 1 3 4 5
+516020910184\L03 : 	The output of the function is(are) : 1 2 3 4 5 
+516020910184\L03 : 	The input of the test case is(are) : 8 5 1 1 2 3 4 5
+516020910184\L03 : 	The output of the test case is(are) : 2 3 4 8 5
+516020910184\L03 : 	The output of the function is(are) : 1 2 3 4 5 
+516020910184\L03 : 	The input of the test case is(are) : 6 1 5
+516020910184\L03 : 	The output of the test case is(are) : 6
+516020910184\L03 : 	The output of the function is(are) : 1 
+516020910184\L03 : 3 of 3 test cases are not passed.

@@ -1,0 +1,7 @@
+516020910172\L01 : Run failed!
+516020910172\L02 : Compile failed -- Cannont find executable file!
+516020910172\L03 : 	The input of the test case is(are) : 6 1 5
+516020910172\L03 : 	The output of the test case is(are) : 6
+516020910172\L03 : 	The output of the function is(are) : 6 1 
+516020910172\L03 : 1 of 3 test case is not passed.
+516020910172\L05 : Compile failed -- Cannont find executable file!
