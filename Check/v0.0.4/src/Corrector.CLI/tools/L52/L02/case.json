@@ -1,0 +1,14 @@
+[
+	{
+		"InputData" : "1+2",
+		"OutputData" : "3"
+	},
+	{
+		"InputData" : "4*(8-2)",
+		"OutputData" : "24"
+	},
+	{
+		"InputData" : "(9/1)*8",
+		"OutputData" : "72"
+	}
+]
