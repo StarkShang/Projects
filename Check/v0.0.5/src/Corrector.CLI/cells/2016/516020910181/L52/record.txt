@@ -1,8 +1,0 @@
-516020910181\L01 : 	The input of the test case is(are) : 999999999999999999999999999999999999999999999999999999999999999999999 1
-516020910181\L01 : 	The output of the test case is(are) : 1000000000000000000000000000000000000000000000000000000000000000000000
-516020910181\L01 : 	The output of the function is(are) : 10									�
-516020910181\L01 : 1 of 3 test case is not passed.
-516020910181\L03 : 	The input of the test case is(are) : 6 1 5
-516020910181\L03 : 	The output of the test case is(are) : 6
-516020910181\L03 : 	The output of the function is(are) : 6 1 
-516020910181\L03 : 1 of 3 test case is not passed.

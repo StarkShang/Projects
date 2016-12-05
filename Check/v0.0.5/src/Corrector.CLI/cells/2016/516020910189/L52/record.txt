@@ -1,3 +1,0 @@
-516020910189\L01 : All test cases are passed.
-516020910189\L02 : All test cases are passed.
-516020910189\L03 : Run time out!

@@ -1,3 +1,0 @@
-516020910174\L01 : Compile failed -- Cannont find executable file!
-516020910174\L02 : Compile failed -- Cannont find executable file!
-516020910174\L03 : Compile failed -- Cannont find executable file!

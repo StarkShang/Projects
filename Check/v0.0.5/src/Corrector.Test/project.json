@@ -1,22 +1,26 @@
 {
   "version": "1.0.0-*",
-  "buildOptions": {
-    "emitEntryPoint": true
-  },
+  "testRunner": "mstest",
 
   "dependencies": {
     "Corrector.Core": "1.0.0-*",
-    "Microsoft.NETCore.App": "1.1.0",
+    "MSTest.TestAdapter": "1.1.6-preview",
     "MSTest.TestFramework": "1.0.7-preview"
   },
 
   "frameworks": {
     "netcoreapp1.0": {
-      "imports": "dnxcore50"
+      "imports": "dnxcore50",
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.1.0",
+          "type": "platform"
+        }
+      }
     }
   },
 
   "runtimes": {
-    "win-x64": {}
+    "win10-x64": {}
   }
 }

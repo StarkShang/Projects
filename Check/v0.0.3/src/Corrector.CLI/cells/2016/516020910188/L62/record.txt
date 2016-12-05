@@ -1,0 +1,6 @@
+516020910188\L01 : 	The input of the test case is(are) : -1 1
+516020910188\L01 : 	The output of the test case is(are) : 0 -2
+516020910188\L01 : 	The output of the function is(are) : 0 -1
+516020910188\L01 : 1 of 2 test case is not passed.
+516020910188\L02 : All test cases are passed.
+516020910188\L04 : All test cases are passed.

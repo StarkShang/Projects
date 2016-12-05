@@ -1,0 +1,9 @@
+5140729048\L01 : 	The input of the test case is(are) : 0 1
+5140729048\L01 : 	The output of the test case is(are) : 0 0
+5140729048\L01 : 	The output of the function is(are) : 6.28 0
+5140729048\L01 : 	The input of the test case is(are) : 1 1
+5140729048\L01 : 	The output of the test case is(are) : 6.2831852 3.1415926
+5140729048\L01 : 	The output of the function is(are) : 12.56 3.14
+5140729048\L01 : 2 of 4 test cases are not passed.
+5140729048\L02 : All test cases are passed.
+5140729048\L03 : Compile failed -- Cannont find executable file!

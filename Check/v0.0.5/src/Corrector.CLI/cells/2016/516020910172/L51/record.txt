@@ -1,6 +1,0 @@
-516020910172\L01 : All test cases are passed.
-516020910172\L02 : All test cases are passed.
-516020910172\L03 : 	The input of the test case is(are) : 
-516020910172\L03 : 	The output of the test case is(are) : 0
-516020910172\L03 : 	The output of the function is(are) : 1
-516020910172\L03 : 1 of 3 test case is not passed.

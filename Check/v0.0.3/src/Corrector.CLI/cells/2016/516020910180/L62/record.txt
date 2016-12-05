@@ -1,0 +1,6 @@
+516020910180\L01 : All test cases are passed.
+516020910180\L02 : 	The input of the test case is(are) : 
+516020910180\L02 : 	The output of the test case is(are) : 
+516020910180\L02 : 	The output of the function is(are) : a
+516020910180\L02 : 1 of 3 test case is not passed.
+516020910180\L04 : Compile failed -- Cannont find executable file!

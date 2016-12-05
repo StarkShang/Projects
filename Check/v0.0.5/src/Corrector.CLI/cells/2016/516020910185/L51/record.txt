@@ -1,3 +1,0 @@
-516020910185\L01 : All test cases are passed.
-516020910185\L02 : Compile failed -- Cannont find executable file!
-516020910185\L03 : Compile failed -- Cannont find executable file!

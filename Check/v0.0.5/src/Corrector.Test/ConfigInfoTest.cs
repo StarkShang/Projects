@@ -17,12 +17,12 @@ namespace Corrector.Test
                             'tool': 'tool',
                             'compiler': 'builder.exe',
                             'linker': 'link.exe' }";
-            ConfigInfo.GetRootMaps(json);
+            Loader.Init(json);
 
-            Assert.AreEqual(ConfigInfo.CellPath, "cell");
-            Assert.AreEqual(ConfigInfo.ToolPath, "tool");
-            Assert.AreEqual(ConfigInfo.CompilerPath, "builder.exe");
-            Assert.AreEqual(ConfigInfo.LinkerPath, "link.exe");
+            Assert.AreEqual(Container.ContainerRoot.Name, "cell");
+            Assert.AreEqual(Builder.CompilerExec.Name, "tool");
+            Assert.AreEqual(Builder.LinkerExec.Name, "builder.exe");
+            Assert.AreEqual(Tester.TestRoot.Name, "link.exe");
         }
     }
 }

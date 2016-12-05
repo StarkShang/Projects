@@ -1,7 +1,0 @@
-516020910178\L01 : 	The input of the test case is(are) : 0 0
-516020910178\L01 : 	The output of the test case is(are) : 0
-516020910178\L01 : 	The output of the function is(are) : 00
-516020910178\L01 : 	The input of the test case is(are) : 1 2
-516020910178\L01 : 	The output of the test case is(are) : 3
-516020910178\L01 : 	The output of the function is(are) : 03
-516020910178\L01 : Run failed!

@@ -1,0 +1,18 @@
+[
+	{
+		"InputData" : "0 0",
+		"OutputData" : "0 0"
+	},
+	{
+		"InputData" : "1 0",
+		"OutputData" : "0 0"
+	},
+	{
+		"InputData" : "0 1",
+		"OutputData" : "0 0"
+	},
+	{
+		"InputData" : "1 1",
+		"OutputData" : "6.2831852 3.1415926"
+	}
+]

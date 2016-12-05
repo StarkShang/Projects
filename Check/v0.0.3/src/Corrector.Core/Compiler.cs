@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -27,7 +28,16 @@ namespace Corrector.Core
             var testPath = Path.Combine(toolPath, workDirectory.Parent.Name, Regex.Match(workDirectory.Name, @"L\d{2}").Value);
             File.Copy(Path.Combine(toolPath, @"main.cpp"), Path.Combine(workDirectory.FullName, @"main.cpp"), true);
             File.Copy(Path.Combine(toolPath, @"builder.bat"), Path.Combine(workDirectory.FullName, @"builder.bat"), true);
-            File.Copy(Path.Combine(toolPath, @"project.vcxproj"), Path.Combine(workDirectory.FullName, @"project.vcxproj"), true);
+
+            // Get cpp files
+            var cppFiles = from file in workDirectory.GetFiles()
+                           where file.Extension == ".cpp"
+                           select file.Name;
+            string ProjectInfo = File.ReadAllText(Path.Combine(toolPath, @"project.vcxproj"));
+            File.WriteAllText(Path.Combine(workDirectory.FullName, @"project.vcxproj"),
+                              ProjectInfo.Replace(@"main.cpp", string.Join(";", cppFiles)));
+
+            // File.Copy(Path.Combine(toolPath, @"project.vcxproj"), Path.Combine(workDirectory.FullName, @"project.vcxproj"), true);
             File.Copy(Path.Combine(testPath, @"test.hpp"), Path.Combine(workDirectory.FullName, @"test.hpp"), true);
             var projFile = new FileInfo($"{workDirectory.FullName}\\project.vcxproj");
             if (!projFile.Exists) new CompileResult() {

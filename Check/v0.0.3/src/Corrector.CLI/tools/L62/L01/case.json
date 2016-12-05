@@ -1,0 +1,10 @@
+[
+	{
+		"InputData" : "0 0",
+		"OutputData" : "0 0"
+	},
+	{
+		"InputData" : "-1 1",
+		"OutputData" : "0 -2"
+	}
+]
