@@ -1,6 +1,4 @@
 #include "Summator.h"
 
-void Summator::Add(float num1, float num2)//add函数实现加法并保存在result
-{
-	result = num1 + num2;
-}
+void Summator::Add(float num1,float num2) //类外定义相加函数
+{result=num1+num2;}

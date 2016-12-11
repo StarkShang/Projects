@@ -4,8 +4,7 @@
 
 #pragma once
 #include "atltypes.h"
-#include "Ball.h"
-#include "Box.h"
+
 
 // CMazeDlg 对话框
 class CMazeDlg : public CDialogEx
@@ -13,13 +12,12 @@ class CMazeDlg : public CDialogEx
 // 构造
 public:
 	CMazeDlg(CWnd* pParent = NULL);	// 标准构造函数
-
 // 对话框数据
 	enum { IDD = IDD_MAZE_DIALOG };
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
-
+	BOOL PreTranslateMessage(MSG* pMsg);
 
 // 实现
 protected:
@@ -49,5 +47,4 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
-	BOOL PreTranslateMessage(MSG* pMsg);
 };

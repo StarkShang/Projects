@@ -1,7 +1,7 @@
 516020910190\L01 : All test cases are passed.
 516020910190\L02 : 	The input of the test case is(are) : test
 516020910190\L02 : 	The output of the test case is(are) : test
-516020910190\L02 : 	The output of the function is(are) : P7ȃ
+516020910190\L02 : 	The output of the function is(are) : P��W
 516020910190\L02 : 	The input of the test case is(are) : a
 516020910190\L02 : 	The output of the test case is(are) : a
 516020910190\L02 : 	The output of the function is(are) : P

@@ -1,4 +1,3 @@
-
 // MazeDlg.cpp : 实现文件
 //
 
@@ -6,8 +5,6 @@
 #include "Maze.h"
 #include "MazeDlg.h"
 #include "afxdialogex.h"
-#include "Ball.h"
-#include "Box.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -114,11 +111,14 @@ BOOL CMazeDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	// 给成员变量赋初值
-	CWnd *pCanvasWnd = GetDlgItem(IDC_CANVAS);
-	canvasDC = pCanvasWnd->GetDC();
-	pCanvasWnd->Detach();
-	m_scaleOfBox = 10;
+    // OnInitDialog中
+    // 给成员变量赋初值
+
+    CWnd *pCanvasWnd=GetDlgItem(IDC_CANVAS);
+    canvasDC=pCanvasWnd->GetDC();
+    pCanvasWnd->Detach();
+	m_scaleOfBox=10;
+	return TRUE; //除非将焦点设置到控件，否则返回TRUE
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -160,41 +160,39 @@ void CMazeDlg::OnPaint()
 	}
 	else
 	{
-		//获取Canvas在对话框中的位置
-		CWnd *pCanvasWnd = GetDlgItem(IDC_CANVAS);
-		CRect rect;
-		pCanvasWnd->GetWindowRect(&rect);
-		ScreenToClient(rect);
-		m_ShiftPoint.x = rect.left;
-		m_ShiftPoint.y = rect.top;
-		//初始化小球
-		ball = new Ball();
-		ball->m_rowIndex = 0;
-		ball->m_colIndex = 0;
-		//获取绘图区域并计算方格个数
-		pCanvasWnd->GetClientRect(&rect);
-		m_colNumOfBoxes = rect.Width() / m_scaleOfBox - 1;
-		m_rowNumOfBoxes = rect.Height() / m_scaleOfBox - 1;
-		//初始化方格
-		boxes = new Box*[m_rowNumOfBoxes];
-		for(int i = 0; i < m_rowNumOfBoxes; i++)
-	    {
-			boxes[i] = new Box[m_colNumOfBoxes];
-			for(int j = 0; j < m_colNumOfBoxes; j++)
-			{
-				boxes[i][j].top = i*m_scaleOfBox + 1;
-				boxes[i][j].bottom = (i+1)*m_scaleOfBox + 2;
-				boxes[i][j].left = j*m_scaleOfBox + 1;
-				boxes[i][j].right = (j+1)*m_scaleOfBox + 2;
-		    }
-	    }
-		//标记起始点和终止点
-		boxes[0][0].m_isEnd = true;
-		boxes[m_rowNumOfBoxes - 1][m_colNumOfBoxes - 1].m_isEnd = true;
-
-		InitCanvas();
-
-		CDialogEx::OnPaint();
+		// 获取Canvas在对话框中的位置
+	CWnd *pCanvasWnd=GetDlgItem(IDC_CANVAS);
+	CRect rect;
+	pCanvasWnd->GetWindowRect(&rect);
+	ScreenToClient(rect);
+	m_ShiftPoint.x=rect.left;
+	m_ShiftPoint.y=rect.top;
+	//初始化小球
+	ball=new Ball();
+	ball->m_rowIndex=0;
+	ball->m_colIndex=0;
+	//获取绘图区域并计算方格个数
+	pCanvasWnd->GetClientRect(&rect);
+	m_colNumOfBoxes=rect.Width()/m_scaleOfBox-1;
+	m_rowNumOfBoxes=rect.Height()/m_scaleOfBox-1;
+	//初始化方格
+	boxes=new Box*[m_rowNumOfBoxes];
+	for(int i=0;i<m_rowNumOfBoxes;i++){
+		boxes[i]=new Box[m_colNumOfBoxes];
+		for(int j=0;j<m_colNumOfBoxes;j++){
+			boxes[i][j].top=i*m_scaleOfBox+1;
+			boxes[i][j].bottom=(i+1)*m_scaleOfBox+2;
+			boxes[i][j].left=j*m_scaleOfBox+1;
+			boxes[i][j].right=(j+1)*m_scaleOfBox+2;
+		}
+	}
+	//标记起始点和终止点
+	boxes[0][0].m_isEnd=true;
+	boxes[m_rowNumOfBoxes-1][m_colNumOfBoxes-1].m_isEnd=true;
+	//调用InitCanvas函数初始化游戏
+	InitCanvas();
+	
+	CDialogEx::OnPaint();
 	}
 }
 
@@ -210,86 +208,93 @@ HCURSOR CMazeDlg::OnQueryDragIcon()
 void CMazeDlg::InitCanvas(void)
 {
 	//设置并更换画刷
-	CBrush brush(RGB(255, 255, 255));
+	CBrush brush(RGB(255,255,255));
 	auto oldBrush = canvasDC->SelectObject(&brush);
 	oldBrush->DeleteObject();
 	//重新设置启动游戏开关
-	m_StartGame = false;
+	m_StartGame=false;
 	//重新绘制游戏界面
-	for(int i = 0; i < m_rowNumOfBoxes; i++)
-	{
-		for(int j = 0; j < m_colNumOfBoxes; j++)
-		{
-			boxes[i][j].m_isSelected = false;
+	for(int i=0;i<m_rowNumOfBoxes;i++){
+		for(int j=0;j<m_colNumOfBoxes;j++){
+			boxes[i][j].m_isSelected=false;
 			canvasDC->Rectangle(boxes[i][j]);
 		}
 	}
 	//标记起始位置和终止位置
 	CBrush greenBrush(RGB(0,255,0));
 	canvasDC->FillRect(boxes[0][0].GetContent(),&greenBrush);
-	canvasDC->FillRect(boxes[m_rowNumOfBoxes - 1][m_colNumOfBoxes - 1].GetContent(), &greenBrush);
+	canvasDC->FillRect(
+		boxes[m_rowNumOfBoxes-1][m_colNumOfBoxes-1].GetContent(),
+		&greenBrush);
 }
 
+
+
+	
 
 void CMazeDlg::UpdateBox(int rowIndex, int colIndex)
 {
 	//创建红绿两种画刷
-	CBrush rBrush(RGB(255, 0, 0));
-	CBrush gBrush(RGB(0, 255, 0));
+	CBrush rBrush(RGB(255,0,0));
+	CBrush gBrush(RGB(0,255,0));
 	//判断方格是否有效
-	//若有效则设置方格状态为选中并将其填充相应的颜色
-	if(rowIndex >= 0 && rowIndex < m_rowNumOfBoxes && colIndex >= 0 && colIndex < m_colNumOfBoxes)
-	{
-		boxes[rowIndex][colIndex].m_isSelected = true;
-		if(boxes[rowIndex][colIndex].m_isEnd)
-			canvasDC->FillRect(boxes[rowIndex][colIndex].GetContent(), &gBrush);
-		else
-			canvasDC->FillRect(boxes[rowIndex][colIndex].GetContent(), &rBrush);
+	//若有效，则设置方格状态为选中并将其填充相应的颜色
+	if(rowIndex>=0 && rowIndex<m_rowNumOfBoxes &&
+		colIndex>=0 && colIndex<m_colNumOfBoxes) {
+			boxes[rowIndex][colIndex].m_isSelected=true;
+			if(boxes[rowIndex][colIndex].m_isEnd)
+				canvasDC->FillRect(boxes[rowIndex][colIndex].GetContent(),&gBrush);
+			else
+				canvasDC->FillRect(boxes[rowIndex][colIndex].GetContent(),&rBrush);
 	}
 }
 
 
-
 void CMazeDlg::UpdateBall(int rowMove, int colMove)
-{
-	if(m_StartGame)
-	{
+{if(m_StartGame){
 		//更新小球位置
-		int rowIndex = ball->m_rowIndex + rowMove;
-		int colIndex = ball->m_colIndex + colMove;
+		int rowIndex=ball->m_rowIndex+rowMove;
+		int colIndex=ball->m_colIndex+colMove;
 		//判断新位置是否有效
-		if(rowIndex >= 0 && rowIndex < m_rowNumOfBoxes && colIndex >= 0 && colIndex < m_colNumOfBoxes)
-		{
-			//创建并更新画刷
-			CBrush blackBrush(RGB(0,0,0));
-			auto oldBrush = canvasDC->SelectObject(&blackBrush);
-			oldBrush->DeleteObject();
-			//调用UpdateBox函数更新方格状态
-			UpdateBox(ball->m_rowIndex, ball->m_colIndex);
-			//更新小球状态
-			ball->m_rowIndex = rowIndex;
-			ball->m_colIndex = colIndex;
-			canvasDC->Ellipse(boxes[ball->m_rowIndex][ball->m_colIndex]);
-
-			int choice = -1;
-			//达到终点，弹出会话框
-			if(rowIndex == m_rowNumOfBoxes - 1 && colIndex == m_colNumOfBoxes - 1)
-			{
-				choice = MessageBox(TEXT("成功到达目的地，游戏结束！\r\n是否重新开始？"), TEXT("恭喜你"), MB_OKCANCEL);
-			}
-			else if(!boxes[rowIndex][colIndex].m_isSelected)
-			{
-				choice = MessageBox(TEXT("失败，游戏结束！\r\n是否重新开始？"), TEXT("好遗憾"), MB_OKCANCEL);
-			}
-			//根据对话框的选择，重新启动游戏或者退出
-			if(choice == IDOK)
-			{
-				InitCanvas();return;
-			}
-			else if(choice == IDCANCEL)
-				exit(-1);
+		if (rowIndex>=0 && rowIndex<m_rowNumOfBoxes &&
+			colIndex>=0 && colIndex<m_colNumOfBoxes){
+				//创建并更换画刷
+				CBrush blackBrush(RGB(0,0,0));
+				auto oldBrush=canvasDC->SelectObject(&blackBrush);
+				oldBrush->DeleteObject();
+				//调用UpdateBox函数更新方格状态
+				UpdateBox(ball->m_rowIndex,ball->m_colIndex);
+				//更新小球状态
+				ball->m_rowIndex=rowIndex;
+				ball->m_colIndex=colIndex;
+				canvasDC->Ellipse(boxes[ball->m_rowIndex][ball->m_colIndex]);
+				/****************************
+				 ** 判断游戏是否结束
+				 ** 若达到终点则成功
+				 ** 若超出绘制的路径则失败
+				 ****************************/
+				int choice = -1;
+				// 达到终点，弹出对话框
+				if (rowIndex ==m_rowNumOfBoxes-1 && colIndex == m_colNumOfBoxes-1){
+					choice = MessageBox(TEXT("成功到达目的地，游戏结束！\r\n是否重新开始？"),
+						TEXT("恭喜你"),MB_OKCANCEL);
+				}
+				// 游戏失败，弹出对话框
+				else if(!boxes[rowIndex][colIndex].m_isSelected)
+					choice=MessageBox(TEXT("失败，游戏结束！\r\n是否重新开始？"),
+					TEXT("好遗憾"),MB_OKCANCEL);
+				// 根据对话框的选择 重新启动游戏 或者 退出
+				if (choice==IDOK){
+					InitCanvas();return;
+				}
+				else if (choice==IDCANCEL)
+					exit(-1);
+				/*****************************
+				** 判断游戏是否结束
+				*****************************/
 		}
 	}
+
 }
 
 
@@ -297,17 +302,18 @@ void CMazeDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	// 打开开始绘制的开关
-	m_StartDraw = true;
+	m_StartDraw=true;
 
 	CDialogEx::OnLButtonDown(nFlags, point);
+
 }
 
 
 void CMazeDlg::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	m_StartDraw = false;
-
+	// 关闭开始绘制的开关
+	m_StartDraw=false;
 	CDialogEx::OnLButtonUp(nFlags, point);
 }
 
@@ -315,13 +321,12 @@ void CMazeDlg::OnLButtonUp(UINT nFlags, CPoint point)
 void CMazeDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if(m_StartDraw && !m_StartGame)
-	{
-		auto rowIndex = (point.y - m_ShiftPoint.y) / m_scaleOfBox;
-		auto colIndex = (point.x - m_ShiftPoint.x) / m_scaleOfBox;
+    // 计算当前鼠标所在的方格并更新方格
+	if (m_StartDraw && !m_StartGame) {
+		auto rowIndex = (point.y - m_ShiftPoint.y)/m_scaleOfBox;
+		auto colIndex = (point.x - m_ShiftPoint.x)/m_scaleOfBox;
 		UpdateBox(rowIndex,colIndex);
 	}
-
 	CDialogEx::OnMouseMove(nFlags, point);
 }
 
@@ -329,6 +334,7 @@ void CMazeDlg::OnMouseMove(UINT nFlags, CPoint point)
 void CMazeDlg::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	// 调用InitCanvas函数初始化游戏
 	InitCanvas();
 }
 
@@ -336,30 +342,27 @@ void CMazeDlg::OnBnClickedButton1()
 void CMazeDlg::OnBnClickedButton2()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	//设置并更新画刷
+	// 设置并更换画刷
 	CBrush brush(RGB(0,0,0));
-	auto oldBrush = canvasDC->SelectObject(&brush);
+	auto oldBrush=canvasDC->SelectObject(&brush);
 	oldBrush->DeleteObject();
-	//重置并绘制小球
-	ball->m_rowIndex = 0;
-	ball->m_colIndex = 0;
+	// 重置并绘制小球
+	ball->m_rowIndex=0;
+	ball->m_colIndex=0;
 	canvasDC->Ellipse(boxes[ball->m_rowIndex][ball->m_colIndex]);
-
+	// 启动游戏
 	m_StartGame = true;
 }
 
-
 BOOL CMazeDlg::PreTranslateMessage(MSG* pMsg)
 {
-	//截获并重写键盘逻辑
-	if(pMsg->message == WM_KEYDOWN)
-	{
-		switch(pMsg->wParam)
-		{
+	// 截获并重写键盘逻辑
+	if (pMsg->message == WM_KEYDOWN){
+		switch(pMsg->wParam){
 		case VK_UP: UpdateBall(-1,0);break;
-		case VK_DOWN: UpdateBall(1,0);break;
-		case VK_LEFT: UpdateBall(0,-1);break;
-		case VK_RIGHT: UpdateBall(0,1);break;
+		case VK_DOWN:UpdateBall(1,0);break;
+		case VK_LEFT:UpdateBall(0,-1);break;
+		case VK_RIGHT:UpdateBall(0,1);break;
 		}
 	}
 	return CDialog::PreTranslateMessage(pMsg);

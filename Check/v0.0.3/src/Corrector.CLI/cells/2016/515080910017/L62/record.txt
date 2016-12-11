@@ -1,0 +1,8 @@
+515080910017\L01 : All test cases are passed.
+515080910017\L02 : 	The input of the test case is(are) : test
+515080910017\L02 : 	The output of the test case is(are) : test
+515080910017\L02 : 	The output of the function is(are) : tBX �
+515080910017\L02 : 	The input of the test case is(are) : a
+515080910017\L02 : 	The output of the test case is(are) : a
+515080910017\L02 : 	The output of the function is(are) : aBX �
+515080910017\L02 : 2 of 3 test cases are not passed.

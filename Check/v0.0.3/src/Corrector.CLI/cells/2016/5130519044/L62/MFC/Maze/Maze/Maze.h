@@ -1,4 +1,5 @@
-
+#include "Ball.h"
+#include "Box.h"
 // Maze.h : PROJECT_NAME 应用程序的主头文件
 //
 

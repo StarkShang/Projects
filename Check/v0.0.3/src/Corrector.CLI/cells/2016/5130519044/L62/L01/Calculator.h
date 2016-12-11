@@ -1,9 +1,9 @@
 #pragma once
 
-class Calculator//计算的基类
+class Calculator
 {
-protected:
-	float result;
 public:
 	float GetResult();
+protected:
+	float result;
 };

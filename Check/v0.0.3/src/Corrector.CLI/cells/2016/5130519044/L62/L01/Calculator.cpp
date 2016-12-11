@@ -1,6 +1,4 @@
 #include "Calculator.h"
 
-float Calculator::GetResult()//返回result的值
-{
-	return result;
-}
+float Calculator::GetResult() //类外定义获取结果的函数
+{return result;}

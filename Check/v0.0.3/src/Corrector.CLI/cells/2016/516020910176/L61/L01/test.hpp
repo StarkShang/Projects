@@ -19,8 +19,8 @@ bool test(std::stringstream& iss, std::stringstream& oss, void(*errorDisplay)(st
 	double oVolu = c.Volume();
 
 	bool isPassed = true;
-	if (abs(area - oArea) > 1e-3) isPassed = false;
-	if (abs(volu - oVolu) > 1e-3) isPassed = false;
+	if (abs(area - oArea) > 1e-2) isPassed = false;
+	if (abs(volu - oVolu) > 1e-2) isPassed = false;
 
 	rss << oArea << " " << oVolu;
 	/***********************

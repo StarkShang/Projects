@@ -1,7 +1,10 @@
 #include "Calculator.h"
-class Summator:
-	public Calculator//加法子类
+
+class Summator:public Calculator
 {
 public:
-	void Add(float num1, float num2);
+	float num1;
+	float num2;
+	void Add(float num1,float num2);
+	Summator():num1(num1),num2(num2){}
 };

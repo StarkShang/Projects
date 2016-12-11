@@ -1,0 +1,11 @@
+516020910186\L01 : All test cases are passed.
+516020910186\L02 : 	The input of the test case is(are) : test
+516020910186\L02 : 	The output of the test case is(are) : test
+516020910186\L02 : 	The output of the function is(are) : testE
+516020910186\L02 : 	The input of the test case is(are) : a
+516020910186\L02 : 	The output of the test case is(are) : a
+516020910186\L02 : 	The output of the function is(are) : a
+516020910186\L02 : 	The input of the test case is(are) : 
+516020910186\L02 : 	The output of the test case is(are) : 
+516020910186\L02 : 	The output of the function is(are) : P
+516020910186\L02 : 3 of 3 test cases are not passed.

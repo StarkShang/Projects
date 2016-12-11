@@ -1,6 +1,9 @@
-515080910017\L01 : 	The input of the test case is(are) : 1 1
-515080910017\L01 : 	The output of the test case is(are) : 6.2831852 3.1415926
+515080910017\L01 : 	The input of the test case is(are) : 0 1
+515080910017\L01 : 	The output of the test case is(are) : 6.2831852 0
 515080910017\L01 : 	The output of the function is(are) : 0 0
-515080910017\L01 : 1 of 4 test case is not passed.
+515080910017\L01 : 	The input of the test case is(are) : 1 1
+515080910017\L01 : 	The output of the test case is(are) : 12.5663704 3.1415926
+515080910017\L01 : 	The output of the function is(are) : 0 0
+515080910017\L01 : 2 of 4 test cases are not passed.
 515080910017\L02 : All test cases are passed.
 515080910017\L03 : Compile failed -- Cannont find executable file!

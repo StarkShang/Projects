@@ -9,10 +9,10 @@
 	},
 	{
 		"InputData" : "0 1",
-		"OutputData" : "0 0"
+		"OutputData" : "6.2831852 0"
 	},
 	{
 		"InputData" : "1 1",
-		"OutputData" : "6.2831852 3.1415926"
+		"OutputData" : "12.5663704 3.1415926"
 	}
 ]

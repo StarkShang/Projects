@@ -16,6 +16,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Corrector.CLI", "src\Correc
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Corrector.Test", "src\Corrector.Test\Corrector.Test.xproj", "{B5548085-6A6F-42B4-9B11-14CF1A193A52}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Corrector.Web", "src\Corrector.Web\Corrector.Web.xproj", "{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,14 @@ Global
 		{B5548085-6A6F-42B4-9B11-14CF1A193A52}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5548085-6A6F-42B4-9B11-14CF1A193A52}.Release|x64.ActiveCfg = Release|Any CPU
 		{B5548085-6A6F-42B4-9B11-14CF1A193A52}.Release|x64.Build.0 = Release|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Debug|x64.Build.0 = Debug|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Release|x64.ActiveCfg = Release|Any CPU
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +66,6 @@ Global
 		{9B23C29D-9D54-4DDB-83C7-AE90DCA5EDCA} = {0D27D7F1-090B-4626-8AC8-9E69B26003BD}
 		{79018EA7-1E53-47CD-93DC-E985C49137C5} = {0D27D7F1-090B-4626-8AC8-9E69B26003BD}
 		{B5548085-6A6F-42B4-9B11-14CF1A193A52} = {0D27D7F1-090B-4626-8AC8-9E69B26003BD}
+		{1F96CD37-1551-4ACE-8CB8-C5AD97ECEDE2} = {0D27D7F1-090B-4626-8AC8-9E69B26003BD}
 	EndGlobalSection
 EndGlobal

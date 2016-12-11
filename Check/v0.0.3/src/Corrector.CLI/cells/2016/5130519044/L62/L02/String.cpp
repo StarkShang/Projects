@@ -1,40 +1,32 @@
 #include "String.h"
-
-
-int len(char* str)//利用len函数获取字符串的长度并返回
-{
-	for(int i=0; ;i++)
-	{
-		if (str[i]=='\0')
-			return i;
-	}
-}
+#include <string>
+using namespace std;
 
 String::String(char* str)
 {
-	capacity = count = len(str);//capacity和count都用于记录字符串长度
-	content = new char[capacity + 1];//多留出一份空间 为\0
-	for(int i=0; i<count ;i++)//初始化
-	{
-		content[i] = str[i];
-	}
+    count= strlen(str);               //赋值字符串的长度
+	capacity = count + 1;             //赋值所占内部空间
+	content = new char[capacity];     //为content变量new出相应的内存空间
+	int i;
+	for(i=0;i<count;i++) content[i]=str[i];
+
+
 }
-String::String(const String &str)
+String::String(const String& str)
 {
+	content = new char[str.capacity];  //new出相同的空间
+	capacity = str.capacity;
 	count = str.count;
-	capacity = count;
-	content = new char[capacity + 1];
-	for(int i=0; i<count ;i++)
-	{
-		content[i] = str.content[i];
-	}
+	int j;
+	for(j=count;j>=0;j--) content[j]=str.content[j];//拷贝前一个String对象的字符数组
+}
+
+char* String::GetCString()
+{
+	content[count]='\0';   //在字符数组最后加上'\0'结尾
+	return content;
 }
 String::~String()
 {
-	delete []content;
-}
-char* String::GetCString()
-{
-	content[capacity] = '\0';//此时将\0加上即可
-	return content;
+	delete content;
 }
