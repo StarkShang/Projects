@@ -3,7 +3,9 @@
 }
 
 @using System.IO;
-
+@using System.Collections.Generic;
+@model Dictionary<string, Dictionary<string, string>>
+@{ var dics = ViewBag.ViewModel as Dictionary<string, Dictionary<string, string>>; }
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -17,20 +19,18 @@
         <div class="col-sm-3">
             <div class="hidden-print hidden-xs affix" role="complementary">
                 <ul class="nav">
-                    @foreach (var directory in (ViewBag.Path as DirectoryInfo).GetDirectories())
-                    {
+                    @foreach (var projectName in dics.Keys) {
                         <li>
-                            <div ondblclick="alertMessage('@directory.Name')">
+                            <div>
                                 <label class="glyphicon glyphicon-folder-close"></label>
-                                <label class="hidden-sm">@directory.Name</label>
+                                <label class="hidden-sm">@projectName</label>
                             </div>
                             <ul class="nav">
-                                @foreach (var file in directory.GetFiles())
-                                {
-                                    <li>
+                                @foreach (var fileName in dics[projectName].Keys) {
+                                    <li ondblclick="getFileContent('@projectName','@fileName')">
                                         <div>
                                             <label class="glyphicon-file"></label>
-                                            <label class="hidden-sm">@file.Name</label>
+                                            <label class="hidden-sm">@fileName</label>
                                         </div>
                                     </li>
                                 }
@@ -47,9 +47,10 @@
 @section Script{
     <script src="~/lib/monaco-editor/min/vs/loader.js"></script>
     <script>
+        var editor;
         require.config({ paths: { 'vs': './lib/monaco-editor/min/vs' } });
         require(['vs/editor/editor.main'], function () {
-            var editor = monaco.editor.create(document.getElementById('CodeArea'), {
+            editor = monaco.editor.create(document.getElementById('CodeArea'), {
                 value: ['int main()', '{', '', '}'
                 ].join('\n'),
                 fontFamily: 'Source Code Pro',
@@ -60,8 +61,10 @@
         })
     </script>
     <script>
-        function alertMessage(name) {
-            alert(name);
+        var values = @Html.Raw(Json.Serialize(Model));
+        function getFileContent(projectName, fileName) {
+            //alert(values[projectName][fileName]);
+            editor.setValue(values[projectName][fileName]);
         }
 
     </script>
