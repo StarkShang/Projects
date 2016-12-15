@@ -17,25 +17,22 @@ namespace Corrector.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
+            app.UseSession();
+            app.UseMvc(routes => {
+                routes.MapRoute("default", "{controller=course}/{action=index}");
+                routes.MapRoute("train-route", "train", new { controller = "course", action = "Train" });
+                routes.MapRoute("login-route", "login", new { controller = "course", action = "login" });
             });
+
+            //app.Run();
         }
     }
 }

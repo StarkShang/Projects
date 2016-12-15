@@ -2,70 +2,75 @@
     Layout = "_Section";
 }
 
-@using System.IO;
-@using System.Collections.Generic;
-@model Dictionary<string, Dictionary<string, string>>
-@{ var dics = ViewBag.ViewModel as Dictionary<string, Dictionary<string, string>>; }
 <div class="container">
     <div class="row">
-        <div class="col-sm-9">
-            <div>
-                <p>第1题</p>
-                <p>URL(Uniform Resource Locator:统一资源定位符)是互联网上标准资源的地址，互联网上的每个文件都有一个唯一的URL。但是在进行网络通信时，对于在URL中本身有特定含义的特殊字符，为了避免引起歧义，需要使用转义字符进行替换。例如，用谷歌搜索引擎搜索“C#”时，因为“#”的16进制ASCII码为23，所以在URL中被转义为%23。</p>
-            </div>
-            <div id="CodeArea" class="embed-responsive embed-responsive-16by9" style="height:400px;border:1px solid grey"></div>
+        <div class="container text-center col-sm-6">
+            <h1 class="font-large font-while center-block">C++程序</h1>
+            <h1 class="font-middle font-while center-block">设计与实践</h1>
         </div>
-        <!-- File list -->
-        <div class="col-sm-3">
-            <div class="hidden-print hidden-xs affix" role="complementary">
-                <ul class="nav">
-                    @foreach (var projectName in dics.Keys) {
-                        <li>
-                            <div>
-                                <label class="glyphicon glyphicon-folder-close"></label>
-                                <label class="hidden-sm">@projectName</label>
-                            </div>
-                            <ul class="nav">
-                                @foreach (var fileName in dics[projectName].Keys) {
-                                    <li ondblclick="getFileContent('@projectName','@fileName')">
-                                        <div>
-                                            <label class="glyphicon-file"></label>
-                                            <label class="hidden-sm">@fileName</label>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </li>
-                    }
-                </ul>
+        <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
+            <form role="form" action="login" method="post">
+                <div class="from-group input-group input-group-lg margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input name="username" type="text" class="form-control" placeholder="user name">
+                </div>
+                <div class="from-group input-group input-group-lg margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input name="password" type="password" class="form-control" placeholder="password">
+                </div>
+                <div class="from-group input-group input-group-lg margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input name="usermail" type="email" class="form-control" placeholder="example@sjtu.edu.cn">
+                </div>
+                <div class="form-group" id="SubmitControl">
+                    <button class="btn btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12 font-small" type="submit">登陆</button>
+                </div>
+            </form>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="#" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left font-while font-small">忘记密码</a>
+                <a href="#" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right font-while font-small">没有账号？</a>
             </div>
         </div>
     </div>
 </div>
 
 
-@section Script{
-    <script src="~/lib/monaco-editor/min/vs/loader.js"></script>
-    <script>
-        var editor;
-        require.config({ paths: { 'vs': './lib/monaco-editor/min/vs' } });
-        require(['vs/editor/editor.main'], function () {
-            editor = monaco.editor.create(document.getElementById('CodeArea'), {
-                value: ['int main()', '{', '', '}'
-                ].join('\n'),
-                fontFamily: 'Source Code Pro',
-                tabCompletion: true,
-                theme: 'vs-dark',
-                language: 'cpp'
-            });
-        })
-    </script>
-    <script>
-        var values = @Html.Raw(Json.Serialize(Model));
-        function getFileContent(projectName, fileName) {
-            //alert(values[projectName][fileName]);
-            editor.setValue(values[projectName][fileName]);
-        }
+@section Style{
+<style type="text/css">
+#Body {
+    background-color: rgb(30, 136, 168);
+    margin-top: 20%;
+}
+.font-while{
+    color: whitesmoke;
+}
+.font-large{
+    font-family: 微软雅黑;
+    font-size: 5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
+}
+.font-middle{
+    font-family: 微软雅黑;
+    font-size: 3em;
+    margin-top: 0.1em;
+}
+.font-small{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+}
+.margin-bottom-sm{
+    margin-bottom: 10px;
+}
+#SubmitControl {
+    margin-top: 20px;
+}
+</style>
+}
 
-    </script>
+@section Script{
+<script src="~/lib/sjcl.js"></script>
+<script src="~/lib/preLoader.js"></script>
 }

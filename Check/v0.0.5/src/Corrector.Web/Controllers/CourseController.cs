@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using Corrector.Web.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,8 +12,24 @@ namespace Corrector.Web.Controllers
 {
     public class CourseController : Controller
     {
-        // GET: /<controller>/
+        //[HttpGet]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            if (model.UserName == "stark")
+            {
+                return RedirectToAction("train");
+            }
+            return View("LogFail");
+        }
+
+        // GET: /<controller>/
+        public IActionResult Train()
         {
             var cellRoot = new DirectoryInfo(@"E:\Coding\Projects\Check\Root\Container\2016\1140209287\第1次课后练习");
             var ViewModel = new Dictionary<string, Dictionary<string, string>>();
