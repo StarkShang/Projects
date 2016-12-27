@@ -16,6 +16,7 @@ namespace Corrector.Web
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://*:8001")
                 .Build();
 
             host.Run();

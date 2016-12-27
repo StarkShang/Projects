@@ -549,3 +549,4 @@ __pycache__/
 # tools/
 C++builder/
 Release/
+*.zip

@@ -17,6 +17,12 @@ namespace Corrector.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Register()
+        {
+            ViewBag.Title = "Register";
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
