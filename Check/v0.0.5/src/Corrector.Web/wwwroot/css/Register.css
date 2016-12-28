@@ -1,0 +1,130 @@
+﻿html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    height: 20%;
+    text-align: center;
+    vertical-align: bottom;
+    color: white;
+    font-family: Source Code Pro;
+    font-size: 3em;
+}
+
+.form-table {
+    display: table;
+    width: 70%;
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+
+.form-item {
+    display: table-cell;
+    color: white;
+    vertical-align: bottom;
+    text-align: center;
+    font-family: Source Code Pro;
+    font-size: 1.5em;
+    border-bottom-style: solid;
+    border-bottom-width: 0.1em;
+    border-bottom-color: white;
+}
+.form-icon {
+    width: 10%;
+    text-align: center;
+}
+.form-content {
+    width: 80%;
+    background: transparent;
+    border: transparent;
+    outline: none;
+}
+
+.form-btn {
+    display: table-cell;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background: transparent;
+    border: transparent;
+    outline: none;
+    font-family: Source Code Pro;
+    font-size: 1.5em;
+    margin-top: 10%;
+}
+
+/*桌面端、手机横屏*/
+@media only screen and (min-aspect-ratio: 6/5) and (min-width: 500px) {
+#SignUpBox {
+    display: table;
+    width: 50%;
+    height: 100%;
+    margin-left: 50%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    background: red;
+}
+.header {
+    display: table-row;
+    width: 100%;
+    height: 25%;
+}
+.spliter {
+    display: table-row;
+    height: 0;
+}
+.form-group {
+    display: table-row;
+    width: 100%;
+    height: 18%;
+}
+}
+/*小手机横屏*/
+@media only screen and (min-aspect-ratio: 6/5) and (max-width: 500px) {
+#SignUpBox {
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+}
+.header {
+    display: table-row;
+    width: 100%;
+    height: 30%;
+}
+.spliter {
+    display: table-row;
+    height: 1%;
+}
+.form-group {
+    display: table-row;
+    width: 100%;
+    height: 10%;
+}
+}
+/*手机竖屏*/
+@media only screen and (max-aspect-ratio: 6/5) {
+#SignUpBox {
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+}
+.header {
+    display: table-row;
+    width: 100%;
+    height: 25%;
+}
+.spliter {
+    display: table-row;
+    height: 5%;
+}
+.form-group {
+    display: table-row;
+    width: 100%;
+    height: 12%;
+}
+}

@@ -15,17 +15,17 @@ namespace Corrector.Web.Controllers
         //[HttpGet]
         public IActionResult Index()
         {
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Register()
-        {
-            ViewBag.Title = "Register";
-            return View();
+            return RedirectToAction("SignIn");
         }
 
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            ViewBag.Title = "SignIn";
+            return View();
+        }
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public IActionResult SignIn(SignInViewModel model)
         {
             if (model.UserName == "stark")
             {
@@ -33,6 +33,20 @@ namespace Corrector.Web.Controllers
             }
             return View("LogFail");
         }
+
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            ViewBag.Title = "SignUp";
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SignUp(SignUpViewModel model)
+        {
+            ViewBag.Title = "SignUp";
+            return View("SignIn");
+        }
+
 
         // GET: /<controller>/
         public IActionResult Train()

@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_Section";
+}
+
+<div id="SignUpBox">
+    <div class="title">Welcome</div>
+    <form role="form" class="form-table" action="SignUp" method="post">
+        <div class="form-item">
+            <span class="form-icon"><i class="fa fa-envelope-o fa-fw"></i></span>
+            <input name="usermail" class="form-content" type="text" placeholder="Email">
+        </div>
+        <div class="form-item">
+                <span class="form-icon"><i class="fa fa-user-o fa-fw"></i></span>
+                <input name="username" class="form-content" type="text" placeholder="User Name">
+        </div>
+        <div class="form-item">
+            <span class="form-icon"><i class="fa fa-key fa-fw"></i></span>
+            <input name="password" class="form-content" type="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <div class="form-item">
+                <span class="form-icon"><i class="fa fa-key fa-fw"></i></span>
+                <input class="form-content" type="password" placeholder="Confirm">
+            </div>
+        </div>
+        <button type="submit" class="form-btn">Sign Up</button>
+    </form>
+</div>
+
+@section Style{
+<link rel="stylesheet" href="~/css/Register.css" type="text/css">
+}
+
+@section Script{
+
+}
