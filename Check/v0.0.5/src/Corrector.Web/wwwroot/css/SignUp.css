@@ -1,0 +1,90 @@
+﻿html, body {
+    width: 100%;
+    height: 100%;
+}
+#title {
+    height: 20%;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Source Code Pro';
+    font-size: 10vh;
+    color: white;
+}
+
+.form-icon {
+    width: 10%;
+    text-align: center;
+}
+.form-content {
+    width: 80%;
+}
+.form-item {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Source Code Pro';
+    font-size: 2.5vh;
+    color: white;
+}
+.form-btn {
+    height: 15%;
+    margin-top: 10%;
+}
+/*桌面端、大手机横屏*/
+@media only screen and (min-aspect-ratio:6/5) and (min-width:500px) {
+#SignUpBox {
+    width: 50%;
+    height: 100%;
+    margin-left: 50%;
+    padding: 8% 0;
+}
+#form-table {
+    height: 80%;
+    text-align: center;
+    padding: 0 25%;
+}
+.form-row {
+    padding-top: 10%;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    border-bottom-width: 0.2em;
+}
+}
+/*小手机横屏*/
+@media only screen and (min-aspect-ratio:6/5) and (max-width:500px) {
+#SignUpBox {
+    width: 100%;
+    height: 100%;
+    padding: 8% 0;
+}
+#form-table {
+    height: 80%;
+    text-align: center;
+    padding: 0 30%;
+}
+.form-row {
+    padding-top: 2%;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    border-bottom-width: 0.1em;
+}
+}
+/*手机竖屏*/
+@media only screen and (max-aspect-ratio:6/5) {
+#SignUpBox {
+    width: 100%;
+    height: 100%;
+    padding: 15% 0;
+}
+#form-table {
+    height: 80%;
+    text-align: center;
+    padding: 6% 20%;
+}
+.form-row {
+    padding-top: 10%;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    border-bottom-width: 0.1em;
+}
+}

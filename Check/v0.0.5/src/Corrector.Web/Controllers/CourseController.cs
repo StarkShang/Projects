@@ -12,7 +12,7 @@ namespace Corrector.Web.Controllers
 {
     public class CourseController : Controller
     {
-        //[HttpGet]
+        [HttpGet]
         public IActionResult Index()
         {
             return RedirectToAction("SignIn");

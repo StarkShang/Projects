@@ -3,34 +3,67 @@
 }
 
 <div id="SignUpBox">
-    <div class="title">Welcome</div>
-    <form role="form" class="form-table" action="SignUp" method="post">
-        <div class="form-item">
-            <span class="form-icon"><i class="fa fa-envelope-o fa-fw"></i></span>
-            <input name="usermail" class="form-content" type="text" placeholder="Email">
+    <h1 id="title">Welcome</h1>
+    <form role="form" id="form-table" action="SignUp" method="post">
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-envelope-o fa-fw"></i></span>
+            <input name="usermail" class="form-item form-content" type="text" placeholder="Email"
+                   onblur="usermailValidate(this)">
         </div>
-        <div class="form-item">
-                <span class="form-icon"><i class="fa fa-user-o fa-fw"></i></span>
-                <input name="username" class="form-content" type="text" placeholder="User Name">
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-user-o fa-fw"></i></span>
+            <input name="username" class="form-item form-content" type="text" placeholder="User Name"
+                   onblur="usrnameValidate(this)">
         </div>
-        <div class="form-item">
-            <span class="form-icon"><i class="fa fa-key fa-fw"></i></span>
-            <input name="password" class="form-content" type="password" placeholder="Password">
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-key fa-fw"></i></span>
+            <input name="password" class="form-item form-content" type="password" placeholder="Password">
         </div>
-        <div class="form-group">
-            <div class="form-item">
-                <span class="form-icon"><i class="fa fa-key fa-fw"></i></span>
-                <input class="form-content" type="password" placeholder="Confirm">
-            </div>
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-key fa-fw"></i></span>
+            <input class="form-item form-content" type="password" placeholder="Confirm"
+                   onblur="isSame(this)">
         </div>
-        <button type="submit" class="form-btn">Sign Up</button>
+        <button type="submit" class="form-btn form-item">Sign Up</button>
     </form>
 </div>
 
+
+
 @section Style{
-<link rel="stylesheet" href="~/css/Register.css" type="text/css">
+<link rel="stylesheet" href="~/css/SignUp.css" type="text/css">
 }
 
 @section Script{
+<script>
+var canSubmit = false;
+function usermailValidate(e) {
+    if (e.value.match("/^(.+)@@(.+)$/") == null) {
+        canSubmit = false;
+        e.parentElement.style.cssText = "border-bottom-color:red;";
+    } else {
+        canSubmit = true;
+        e.parentElement.style.cssText = "border-bottom-color:green;";
+    }
+}
+function usrnameValidate(e) {
+    if (e.value.match("\b\w+_*\w*\b") == null) {
+        canSubmit = false;
+        e.parentElement.style.cssText = "border-bottom-color:red;";
+    } else {
+        canSubmit = true;
+        e.parentElement.style.cssText = "border-bottom-color:green;";
+    }
+}
+function isSame(e) {
+    var pwd1 = document.getElementsByName("password")[0].value;
+    var pwd2 = e.value;
+    if (pwd1 != pwd2) {
+        e.parentElement.style.cssText = "border-bottom-color:red;";
+    } else {
+        e.parentElement.style.cssText = "border-bottom-color:green;";
+    }
+}
 
+</script>
 }

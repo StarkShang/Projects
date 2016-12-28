@@ -2,72 +2,26 @@
     Layout = "_Section";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="container text-center col-sm-6">
-            <h1 class="font-large font-while center-block">C++程序</h1>
-            <h1 class="font-middle font-while center-block">设计与实践</h1>
+<div id="SignUpBox">
+    <h1 id="title">C++程序<br/><small>设计与实践</small></h1>
+    <form role="form" id="form-table" action="SignIn" method="post">
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-user-o fa-fw"></i></span>
+            <input name="username" class="form-item form-content" type="text" placeholder="User Name">
         </div>
-        <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
-            <form role="form" action="SignIn" method="post">
-                <div class="from-group input-group input-group-lg margin-bottom-sm">
-                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                    <input name="username" type="text" class="form-control" placeholder="user name">
-                </div>
-                <div class="from-group input-group input-group-lg margin-bottom-sm">
-                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-                    <input name="password" type="password" class="form-control" placeholder="password">
-                </div>
-                <div class="from-group input-group input-group-lg margin-bottom-sm">
-                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-                    <input name="usermail" type="email" class="form-control" placeholder="example@sjtu.edu.cn">
-                </div>
-                <div class="form-group" id="SubmitControl">
-                    <button class="btn btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12 font-small" type="submit">登陆</button>
-                </div>
-            </form>
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <a href="signup" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left font-while font-small">忘记密码</a>
-                <a href="signup" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right font-while font-small">没有账号？</a>
-            </div>
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-key fa-fw"></i></span>
+            <input name="password" class="form-item form-content" type="password" placeholder="Password">
         </div>
-    </div>
+        <button type="submit" class="form-btn">开始学习</button>
+        <a href="SignUp" class="little-btn" style="float:left" >忘记密码</a>
+        <a href="SignUp" class="little-btn" style="float:right">创建账号</a>
+    </form>
 </div>
 
 
 @section Style{
-<style type="text/css">
-#Body {
-    background-color: rgb(30, 136, 168);
-    margin-top: 20%;
-}
-.font-while{
-    color: whitesmoke;
-}
-.font-large{
-    font-family: 微软雅黑;
-    font-size: 5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.1em;
-}
-.font-middle{
-    font-family: 微软雅黑;
-    font-size: 3em;
-    margin-top: 0.1em;
-}
-.font-small{
-    font-family: 微软雅黑;
-    font-size: 1.2em;
-    margin-top: 0.5em;
-}
-.margin-bottom-sm{
-    margin-bottom: 10px;
-}
-#SubmitControl {
-    margin-top: 20px;
-}
-</style>
+<link rel="stylesheet" href="~/css/SignIn.css" type="text/css">
 }
 
 @section Script{
