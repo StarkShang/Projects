@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "_Section";
+}
+
+<div id="SignUpBox">
+    <h1 id="title">C++程序<br/><small>设计与实践</small></h1>
+    <form role="form" id="form-table" action="SignIn" method="post">
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-user-o fa-fw"></i></span>
+            <input name="userid" class="form-item form-content" type="text" placeholder="User Id">
+        </div>
+        <div class="form-row">
+            <span class="form-icon form-item"><i class="fa fa-key fa-fw"></i></span>
+            <input name="password" class="form-item form-content" type="password" placeholder="Password">
+        </div>
+        <button type="submit" class="form-btn">开始学习</button>
+        <a href="Course/SignUp" class="little-btn" style="float:left" >忘记密码</a>
+        <a href="SignUp" class="little-btn" style="float:right">创建账号</a>
+    </form>
+</div>
+
+
+@section Style{
+<link rel="stylesheet" href="~/css/SignIn.css" type="text/css">
+}
+
+@section Script{
+<script src="~/lib/sjcl.js"></script>
+<script src="~/lib/preLoader.js"></script>
+}
