@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container">
+  <!--Created Projects-->
+  <view class="list-item" wx:for="{{projects}}" wx:for-item="project" bindtap="ProjectDetail">
+    <view class="title">{{project.name}}</view>
+    <view class="info">{{project.steps.length}}步骤</view>
+  </view>
+  <!--New Project-->
+  <view class="list-item add-item" bindtap="CreateProject">+添加步骤</view>
+</view>

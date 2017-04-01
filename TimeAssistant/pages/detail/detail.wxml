@@ -1,0 +1,4 @@
+<!--creator.wxml-->
+<view>
+    <view>{{time1}}</view>
+</view>

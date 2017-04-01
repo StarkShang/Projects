@@ -1,0 +1,54 @@
+/**creator.wxss**/
+.list-item {
+  height: 2.5rem;
+  width: 100%;
+  border-bottom: 5px solid lightgrey;
+  font-family: 微软雅黑;
+}
+
+.duration {
+  float: left;
+  width: 30%;
+  height: 100%;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.description {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 0 5%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.splitter {
+  float: left;
+  width: 1%;
+  height: 80%;
+  margin: auto auto;
+  background-color: black;
+}
+
+.new-step {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button {
+  width: 80%;
+  background-color: red;
+  margin: 20px auto;
+  font-family: '微软雅黑';
+  font-weight: bold;
+  color: white;
+}
+
+.test {
+  width: 80px;
+  height: 80px;
+  background-color: pink;
+}
