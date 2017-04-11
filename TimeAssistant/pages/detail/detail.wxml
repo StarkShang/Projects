@@ -1,4 +1,23 @@
 <!--creator.wxml-->
-<view>
-    <view>{{time1}}</view>
+<view id="stopwatch">
+  <view wx:if="{{status == 'start'}}" bindtap="StartCount" class="stopwatch-button" id="stopwatch-start">{{status}}</view>
+  <view wx:if="{{status == 'stop'}}" bindtap="StopCount" class="stopwatch-button" id="stopwatch-stop">{{status}}</view>
+  <view id="stopwatch-time">{{time_text}}</view>
 </view>
+
+<!--Pre Now Post-->
+<view id="stepInfo">
+  <view wx:for="{{worksteps}}" wx:for-item="step" wx:for-index="index" class="list-item">
+    <image src="../../res/imgs/completing.png" mode="widthFix" class="status-icon" wx:if="{{index == 0}}"></image>
+    <image src="../../res/imgs/timing.png" mode="widthFix" class="status-icon" wx:if="{{index == 1}}"></image>
+    <image src="../../res/imgs/waiting.png" mode="widthFix" class="status-icon" wx:if="{{index == 2}}"></image>
+    
+    <view class="step-detail">
+      <view class="step-index">{{step.index}}</view>
+      <view class="step-description">{{step.description}}</view>
+    </view>
+  </view>
+</view>
+
+<!--Setting Button-->
+<image id="btn-setting" src="../../res/imgs/setting.png" mode="widthFix" bindtap="Setting"></image>

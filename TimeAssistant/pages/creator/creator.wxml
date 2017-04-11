@@ -1,21 +1,29 @@
-<!--creator.wxml-->
-<view>
-  <!--Created Step-->
+<!--Created Step-->
+<view class="row-list">
   <view class="list-item" wx:for="{{steps}}" wx:for-index="key" wx:for-item="step" bindtap="StepDetail" id="{{key}}">
     <view class="duration">{{step.duration}}</view>
-    <view class="splitter"></view>
-    <view class="description">{{step.discreption}}</view>
+    <view class="description">{{step.description}}</view>
+    <view class="container-del">
+      <image id="del-{{key}}" class="btn-del" src="../../res/imgs/del.png" mode="widthFix" catchtap="DelItem"></image>
+    </view>
   </view>
-  <!--New Step-->
-  <view class="list-item new-step" bindtap="StepDetail" id="{{steps.length}}">+添加步骤</view>
-  <!--Submit Buttom-->
-  <button class="button" bindtap="Submit">添 加</button>
-  <!--Modal Dialog-->
-  <modal hidden="{{modalHidden}}" title="{{modalTitle}}" confirm-text="{{modalConfirmText}}" cancel-text="取消" bindconfirm="ConfirmAction" bindcancel="CancelAction" no-cancel="{{modalNoCancel}}">
-    <picker mode="time" value="{{duration}}" wx:if="{{!isSubmit}}" bindchange="BindTimeChange">
-      <view>{{duration}}</view>
-    </picker>
-    <textarea auto-height placeholder="{{modalTextareaPlaceholder}}" value="{{discreption}}" bindinput="BindTextChange"/>
-  </modal>
 
+  <!--New Step-->
+  <view class="list-item add-item" bindtap="StepDetail" id="{{steps.length}}">添加步骤</view>
+  <!--Submit Button-->
+  <view class="list-item confirm-item" bindtap="SubmitAction">确 定</view>
 </view>
+
+
+
+
+<!--Modal Dialog-->
+<modal hidden="{{modalOpts.hidden}}" title="{{modalOpts.title}}" confirm-text="{{modalOpts.confirmText}}" cancel-text="取消" bindconfirm="ConfirmAction" bindcancel="CancelAction" no-cancel="{{modalOpts.noCancel}}">
+  <view id="container">
+    <picker mode="time" value="{{step.duration}}" wx:if="{{!modalOpts.submit}}" bindchange="BindTimeChange">
+      <view id="stepTime">{{step.duration}}</view>
+    </picker>
+    <textarea id="stepDescription" placeholder="{{modalOpts.textareaPlaceholder}}" value="{{step.description}}" bindconfirm="BindTextChange"/>
+  </view>
+  
+</modal>

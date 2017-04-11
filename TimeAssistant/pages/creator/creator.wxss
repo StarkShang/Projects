@@ -1,54 +1,67 @@
 /**creator.wxss**/
+.row-list {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0;
+  padding: 0;
+}
+
 .list-item {
-  height: 2.5rem;
+  display: flex;
+  align-items: center;
   width: 100%;
-  border-bottom: 5px solid lightgrey;
+  margin: 25rpx 0 0;
+  background-color: white;
   font-family: 微软雅黑;
+  font-size: 1.2rem;
 }
-
 .duration {
-  float: left;
-  width: 30%;
-  height: 100%;
+  width: 20%;
+  padding: 25rpx;
   text-align: center;
-  margin: 0 auto;
-  font-size: 1.5rem;
+  border-right: black 5px solid;
 }
-
 .description {
-  float: left;
-  width: 50%;
-  height: 100%;
-  padding: 0 5%;
-  overflow: hidden;
+  width: 70%;
+  padding: 25rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.splitter {
-  float: left;
-  width: 1%;
-  height: 80%;
-  margin: auto auto;
-  background-color: black;
+.container-del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  color: white;
+}
+.btn-del {
+  width: 40rpx;
 }
 
-.new-step {
-  text-align: center;
-  margin: 0 auto;
+.add-item {
+  padding: 25rpx;
+  justify-content: center;
 }
-
-.button {
-  width: 80%;
+.confirm-item {
+  padding: 25rpx;
+  justify-content: center;
   background-color: red;
-  margin: 20px auto;
-  font-family: '微软雅黑';
-  font-weight: bold;
   color: white;
 }
 
-.test {
-  width: 80px;
-  height: 80px;
-  background-color: pink;
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#stepTime {
+  width: 100%;
+  font-size: 60rpx;
+}
+#stepDescription {
+  width: 100%;
+  min-height: 60rpx;
+  font-size: 30rpx;
 }

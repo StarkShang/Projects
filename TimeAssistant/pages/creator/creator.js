@@ -1,80 +1,156 @@
 var app = getApp();
+var project,projectIndex,selectedIndex,mode;
+function defineText(str) {
+  return str==""?"未定义":str;
+}
 
 Page({
   data: {
-    steps: [{
-      duration:'00:05',
-      discreption:'60%浓度的酒精清洗'
-    },{
-      duration:'00:05',
-      discreption:'70%浓度的酒精清洗'
-    }],
-
-    isSubmit: false,
-    selectedIndex: -1,
-    modalHidden: true,
-    modalNoCancel: false,
-    modalTitle: '添加步骤',
-    modalTextareaPlaceholder: '添加该步骤的描述',
-    modalConfirmText: '添加',
-    duration: '00:00',
-    discreption: '',
-  },
-  //事件处理函数
-  StepDetail: function(e) {
-    this.data.selectedIndex = e.currentTarget.id;
-    this.setData({isSubmit: false});
-    if (this.data.selectedIndex < this.data.steps.length) { // 对于已经添加的步骤
-      var step = this.data.steps[e.currentTarget.id];
-      this.setData({duration: step.duration, discreption: step.discreption});
-      this.setData({modalNoCancel: true, modalTitle: '修改步骤', modalTextareaPlaceholder: '添加该步骤的描述', modalConfirmText: '修改'});
-    } else { // 新建步骤
-      this.setData({duration: '00:00', discreption: ''});
-      this.setData({modalNoCancel: false, modalTitle: '添加步骤', modalTextareaPlaceholder: '添加该步骤的描述', modalConfirmText: '添加'});
+    steps: [],
+    modalOpts: {
+      title: '',
+      textareaPlaceholder: '',
+      confirmText: '',
+      noCancel: false,
+      hidden: true,
+      submit: false
+    },
+    step: {
+      duration: '00:00',
+      description: ''
     }
-    this.setData({modalHidden: false});
+  },
+  /** 界面绑定事件处理函数 **/
+  StepDetail: function(e) {
+    selectedIndex = e.currentTarget.id;
+    selectedIndex<this.data.steps.length?this.modifyStep(selectedIndex):this.createStep();
+  },
+  // 添加按钮事件处理函数
+  SubmitAction: function() {
+    mode=="create" ? this.createProject():this.modifyProject();
+  },
+  DelItem: function(e) {
+    var index = e.currentTarget.id.split("-")[1];
+    var tempSteps = this.data.steps;
+    tempSteps.splice(index,1);
+    this.setData({
+      steps: tempSteps
+    });
   },
 
-  // 模态框事件处理函数
+  /** 模态框事件处理函数 **/
+  // 步骤时间 
   BindTimeChange: function(e) {
-    this.setData({duration: e.detail.value});
+    var tempStep = this.data.step;
+    tempStep.duration = e.detail.value;
+    this.setData({step: tempStep});
   },
+  // 步骤描述
   BindTextChange: function(e) {
-    this.setData({discreption: e.detail.value});
+    var tempStep = this.data.step;
+    tempStep.description = defineText(e.detail.value);
+    this.setData({step: tempStep});
   },
   CancelAction: function() {
-    this.setData({modalHidden: true});
+    this.hiddenModal();
   },
   ConfirmAction: function() {
-    this.setData({modalHidden: true});
-    if (this.data.isSubmit == true) { // 对于提交项目添加申请
-      var app = getApp();
+    this.hiddenModal();
+    if (this.data.modalOpts.submit == true) { // 对于提交项目添加申请
       app.projects.push({
-        name: this.data.discreption,
+        name: defineText(this.data.step.description),
         steps: this.data.steps
       });
-      wx.reLaunch({
-        url: '../index/index'
-      })
-    } else if (this.data.modalNoCancel == true) { // 对于修改步骤
-      this.data.steps[this.data.selectedIndex] = {
-        duration: this.data.duration,
-        discreption:this.data.discreption
-      };
-      this.setData({steps: this.data.steps});
-    } else { // 新建步骤
-      this.data.steps.push({
-        duration: this.data.duration,
-        discreption:this.data.discreption
+      // 进行缓存
+      wx.setStorage({
+        key: app.projectKey,
+        data: app.projects
       });
-      this.setData({steps: this.data.steps});
+      wx.navigateBack({ delta: 1 });
+    } else if (selectedIndex < this.data.steps.length) { // 对于修改步骤
+      var tempSteps = this.data.steps;
+      tempSteps[selectedIndex] = this.data.step;
+      this.setData({steps: tempSteps});
+    } else { // 新建步骤
+      var tempSteps = this.data.steps;
+      tempSteps.push({
+        duration: this.data.step.duration,
+        description: defineText(this.data.step.description)
+      });
+      this.setData({steps: tempSteps});
     }
   },
 
-  // 添加按钮事件处理函数
-  Submit: function() {
-    this.setData({isSubmit: true});
-    this.setData({modalNoCancel: false, modalTitle: '请输入项目标题',  discreption: '', modalTextareaPlaceholder: '项目标题', modalConfirmText: '添加'});
-    this.setData({modalHidden: false});
+  // 生命周期函数
+  onLoad: function(e) {
+    mode = e.mode;
+    projectIndex = e.index;
+    if (mode == 'create') {
+      wx.setNavigationBarTitle({title: '新建项目'});
+    } else if (mode == 'modify') {
+      wx.setNavigationBarTitle({title: '修改项目'});
+      project = app.projects[projectIndex];
+      this.setData({steps: project.steps});
+    }
+  },
+
+  /** 工具函数 **/
+  createStep: function() {
+    this.setData({
+      step: {
+        duration: '00:00',
+        description: ''
+      },
+      modalOpts: {
+        title: '添加步骤',
+        textareaPlaceholder: '添加该步骤的描述',
+        confirmText: '添加',
+        noCancel: false,
+        hidden: false,
+        submit: false
+      }
+    });
+  },
+  modifyStep: function(selectedIndex) {
+    this.setData({
+      step: this.data.steps[selectedIndex],
+      modalOpts: {
+        title: '修改步骤',
+        textareaPlaceholder: '添加该步骤的描述',
+        confirmText: '修改',
+        noCancel: true,
+        hidden: false,
+        submit: false
+      }
+    });
+  },
+  createProject: function() {
+    this.setData({
+      step: {
+        duration: '00:00',
+        description: ''
+      },
+      modalOpts: {
+        title: '请输入项目标题',
+        textareaPlaceholder: '项目标题',
+        confirmText: '添加',
+        noCancel: false,
+        hidden: false,
+        submit: true
+      }
+    });
+  },
+  modifyProject: function() {
+    app.projects[projectIndex].steps = this.data.steps;
+    wx.setStorage({
+      key: app.projectKey,
+      data: app.projects
+    });
+    wx.navigateBack({ delta: 1 });
+  },
+  hiddenModal: function() {
+    var opts = this.data.modalOpts;
+    opts.hidden = true;
+    this.setData({modalOpts: opts});
   }
 })
