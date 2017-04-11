@@ -1,3 +1,4 @@
+var app = getApp();
 var timer, project, projectIndex;
 var stepIndex = 0;
 var milliseconds = 0;
@@ -26,13 +27,29 @@ function stopAlarm() {
 
 }
 function remindUser() {
-     wx.playVoice({
-        filePath: '../../res/musics/daoche.mp3'
+    var url = wx.getStorageSync(app.alarmFileKey);
+    wx.playVoice({
+        filePath: url,
+        success: function() {
+            var a = 1;
+        },
+        fail: function() {
+            var b = 1;
+        },
+        complete: function() {
+            remindUser();
+        }
     });
 
     wx.showModal({
         title: '到点了',
         showCancel: false,
+        success: function() {
+            var a = 1;
+        },
+        fail: function() {
+            var b = 1;
+        },
         complete: function() {
             wx.stopVoice();
         }
@@ -87,6 +104,7 @@ Page({
 
     // 生命周期函数
     onLoad: function(e) {
+        stepIndex = 0;
         projectIndex = e.index
         project = getApp().projects[projectIndex];
         this.loadStep(stepIndex);
@@ -117,5 +135,4 @@ Page({
     updateTime: function(milliseconds) {
         this.setData({time_text: DataFormat(milliseconds)});
     }
-    
-})
+});

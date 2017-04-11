@@ -8,5 +8,8 @@
     <image id="del-{{key}}" class="btn-del" src="../../res/imgs/del.png" mode="widthFix" catchtap="DelItem"></image>
   </view>
 </view>
+
 <!--New Project-->
 <view class="list-item add-item" bindtap="CreateProject">新建项目</view>
+<!--New Project-->
+<view class="list-item add-item" bindtap="SettingAlarm">录制铃声</view>

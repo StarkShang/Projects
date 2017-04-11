@@ -1,0 +1,10 @@
+<view class="classname" bindtouchstart ="StartRecord" bindtapend="StopRecord">
+    <view wx:if="{{status == 'start'}}" class="record-button" id="record-start">{{status}}</view>
+    <view wx:if="{{status == 'stop'}}" class="record-button" id="record-stop">{{status}}</view>
+</view>
+
+<view id="record-time">{{time_text}}</view>
+
+<button type="primary" bindtap="voicePlay">Voice播放</button>
+<button type="primary" bindtap="voicePause">Voice暂停</button>
+<button type="primary" bindtap="voiceStop">Voice停止</button>

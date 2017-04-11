@@ -15,12 +15,6 @@ Page({
       url: '../detail/detail?index='+index
     });
   },
-  // 导航到项目创建页面
-  CreateProject: function() {
-    wx.navigateTo({
-      url: '../creator/creator?index=-1&mode=create'
-    });
-  },
   DelItem: function(e) {
     var index = e.currentTarget.id.split("-")[1];
     app.projects.splice(index,1);
@@ -30,6 +24,19 @@ Page({
       data: app.projects
     });
   },
+
+  // 导航到项目创建页面
+  CreateProject: function() {
+    wx.navigateTo({
+      url: '../creator/creator?index=-1&mode=create'
+    });
+  },
+  SettingAlarm: function() {
+    wx.navigateTo({
+      url: '../record/record'
+    });
+  },
+  
 
   // 生命周期处理函数
   onShow: function() {
