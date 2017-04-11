@@ -19,5 +19,7 @@
   </view>
 </view>
 
+<view class="progress">{{stepIndex+1}}/{{stepNumber}}</view>
+
 <!--Setting Button-->
 <image id="btn-setting" src="../../res/imgs/setting.png" mode="widthFix" bindtap="Setting"></image>

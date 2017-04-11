@@ -4,7 +4,7 @@ var app = getApp();
 
 Page({
   data: {
-    projects: app.projects
+    projects: []
   },
   
   //事件处理函数
@@ -17,12 +17,8 @@ Page({
   },
   DelItem: function(e) {
     var index = e.currentTarget.id.split("-")[1];
-    app.projects.splice(index,1);
+    app.RemoveProjects(index,1);
     this.setData({projects: app.projects});
-    wx.setStorage({
-      key: app.projectKey,
-      data: app.projects
-    });
   },
 
   // 导航到项目创建页面
@@ -38,7 +34,10 @@ Page({
   },
   
 
-  // 生命周期处理函数
+  /** 生命周期处理函数 **/
+  onLoad: function() {
+    app.LoadProjects();
+  },
   onShow: function() {
     this.setData({projects: app.projects});
   }

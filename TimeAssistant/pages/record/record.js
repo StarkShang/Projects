@@ -1,5 +1,7 @@
 var app = getApp();
-var filePath;
+var tool = require('../../utils/tools.js');
+var timer;
+var milliseconds = 0;
 
 function clearSavedAlarm() {
     wx.getSavedFileList({
@@ -16,10 +18,7 @@ function saveAlarm(filePath) {
     wx.saveFile({
         tempFilePath: filePath,
         success: function(res) {
-            wx.setStorage({
-                key: app.alarmFileKey,
-                data: res.savedFilePath
-            });
+            app.UpdateAlarmUrl(res.savedFilePath);
         }
     });
 }
@@ -32,26 +31,32 @@ Page({
     StartRecord: function() {
         wx.startRecord({
           success: function(res){
-            var tempFilePath = res.tempFilePath;
-            wx.playVoice({ filePath: tempFilePath });
-            filePath = tempFilePath;
             // 清除原始铃声
             clearSavedAlarm();
-            saveAlarm(tempFilePath);
+            saveAlarm(res.tempFilePath);
           }
         });
+        timer = setInterval(this.intervalAction, 10);
         setTimeout(function() {
             wx.stopRecord();
-        }, 5000);
+            clearInterval(timer);
+            this.setData({status: 'start'});
+        }, 10000);
         this.setData({status: 'stop'});
     },
     StopRecord: function() {
+        wx.stopRecord();
+        clearInterval(timer);
         this.setData({status: 'start'});
+    },
+    // 定时器回调函数
+    intervalAction: function() {
+        milliseconds = milliseconds + 10;
+        this.setData({time_text: tool.TimeFormat(milliseconds)});
     },
 
     voicePlay: function() {
-        var url = wx.getStorageSync(app.alarmFileKey);
-        wx.playVoice({ filePath: filePath });
+        wx.playVoice({ filePath: app.GetAlarmUrl() });
     },
     voicePause: function() {
         wx.pauseVoice();

@@ -1,41 +1,17 @@
 var app = getApp();
+var tool = require('../../utils/tools.js');
 var timer, project, projectIndex;
-var stepIndex = 0;
 var milliseconds = 0;
 
 
-
-function DataFormat(time) {
-    var micro_sec = Math.floor(time%1000/10);
-    var seconds = Math.floor(time/1000);
-    var hour = Math.floor(seconds/3600);
-    var min  = Math.floor(seconds%36000/60);
-    var sec  = Math.floor(seconds%60);
-    return Completion(hour) + ":" + Completion(min) + ":" + Completion(sec) + " " + Completion(micro_sec);
-}
-function Completion(num) {
-    return num<10 ? "0"+num : num;
-}
 function str2ms(str) {
-    var arr = str.split(":");
+    var arr = str.split(':');
     return (parseInt(arr[0])*60+parseInt(arr[1]))*1000;
 }
-function playAlarm() {
 
-}
-function stopAlarm() {
-
-}
 function remindUser() {
-    var url = wx.getStorageSync(app.alarmFileKey);
     wx.playVoice({
-        filePath: url,
-        success: function() {
-            var a = 1;
-        },
-        fail: function() {
-            var b = 1;
-        },
+        filePath: app.GetAlarmUrl(),
         complete: function() {
             remindUser();
         }
@@ -45,12 +21,6 @@ function remindUser() {
         title: '到点了',
         showCancel: false,
         success: function() {
-            var a = 1;
-        },
-        fail: function() {
-            var b = 1;
-        },
-        complete: function() {
             wx.stopVoice();
         }
     });
@@ -59,7 +29,9 @@ function remindUser() {
 Page({
     data: {
         status: 'start',
-        time_text: '00:00:00',
+        time_text: '00:00 00',
+        stepIndex: 0,
+        stepNumber: 0,
         worksteps: [
             {status: 'completing',index: 0,description: ''},
             {status: 'timing',index: 0,description: ''},
@@ -68,7 +40,7 @@ Page({
     },
     StartCount: function(){
         this.setData({status: 'stop'});
-        timer = setInterval(this.intervalAction, 10)
+        timer = setInterval(this.intervalAction, 10);
     },
     StopCount: function(){
         clearInterval(timer);
@@ -81,10 +53,10 @@ Page({
             remindUser();
             
             // 载入下一步骤数据
-            stepIndex = stepIndex + 1;
-            this.loadStep(stepIndex);
-            if (stepIndex < project.steps.length) {
-                milliseconds = str2ms(project.steps[stepIndex].duration);
+            this.setData({stepIndex: this.data.stepIndex+1});
+            this.loadStep(this.data.stepIndex);
+            if (this.data.stepIndex < project.steps.length) {
+                milliseconds = str2ms(project.steps[this.data.stepIndex].duration);
                 this.setData({status: 'start'});
             } else {
                 milliseconds = 0;
@@ -104,11 +76,16 @@ Page({
 
     // 生命周期函数
     onLoad: function(e) {
-        stepIndex = 0;
         projectIndex = e.index
+    },
+    onShow: function() {
         project = getApp().projects[projectIndex];
-        this.loadStep(stepIndex);
-        milliseconds = str2ms(project.steps[stepIndex].duration);
+        this.setData({
+            stepIndex: 0,
+            stepNumber: project.steps.length
+        })
+        this.loadStep(this.data.stepIndex);
+        milliseconds = str2ms(project.steps[this.data.stepIndex].duration);
         this.updateTime(milliseconds);
     },
 
@@ -133,6 +110,6 @@ Page({
         this.setData({worksteps: ws});
     },
     updateTime: function(milliseconds) {
-        this.setData({time_text: DataFormat(milliseconds)});
+        this.setData({time_text: tool.TimeFormat(milliseconds)});
     }
 });

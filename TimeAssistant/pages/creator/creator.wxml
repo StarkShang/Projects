@@ -1,5 +1,6 @@
-<!--Created Step-->
 <view class="row-list">
+
+  <!--Created Step-->
   <view class="list-item" wx:for="{{steps}}" wx:for-index="key" wx:for-item="step" bindtap="StepDetail" id="{{key}}">
     <view class="duration">{{step.duration}}</view>
     <view class="description">{{step.description}}</view>
@@ -10,8 +11,10 @@
 
   <!--New Step-->
   <view class="list-item add-item" bindtap="StepDetail" id="{{steps.length}}">添加步骤</view>
+
   <!--Submit Button-->
   <view class="list-item confirm-item" bindtap="SubmitAction">确 定</view>
+
 </view>
 
 

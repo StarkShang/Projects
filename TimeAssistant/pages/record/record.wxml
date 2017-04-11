@@ -1,7 +1,4 @@
-<view class="classname" bindtouchstart ="StartRecord" bindtapend="StopRecord">
-    <view wx:if="{{status == 'start'}}" class="record-button" id="record-start">{{status}}</view>
-    <view wx:if="{{status == 'stop'}}" class="record-button" id="record-stop">{{status}}</view>
-</view>
+<view class="record-button" id="record-{{status}}" bindtouchstart ="StartRecord" bindtouchend ="StopRecord">{{status}}</view>
 
 <view id="record-time">{{time_text}}</view>
 
