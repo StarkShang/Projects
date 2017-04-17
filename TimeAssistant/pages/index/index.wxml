@@ -1,12 +1,10 @@
 <!--Created Projects-->
-<view class="list-item" wx:for="{{projects}}" wx:for-index="key" wx:for-item="project" id="{{key}}" bindtap="ProjectDetail">
+<view class="list-item" wx:for="{{projects}}" wx:for-index="projectId" wx:for-item="project" wx:key="name" id="{{projectId}}" catchtap="ProjectDetail" catchlongtap="ShowSettingButton">
   <view class="parent">
     <view class="title">{{project.name}}</view>
     <view class="info">{{project.steps.length}}步骤</view>
   </view>
-  <view class="container-del">
-    <image id="del-{{key}}" class="btn-del" src="../../res/imgs/del.png" mode="widthFix" catchtap="DelItem"></image>
-  </view>
+  <image class="btn-del" src="../../res/imgs/del.png" mode="widthFix" catchtap="DeleteProject" data-projectId="{{projectId}}"></image>
 </view>
 
 <!--New Project-->

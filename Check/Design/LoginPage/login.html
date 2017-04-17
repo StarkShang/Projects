@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Font-Awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="login.css">
     <title>Document</title>
 </head>
-<body class="container-fluid">
-    <div class="row full-height">
-        <div class="col-xs-0 col-sm-0 col-md-8 col-lg-8 full-height"></div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 full-height flex-box">
-            <div class="logo"></div>
-            <div class="login-form"></div>
+<body>
+     <div id="login-image"></div>
+     <div id="login-page">
+        <div id="login-container">
+            <span id="logo"><i class="fa fa-user-circle-o"></i></span>
+            <form action="post">
+                <div class="login-form-group">
+                    <label for="username"><i class="fa fa-user login-form-icon"></i></label>
+                    <input id="username" type="text" class="login-form-input">
+                </div>
+                <div class="login-form-group">
+                    <label for="password" class="fa fa-lock login-form-icon"></label>
+                    <input id="password" type="password" class="login-form-input">
+                </div>
+                <button type="submit" id="submit-btn">登 录</button>
+            </form>
+            <div id="findpassword"><a href="">忘记密码?</a></div>
+            <div id="joinin"><a>加入我们的学习!</a></div>
         </div>
     </div>
 </body>

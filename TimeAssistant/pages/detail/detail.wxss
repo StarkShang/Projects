@@ -5,7 +5,7 @@
     justify-content: center;
     width: 100%;
     height: 50%;
-    font-family: consolas;
+    font-family: 'Source Code Pro';
 }
 .stopwatch-button {
     display: flex;
@@ -19,10 +19,10 @@
     font-weight: bold;
     color: white;
 }
-#stopwatch-start {
+.stopwatch-start {
     background: green;
 }
-#stopwatch-stop {
+.stopwatch-stop {
     background: red;
 }
 #stopwatch-time {
@@ -40,7 +40,7 @@
     width: 100%;
     height: 40%;
 
-    font-family: consolas;
+    font-family: 'Source Code Pro';
     font-size: 30rpx;
 }
 .list-item {

@@ -1,7 +1,6 @@
 <!--creator.wxml-->
 <view id="stopwatch">
-  <view wx:if="{{status == 'start'}}" bindtap="StartCount" class="stopwatch-button" id="stopwatch-start">{{status}}</view>
-  <view wx:if="{{status == 'stop'}}" bindtap="StopCount" class="stopwatch-button" id="stopwatch-stop">{{status}}</view>
+  <view class="stopwatch-button stopwatch-{{countStatus}}" bindtap="StopwatchEvent">{{countStatus}}</view>
   <view id="stopwatch-time">{{time_text}}</view>
 </view>
 

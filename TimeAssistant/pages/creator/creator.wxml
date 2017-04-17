@@ -1,19 +1,19 @@
 <view class="row-list">
 
   <!--Created Step-->
-  <view class="list-item" wx:for="{{steps}}" wx:for-index="key" wx:for-item="step" bindtap="StepDetail" id="{{key}}">
+  <view class="list-item" wx:for="{{project.steps}}" wx:for-index="stepId" wx:for-item="step" wx:key="stepId" bindtap="ShowStepDailog" id="{{stepId}}">
     <view class="duration">{{step.duration}}</view>
     <view class="description">{{step.description}}</view>
     <view class="container-del">
-      <image id="del-{{key}}" class="btn-del" src="../../res/imgs/del.png" mode="widthFix" catchtap="DelItem"></image>
+      <image data-stepId="{{stepId}}" class="btn-del" src="../../res/imgs/del.png" mode="widthFix" catchtap="DeleteStep"></image>
     </view>
   </view>
 
   <!--New Step-->
-  <view class="list-item add-item" bindtap="StepDetail" id="{{steps.length}}">添加步骤</view>
+  <view class="list-item add-item" bindtap="ShowStepDailog" id="-1">添加步骤</view>
 
   <!--Submit Button-->
-  <view class="list-item confirm-item" bindtap="SubmitAction">确 定</view>
+  <view class="list-item confirm-item" bindtap="ShowProjectDailog">确 定</view>
 
 </view>
 
@@ -21,12 +21,15 @@
 
 
 <!--Modal Dialog-->
-<modal hidden="{{modalOpts.hidden}}" title="{{modalOpts.title}}" confirm-text="{{modalOpts.confirmText}}" cancel-text="取消" bindconfirm="ConfirmAction" bindcancel="CancelAction" no-cancel="{{modalOpts.noCancel}}">
+<modal hidden="{{submitStepDialog.hidden}}" title="{{submitStepDialog.title}}" confirm-text="{{submitStepDialog.confirmText}}" bindconfirm="SubmitStep" bindcancel="HideStepDialog">
   <view id="container">
     <picker mode="time" value="{{step.duration}}" wx:if="{{!modalOpts.submit}}" bindchange="BindTimeChange">
       <view id="stepTime">{{step.duration}}</view>
     </picker>
-    <textarea id="stepDescription" placeholder="{{modalOpts.textareaPlaceholder}}" value="{{step.description}}" bindconfirm="BindTextChange"/>
+    <textarea id="stepDescription" placeholder="添加该步骤的描述" value="{{step.description}}" bindconfirm="BindTextChange"/>
   </view>
-  
+</modal>
+
+<modal hidden="{{projectDialogHidden}}" title="项目标题" bindconfirm="SubmitProject" bindcancel="HideProjectDialog">
+  <textarea id="projectName" placeholder="请输入项目标题" value="{{project.name}}" bindconfirm="ChangeProjectTitle"/>
 </modal>

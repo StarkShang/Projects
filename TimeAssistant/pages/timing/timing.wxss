@@ -1,0 +1,16 @@
+/* pages/timing/timing.wxss */
+.timer-canvas {
+    height: 60%;
+    background-color: red;
+}
+
+.timer-controller {
+    height: 40%;
+    background-color: blanchedalmond;
+}
+.timer-button {
+    width: 100px;
+    height: 100px;
+    border: solid 5px red;
+    border-radius: 50px;
+}

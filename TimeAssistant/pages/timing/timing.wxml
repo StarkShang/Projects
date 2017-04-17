@@ -1,0 +1,8 @@
+<view class="timer-canvas">
+
+</view>
+
+<view class="timer-controller">
+    <button class="timer-button"></button>
+    <view class="classname">"1234567"</view>
+</view>

@@ -1,5 +1,5 @@
 var app = getApp();
-var project,projectIndex,projectName;
+var projectIndex,oldProjectName;
 var selectedIndex,workMode;
 const createMode = 'create';
 const modifyMode = 'modify';
@@ -10,93 +10,90 @@ function defineText(str) {
 
 Page({
   data: {
-    steps: [],
-    modalOpts: {
+    project: {},
+    submitStepDialog: {
       title: '',
-      textareaPlaceholder: '',
       confirmText: '',
-      noCancel: false,
-      hidden: true,
-      submit: false
+      hidden: true
     },
+    projectDialogHidden: true,
     step: {
       duration: '00:00',
       description: ''
     }
   },
+
   /** 界面绑定事件处理函数 **/
   // 删除步骤
-  DelItem: function(e) {
-    var index = e.currentTarget.id.split('-')[1];
-    var tempSteps = this.data.steps;
+  DeleteStep: function(e) {
+    var index = e.currentTarget.dataset.stepid;
+    var tempSteps = this.data.project.steps;
     tempSteps.splice(index,1);
     this.setData({
-      steps: tempSteps
+      'project.steps': tempSteps
     });
   },
-  // 创建、修改步骤
-  StepDetail: function(e) {
-    selectedIndex = e.currentTarget.id;
-    selectedIndex<this.data.steps.length?this.modifyStep(selectedIndex):this.createStep();
-  },
-  // 提交项目
-  SubmitAction: function() {
-    this.submitProject();
-  },
 
-  /** 模态框事件处理函数 **/
+  /** Events about submitting step **/
+  ShowStepDailog: function(e) {
+    selectedIndex = e.currentTarget.id;
+    selectedIndex<0 ? this.createStep():this.modifyStep(selectedIndex);
+  },
+  /** Events about step dialog **/
+  SubmitStep: function() {
+    this.HideStepDialog();
+    var tempSteps = this.data.project.steps;
+    // for creating a step
+    if (selectedIndex < 0) {
+      tempSteps.push(this.data.step);
+    } else { // for create step info
+      tempSteps[selectedIndex] = this.data.step;
+    }
+    this.setData({'project.steps': tempSteps});
+  },
+  HideStepDialog: function() {
+    this.setData({'submitStepDialog.hidden': true});
+  },
   // Modify the duration of the step 
   BindTimeChange: function(e) {
     this.setData({'step.duration': e.detail.value});
   },
   // Modify the description of the step
   BindTextChange: function(e) {
-    this.setData({'step.description': defineText(e.detail.value)});
+    this.setData({'step.description': e.detail.value});
   },
-  // Cancel modal dialog
-  CancelAction: function() {
-    this.hiddenModal();
+
+  /** Events about submitting project **/
+  ShowProjectDailog: function() {
+    oldProjectName = this.data.project.name;
+    this.setData({ projectDialogHidden: false });
   },
-  // Confirm modal dialog
-  ConfirmAction: function() {
-    this.hiddenModal();
-    if (this.data.modalOpts.submit == true) { // for submitting project
-      // Update the projects
-      app.UpdateProjects({
-        name: defineText(this.data.step.description),
-        steps: this.data.steps
-      }, projectIndex);
-      // Navigate back to previous page
-      wx.navigateBack({ delta: 1 });
-    } else { // for submitting step
-      if (selectedIndex < this.data.steps.length) { // for modifying step info
-        var tempSteps = this.data.steps;
-        tempSteps[selectedIndex] = this.data.step;
-        this.setData({steps: tempSteps});
-      } else { // 新建步骤
-        var tempSteps = this.data.steps;
-        tempSteps.push({
-          duration: this.data.step.duration,
-          description: defineText(this.data.step.description)
-        });
-        this.setData({steps: tempSteps});
-      }
-    } 
+  /** Events about project dialog **/
+  SubmitProject: function() {
+    workMode == createMode ? app.CreateProject(this.data.project) : app.UpdateProject(this.data.project);
+    // Navigate back to previous page
+    wx.navigateBack({ delta: 1 });
+  },
+  HideProjectDialog: function() {
+    this.setData({projectDialogHidden: true});
+  },
+  ChangeProjectTitle: function(e) {
+    this.setData({'project.name': e.detail.value});
   },
 
   /** 生命周期函数 **/
   onLoad: function(e) {
     workMode = e.mode;
     projectIndex = e.index;
+
     switch(workMode) {
       case createMode:
+        this.setData({project: {name:'',steps: []}});
         wx.setNavigationBarTitle({title: '新建项目'});
         break;
       case modifyMode:
-        wx.setNavigationBarTitle({title: '修改项目'});
-        project = app.projects[projectIndex];
-        projectName = project.name;
-        this.setData({steps: project.steps});
+        this.setData({project: app.projects[projectIndex]});
+        wx.setNavigationBarTitle({title: this.data.project.name});        
         break;
       default:
         wx.navigateBack({ delta: 1 });
@@ -107,46 +104,21 @@ Page({
   createStep: function() {
     this.setData({
       step: { duration: '00:00', description: '' },
-      modalOpts: {
+      submitStepDialog: {
         title: '添加步骤',
-        textareaPlaceholder: '添加该步骤的描述',
         confirmText: '添加',
-        noCancel: false,
         hidden: false,
-        submit: false
       }
     });
   },
   modifyStep: function(selectedIndex) {
     this.setData({
-      step: this.data.steps[selectedIndex],
-      modalOpts: {
+      step: this.data.project.steps[selectedIndex],
+      submitStepDialog: {
         title: '修改步骤',
-        textareaPlaceholder: '添加该步骤的描述',
         confirmText: '修改',
-        noCancel: true,
         hidden: false,
-        submit: false
       }
     });
-  },
-  submitProject: function() {
-    this.setData({
-      step: {
-        duration: '00:00',
-        description: workMode==createMode?'':projectName
-      },
-      modalOpts: {
-        title: '请输入项目标题',
-        textareaPlaceholder: '项目标题',
-        confirmText: '添加',
-        noCancel: false,
-        hidden: false,
-        submit: true
-      }
-    });
-  },
-  hiddenModal: function() {
-    this.setData({'modalOpts.hidden': true});
   }
 })

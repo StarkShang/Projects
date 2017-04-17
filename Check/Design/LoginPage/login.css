@@ -1,22 +1,92 @@
 html,body {
+    width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.full-height {
+#login-image {
+    float: left;
+    width: 0;
     height: 100%;
+    background-image: url('res/background.jpg');
+    background-size: auto 100%;
 }
-
-.flex-box {
+#login-page {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+#login-container {
+    width: 60%;
+}
+#logo {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    line-height: 5rem;
+    margin: 0.5rem 0 1rem;
+    font-size: 5rem;
+}
+.login-form-group {
+    position: relative;
+    margin-bottom: 0.2rem;
+    
+    font-size: 1rem;
+}
+.login-form-icon {
+    position: absolute;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+}
+.login-form-input {
+    width: 100%;
+    height: 2rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    border: black 1.2px solid;
+    border-radius: 1rem;
+    background-color: transparent;
+}
+.login-form-input:focus {
+    outline: none;
+    outline-offset: 0;
+}
+#submit-btn {
+    width: 100%;
+    height: 2rem;
+    margin-top: 0.8rem;
+    padding: 0 0.5rem;
+    border: black 1px solid;
+    border-radius: 1rem;
+}
+#findpassword {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+#joinin {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
-.logo {
-    height: 20%;
-    background-color: red;
+a {
+    text-decoration:none;
 }
-.login-form {
-    height: 80%;
-    background-color: blue;
-}
+
+@media only screen and (min-aspect-ratio: 1/1) {
+    #login-image {
+        width: 60%;
+    }
+    #login-page {
+        width: 40%;
+    }
+} 

@@ -7,3 +7,10 @@ page {
   background-color: lightgray;
   font-family: consolas;
 }
+
+@font-face {
+	font-family: 'Source Code Pro';
+	src: url('res/fonts/SourceCodePro-Bold.svg#SourceCodePro-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}

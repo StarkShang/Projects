@@ -55,6 +55,10 @@ Page({
         this.setData({time_text: tool.TimeFormat(milliseconds)});
     },
 
+    onShow: function() {
+        milliseconds = 0;
+    },
+
     voicePlay: function() {
         wx.playVoice({ filePath: app.GetAlarmUrl() });
     },
